@@ -7,19 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="nav">
-  <% if current_user %>
-    <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
-    <%= link_to 'Logout', :logout, method: :post %>
-  <% else %>
-    <%= link_to 'Register', new_user_path %> |
-    <%= link_to 'Login', :login %>
-  <% end %>
+<div class="application-area">
+  <div id="nav">
+    <% if current_user %>
+      <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
+      <%= link_to 'Logout', :logout, method: :post %>
+    <% else %>
+      <%= link_to 'Register', new_user_path %> |
+      <%= link_to 'Login', :login %>
+    <% end %>
+  </div>
+  <h1>AbShip</h1>
+  <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert" ><%= flash[:alert ] %></p>
+  </div>
+  <div class="tab-menu">
+    <ul>
+      <li class="<%= @expense_selected ? 'on' : 'off' %>"><%= link_to '支出  ', expense_path %></li>
+      <li class="<%= @summary_selected ? 'on' : 'off' %>"><%= link_to '集計  ', summary_path %></li>
+      <li class="<%= @graphic_selected ? 'on' : 'off' %>"><%= link_to 'グラフ', graphic_path %></li>
+      <li class="<%= @balance_selected ? 'on' : 'off' %>"><%= link_to '収支  ', balance_path %></li>
+      <li class="<%= @private_selected ? 'on' : 'off' %>"><%= link_to '秘密  ', private_path %></li>
+    </ul>
+  </div>
+  <div class="context">
+    <div class="main-area">
+      <%= yield %>
+    </div>
+  </div>
 </div>
-<div>
-  <p id="notice"><%= flash[:notice] %></p>
-  <p id="alert" ><%= flash[:alert ] %></p>
-</div>
-<%= yield %>
 </body>
 </html>

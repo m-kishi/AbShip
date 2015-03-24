@@ -1,0 +1,103 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$base-color: #38a1db; //天草色
+$next-color: #c8e5f5;
+$on-text-color: #fefefe;
+$off-text-color: #fefefe;
+$off-text-hover-color: #192f60;
+
+body {
+  width: 1000px;
+  .application-area {
+    width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.tab-menu {
+  height: 26px;
+  ul {
+    margin: 0px;
+    li {
+      float: left;
+      display: block;
+    }
+  }
+}
+
+.on {
+  background-color: $base-color;
+  width: 100px;
+  height: 26px;
+  margin-right: 5px;
+  text-align: center;
+  a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+  }
+  a:link {
+    color: $on-text-color;
+  }
+  a:hover {
+    color: $on-text-color;
+  }
+  a:visited {
+    color: $on-text-color;
+  }
+}
+
+.off {
+  background-color: $next-color;
+  width: 100px;
+  height: 26px;
+  margin-right: 5px;
+  text-align: center;
+  a {
+    display: block;
+    margin-top: 5px;
+    text-decoration: underline;
+  }
+  a:link {
+    color: $off-text-color;
+  }
+  a:visited {
+    color: $off-text-color;
+  }
+  a:hover {
+    color: $off-text-hover-color;
+  }
+}
+
+.context {
+  clear: both;
+  border-top   : solid 10px $base-color;
+  border-left  : solid  1px $base-color;
+  border-right : solid  1px $base-color;
+  border-bottom: solid  1px $base-color;
+  .main-area {
+    width: 95%;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top   : solid 1px #165e83;
+    border-left  : solid 1px #165e83;
+    border-right : solid 1px #165e83;
+    border-bottom: solid 1px #165e83;
+  }
+}

@@ -1,0 +1,49 @@
+<% if @expenses.empty? %>
+  <h2>Expense Data Nothing</h2>
+<% else %>
+  <!-- テーブル全体を表すDIV -->
+  <div style="width:557px;">
+    <!-- ヘッダ(thead)を表すDIV -->
+    <div style="width:100%;">
+      <table class="scroll">
+        <colgroup>
+          <col style="width:120px;" />
+          <col style="width:180px;" />
+          <col style="width:120px;" />
+          <col style="width:120px;" />
+          <col style="width: 16px;" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>名称</th>
+            <th>種別</th>
+            <th>金額</th>
+            <th></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <!-- ボディ(tbody)を表すDIV -->
+    <div style="width:100%;height:360px;overflow-y:scroll;overflow-x:hidden;">
+      <table class="scroll">
+        <colgroup>
+          <col style="width:120px;" />
+          <col style="width:180px;" />
+          <col style="width:120px;" />
+          <col style="width:120px;" />
+        </colgroup>
+        <tbody>
+        <% @expenses.each do |exp| %>
+          <tr>
+            <td><%= exp.date %></td>
+            <td><%= exp.name %></td>
+            <td><%= exp.type %></td>
+            <td class="currency"><%= to_currency(exp.cost) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

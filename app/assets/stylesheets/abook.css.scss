@@ -1,0 +1,20 @@
+$base-color: #38a1db;
+$next-color: #c8e5f5;
+
+.currency {
+  text-align: right;
+}
+
+table.scroll {
+  border: 1px solid $base-color;
+  table-layout: fixed;
+  border-collapse: collapse;
+  td {
+    border: 1px solid $base-color;
+  }
+  th {
+    border: 1px solid $base-color;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+}
