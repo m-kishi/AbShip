@@ -11,13 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322110000) do
+ActiveRecord::Schema.define(version: 20150324000000) do
 
   create_table "expenses", force: :cascade do |t|
     t.date    "date"
     t.string  "name"
     t.string  "type"
     t.integer "cost"
+  end
+
+  create_table "summaries", force: :cascade do |t|
+    t.integer "year"
+    t.integer "mnth"
+    t.integer "food"
+    t.integer "otfd"
+    t.integer "good"
+    t.integer "frnd"
+    t.integer "trfc"
+    t.integer "play"
+    t.integer "hous"
+    t.integer "engy"
+    t.integer "cnct"
+    t.integer "medi"
+    t.integer "insu"
+    t.integer "othr"
+    t.integer "earn"
+    t.integer "bnus"
+    t.integer "spcl"
+    t.integer "prvi"
+    t.integer "prvo"
+    t.integer "ttal"
+    t.integer "blnc"
   end
 
   create_table "users", force: :cascade do |t|

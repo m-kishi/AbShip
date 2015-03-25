@@ -1,1 +1,71 @@
-<h1>Abook#Summary</h1>
+<table class="summary">
+<thead>
+    <th colspan="5">
+    <%= link_to "<<", :controller => :abook, :action => :summary, :year => @prevy.year, :mnth => @prevy.month %>
+    <%= link_to " <", :controller => :abook, :action => :summary, :year => @prevm.year, :mnth => @prevm.month %>
+    <%= sprintf("%04d年%02d月", @summary["year"], @summary["mnth"]) %>
+    <%= link_to "> ", :controller => :abook, :action => :summary, :year => @nextm.year, :mnth => @nextm.month %>
+    <%= link_to ">>", :controller => :abook, :action => :summary, :year => @nexty.year, :mnth => @nexty.month %>
+  </th>
+</thead>
+<tbody>
+  <tr>
+    <td class="type">食費  </td>
+    <td class="cost currency"><%= to_currency(@summary.food) %></td>
+    <td></td>
+    <td class="type">家賃  </td>
+    <td class="cost currency"><%= to_currency(@summary.hous) %></td>
+  </tr>
+  <tr>
+    <td class="type">外食費</td>
+    <td class="cost currency"><%= to_currency(@summary.otfd) %></td>
+    <td></td>
+    <td class="type">光熱費</td>
+    <td class="cost currency"><%= to_currency(@summary.engy) %></td>
+  </tr>
+  <tr>
+    <td colspan="5" style="text-align:right;">-----------------------------------------------------------------</td>
+  </tr>
+  <tr>
+    <td class="type">雑貨  </td>
+    <td class="cost currency"><%= to_currency(@summary.good) %></td>
+    <td></td>
+    <td class="type">通信費</td>
+    <td class="cost currency"><%= to_currency(@summary.cnct) %></td>
+  </tr>
+  <tr>
+    <td class="type">交際費</td>
+    <td class="cost currency"><%= to_currency(@summary.frnd) %></td>
+    <td></td>
+    <td class="type">医療費</td>
+    <td class="cost currency"><%= to_currency(@summary.medi) %></td>
+  </tr>
+  <tr>
+    <td class="type">交通費</td>
+    <td class="cost currency"><%= to_currency(@summary.trfc) %></td>
+    <td></td>
+    <td class="type">保険料</td>
+    <td class="cost currency"><%= to_currency(@summary.insu) %></td>
+  </tr>
+  <tr>
+    <td class="type">遊行費</td>
+    <td class="cost currency"><%= to_currency(@summary.play) %></td>
+    <td></td>
+    <td class="type">その他</td>
+    <td class="cost currency"><%= to_currency(@summary.othr) %></td>
+  </tr>
+  <tr>
+    <td colspan="5" style="text-align:right;">--------------------------------</td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+    <td class="type">合計  </td>
+    <td class="cost currency"><%= to_currency(@summary.ttal) %></td>
+  </tr>
+  <tr>
+    <td colspan="3"></td>
+    <td class="type">収支  </td>
+    <td class="cost currency"><%= to_currency(@summary.blnc) %></td>
+  </tr>
+</tbody>
+</table>

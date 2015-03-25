@@ -18,3 +18,16 @@ table.scroll {
     background-color: $next-color;
   }
 }
+
+table.summary {
+  width: 50%;
+  /* border: 1px solid $base-color; */
+  td.type {
+    width: 20%;
+    /* border: 1px solid red; */
+  }
+  td.cost {
+    width: 25%;
+    /* border: 1px solid green; */
+  }
+}
