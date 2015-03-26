@@ -22,6 +22,7 @@ class AbookController < ApplicationController
   end
 
   def balance
+    @balances = Balance.all
     @balance_selected = true
   end
 
