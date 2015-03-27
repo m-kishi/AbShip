@@ -1,1 +1,50 @@
-<h1>Abook#Private</h1>
+<% if @privates.empty? %>
+  <h2>Private Data Nothing</h2>
+<% else %>
+  <!-- テーブル全体を表すDIV -->
+  <div style="width:557px;">
+    <!-- ヘッダ(thead)を表すDIV -->
+    <div style="width:100%;">
+      <table class="scroll">
+        <colgroup>
+          <col style="width:120px;">
+          <col style="width:180px;">
+          <col style="width:120px;">
+          <col style="width:120px;">
+          <col style="width: 16px;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>名称</th>
+            <th>金額</th>
+            <th>収支</th>
+            <th></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <!-- ボディ(tbody)を表すDIV -->
+    <div style="height:360px;width:100%;overflow-y:scroll;overflow-x:hidden;">
+      <table class="scroll">
+        <colgroup>
+          <col style="width:120px;">
+          <col style="width:180px;">
+          <col style="width:120px;">
+          <col style="width:120px;">
+        </colgroup>
+        <tbody>
+        <% @privates.each do |prv| %>
+          <tr>
+            <td><%= prv.date %></td>
+            <td><%= prv.name %></td>
+            <td class="currency"><%= to_currency(prv.cost) %></td>
+            <td class="currency"><%= to_currency(prv.blnc) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</table>
+<% end %>

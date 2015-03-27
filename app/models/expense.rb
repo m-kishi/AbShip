@@ -6,4 +6,9 @@ class Expense < ActiveRecord::Base
   #全件取得は登録順
   default_scope -> { order(:id) }
 
+  #秘密収支の抽出
+  scope :privates, -> {
+    where("type IN ('PRVI', 'PRVO')")
+  }
+
 end

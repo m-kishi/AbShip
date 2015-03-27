@@ -27,6 +27,7 @@ class AbookController < ApplicationController
   end
 
   def private
+    @privates = Private.all
     @private_selected = true
   end
 
