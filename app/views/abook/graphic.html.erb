@@ -1,1 +1,12 @@
-<h1>Abook#Graphic</h1>
+<table class="graphic">
+  <thead>
+    <th colspan="5">
+      <%= link_to "<<", :controller => :abook, :action => :graphic, :year => @prevy.year, :mnth => @prevy.month %>
+      <%= link_to " <", :controller => :abook, :action => :graphic, :year => @prevm.year, :mnth => @prevm.month %>
+      <%= sprintf("%04d年%02d月", @year, @mnth) %>
+      <%= link_to "> ", :controller => :abook, :action => :graphic, :year => @nextm.year, :mnth => @nextm.month %>
+      <%= link_to ">>", :controller => :abook, :action => :graphic, :year => @nexty.year, :mnth => @nexty.month %>
+    </th>
+  </thead>
+</table>
+<%= high_chart("some_id", @chart) %>

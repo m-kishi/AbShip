@@ -10,6 +10,27 @@ class Summary < ActiveRecord::Base
     Summary.where("year=? AND mnth=?", y, m).first || Summary.empty(y, m)
   }
 
+  #グラフデータ
+  scope :graphic, ->(y, m) {
+    summaries = []
+    dtEnd = Date.new(y, m, 1)
+    dtCrr = Date.new(y, m, 1) - 1.year
+    while dtCrr <= dtEnd do
+      summaries << Summary.get(dtCrr.year, dtCrr.month)
+      dtCrr += 1.month
+    end
+    summaries
+  }
+
+  #名称からその月の支出を取得
+  def get_cost_by_name(name)
+    return 0 if name.blank?
+    dtStr = Date.new(self.year, self.mnth, 1)
+    dtEnd = dtStr + 1.month - 1.day
+    sum = Expense.where("date BETWEEN ? AND ? AND name = ?", dtStr, dtEnd, name).group(:name).sum(:cost)
+    sum[name]
+  end
+
   #集計の登録処理
   def self.import
     Summary.delete_all
@@ -70,6 +91,7 @@ class Summary < ActiveRecord::Base
     sum.prvo = 0
     sum.ttal = 0
     sum.blnc = 0
+    sum
   end
 
 end
