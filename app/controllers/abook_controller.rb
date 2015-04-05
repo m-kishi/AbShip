@@ -1,4 +1,5 @@
 class AbookController < ApplicationController
+  include AbookHelper
 
   def expense
     @expenses = Expense.all
@@ -63,6 +64,15 @@ class AbookController < ApplicationController
   def private
     @privates = Private.all
     @private_selected = true
+  end
+
+  def setfile
+    @setfile_selected = true
+  end
+
+  def imports
+    import(params[:file])
+    redirect_to expense_path
   end
 
 end

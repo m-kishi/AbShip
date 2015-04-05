@@ -1,0 +1,11 @@
+<h1>Upload Abook.db</h1>
+
+<%= form_tag({ controller: :abook, action: :imports, method: :post }, { multipart: true }) do %>
+  <div class="field">
+    <%= label_tag "DBファイルを選択" %><br>
+    <%= file_field_tag :file %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Upload" %>
+  </div>
+<% end %>

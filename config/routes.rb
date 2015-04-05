@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   get  'login'  => 'session#new'    , as: 'login'
   post 'logout' => 'session#destroy', as: 'logout'
 
-  get 'abook/expense', as: :expense
-  get 'abook/summary', as: :summary
-  get 'abook/graphic', as: :graphic
-  get 'abook/balance', as: :balance
-  get 'abook/private', as: :private
+  get  'abook/expense', as: :expense
+  get  'abook/summary', as: :summary
+  get  'abook/graphic', as: :graphic
+  get  'abook/balance', as: :balance
+  get  'abook/private', as: :private
+  get  'abook/setfile', as: :setfile
+  post 'abook/imports', as: :imports
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
