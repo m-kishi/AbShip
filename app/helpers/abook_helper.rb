@@ -46,4 +46,8 @@ module AbookHelper
     if type == "秘密出" then type = type.gsub(/^秘密出$/, "PRVO"); return type; end
   end
 
+  def to_currency(cost)
+    (((cost < 0) ? '-' : '') + '&yen;' + cost.abs.to_s.reverse.gsub(/(\d{3})(?=\d)/,'\1,').reverse).html_safe
+  end
+
 end

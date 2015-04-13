@@ -1,6 +1,9 @@
 <% if @balances.empty? %>
   <h2>Balance Data Nothing</h2>
 <% else %>
+  <div style="width:747px;">
+    <%= link_to 'PDF', balance_pdf_path %>
+  </div>
   <!-- テーブル全体を表すDIV -->
   <div style="width:747px;">
     <!-- ヘッダ(thead)を表すDIV -->

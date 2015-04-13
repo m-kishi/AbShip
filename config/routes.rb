@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get  'abook/setfile', as: :setfile
   post 'abook/imports', as: :imports
 
+  get  'abpdf/summary', as: :summary_pdf
+  get  'abpdf/balance', as: :balance_pdf
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

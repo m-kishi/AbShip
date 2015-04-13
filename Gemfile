@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'sorcery'
+gem 'thinreports'
 gem 'lazy_high_charts'
 
 group :development, :test do
