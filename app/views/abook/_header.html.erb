@@ -1,0 +1,13 @@
+<% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+<% dtPy = dtCr - 1.year %>
+<% dtNy = dtCr + 1.year %>
+<% dtPm = dtCr - 1.month %>
+<% dtNm = dtCr + 1.month %>
+
+<div class="header-area">
+<%= link_to image_tag(asset_path('prevy.svg')), self.send(path, year: dtPy.year, mnth: dtPy.month) %>
+<%= link_to image_tag(asset_path('prevm.svg')), self.send(path, year: dtPm.year, mnth: dtPm.month) %>
+<h1 class="header"><%= obj.to_title %></h1>
+<%= link_to image_tag(asset_path('nextm.svg')), self.send(path, year: dtNm.year, mnth: dtNm.month) %>
+<%= link_to image_tag(asset_path('nexty.svg')), self.send(path, year: dtNy.year, mnth: dtNy.month) %>
+</div>

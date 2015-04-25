@@ -1,24 +1,8 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
  *= require_tree .
  *= require_self
  */
-
-$base-color: #38a1db; //天草色
-$next-color: #c8e5f5;
-$on-text-color: #fefefe;
-$off-text-color: #fefefe;
-$off-text-hover-color: #192f60;
+@import "bases.css.scss";
 
 body {
   width: 1000px;
@@ -28,26 +12,60 @@ body {
   }
 }
 
+#nav {
+  width: 792px;
+  padding: 4px;
+  font-size: 90%;
+  margin-bottom: 4px;
+  background-color: $next-color;
+  table {
+    width: 100%;
+    tr {
+      width: 100%;
+    }
+    td.nav-text {
+      text-align: right;
+      vertical-align: middle;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  a:link {
+    color: $nav-text-color;
+  }
+  a:visited {
+    color: $nav-text-color;
+  }
+  a:hover {
+    color: $nav-text-hover-color;
+  }
+}
+
 .tab-menu {
   height: 26px;
+  font-size: 90%;
   ul {
     margin: 0px;
     li {
       float: left;
       display: block;
+      position: relative;
     }
   }
 }
 
 .on {
   background-color: $base-color;
-  width: 100px;
+  width: 64px;
   height: 26px;
   margin-right: 5px;
   text-align: center;
   a {
+    width: 100%;
     display: block;
-    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
     text-decoration: none;
   }
   a:link {
@@ -63,14 +81,16 @@ body {
 
 .off {
   background-color: $next-color;
-  width: 100px;
+  width: 64px;
   height: 26px;
   margin-right: 5px;
   text-align: center;
   a {
+    width: 100%;
     display: block;
-    margin-top: 5px;
-    text-decoration: underline;
+    position: absolute;
+    bottom: 0;
+    text-decoration: none;
   }
   a:link {
     color: $off-text-color;
@@ -95,9 +115,25 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-top   : solid 1px #165e83;
-    border-left  : solid 1px #165e83;
-    border-right : solid 1px #165e83;
-    border-bottom: solid 1px #165e83;
+    //border-top   : solid 1px #165e83;
+    //border-left  : solid 1px #165e83;
+    //border-right : solid 1px #165e83;
+    //border-bottom: solid 1px #165e83;
   }
+}
+
+p#alert {
+  color: $err-color;
+  font-size: 85%;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5%;
+}
+
+p#notice {
+  color: $inf-color;
+  font-size: 85%;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5%;
 }

@@ -1,17 +1,16 @@
+<div class="private-area">
 <% if @privates.empty? %>
   <h2>Private Data Nothing</h2>
 <% else %>
-  <!-- テーブル全体を表すDIV -->
-  <div style="width:557px;">
     <!-- ヘッダ(thead)を表すDIV -->
-    <div style="width:100%;">
+    <div class="scroll-head">
       <table class="scroll">
         <colgroup>
-          <col style="width:120px;">
-          <col style="width:180px;">
-          <col style="width:120px;">
-          <col style="width:120px;">
-          <col style="width: 16px;">
+          <col class="prv-date">
+          <col class="prv-name">
+          <col class="prv-cost">
+          <col class="prv-blnc">
+          <col class="prv-scrl">
         </colgroup>
         <thead>
           <tr>
@@ -25,19 +24,19 @@
       </table>
     </div>
     <!-- ボディ(tbody)を表すDIV -->
-    <div style="height:360px;width:100%;overflow-y:scroll;overflow-x:hidden;">
+    <div class="scroll-body">
       <table class="scroll">
         <colgroup>
-          <col style="width:120px;">
-          <col style="width:180px;">
-          <col style="width:120px;">
-          <col style="width:120px;">
+          <col class="prv-date">
+          <col class="prv-name">
+          <col class="prv-cost">
+          <col class="prv-blnc">
         </colgroup>
         <tbody>
         <% @privates.each do |prv| %>
           <tr>
-            <td><%= prv.date %></td>
-            <td><%= prv.name %></td>
+            <td class="prv-date"><%= prv.date %></td>
+            <td                 ><%= prv.name %></td>
             <td class="currency"><%= to_currency(prv.cost) %></td>
             <td class="currency"><%= to_currency(prv.blnc) %></td>
           </tr>
@@ -45,6 +44,6 @@
         </tbody>
       </table>
     </div>
-  </div>
 </table>
 <% end %>
+</div>

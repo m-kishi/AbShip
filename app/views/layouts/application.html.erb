@@ -9,23 +9,25 @@
 <body>
 <div class="application-area">
   <div id="nav">
-    <% if current_user %>
-      <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
-      <%= link_to 'Logout', :logout, method: :post %>
-    <% else %>
-      <%= link_to 'Register', new_user_path %> |
-      <%= link_to 'Login', :login %>
-    <% end %>
-  </div>
-  <h1>AbShip</h1>
-  <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert" ><%= flash[:alert ] %></p>
+    <table>
+      <tr>
+        <td><%= link_to image_tag(asset_path('icon_032.png')), :root %></td>
+        <td class="nav-text">
+          <% if current_user %>
+            <%= link_to '編集', edit_user_path(current_user.id) %> |
+            <%= link_to 'ログアウト', :logout, method: :post %>
+          <% else %>
+            <%= link_to '登録', new_user_path %> |
+            <%= link_to 'ログイン', :login %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
   </div>
   <div class="tab-menu">
     <ul>
       <li class="<%= @expense_selected ? 'on' : 'off' %>"><%= link_to '支出  ', expense_path %></li>
-      <li class="<%= @summary_selected ? 'on' : 'off' %>"><%= link_to '集計  ', summary_path(year: 2009, mnth: 4) %></li>
+      <li class="<%= @summary_selected ? 'on' : 'off' %>"><%= link_to '集計  ', summary_path(year: Date.today.year, mnth: Date.today.month) %></li>
       <li class="<%= @graphic_selected ? 'on' : 'off' %>"><%= link_to 'グラフ', graphic_path(year: Date.today.year, mnth: Date.today.month) %></li>
       <li class="<%= @balance_selected ? 'on' : 'off' %>"><%= link_to '収支  ', balance_path %></li>
       <li class="<%= @private_selected ? 'on' : 'off' %>"><%= link_to '秘密  ', private_path %></li>

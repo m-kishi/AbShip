@@ -25,10 +25,15 @@ class Summary < ActiveRecord::Base
   #名称からその月の支出を取得
   def get_cost_by_name(name)
     return 0 if name.blank?
-    dtStr = Date.new(self.year, self.mnth, 1)
+    dtStr = Date.new(year, mnth, 1)
     dtEnd = dtStr + 1.month - 1.day
     sum = Expense.where("date BETWEEN ? AND ? AND name = ?", dtStr, dtEnd, name).group(:name).sum(:cost)
     sum[name]
+  end
+
+  # 集計タイトル
+  def to_title
+    sprintf("%04d年%02d月", year, mnth)
   end
 
   #集計の登録処理

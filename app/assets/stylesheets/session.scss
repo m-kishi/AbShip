@@ -1,3 +1,48 @@
-// Place all the styles related to the Session controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bases.css.scss";
+
+.login-area {
+  width: 45%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  background: $next-color;
+}
+
+h1 {
+  margin-bottom: 2%;
+}
+
+table.login {
+  width: 100%;
+  td {
+    padding: 1%;
+  }
+  td.label {
+    width: 20%;
+    text-align: right;
+  }
+  td.input {
+    width: 80%;
+  }
+  td.button {
+    text-align: right;
+  }
+}
+
+.txt-mail {
+  width: 98%;
+}
+
+.txt-pass {
+  width: 98%;
+}
+
+.btn-login {
+  color: $btn-text-color;
+  background: $base-color;
+}
+
+.btn-login:hover {
+  color: $btn-text-hover-color;
+  background: $btn-hover-background-color;
+}

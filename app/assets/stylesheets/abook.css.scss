@@ -1,35 +1,135 @@
-$base-color: #38a1db;
-$next-color: #c8e5f5;
+@import "bases.css.scss";
 
 .currency {
   text-align: right;
 }
 
+div.balance-area {
+  width: 727px;
+  margin: 0 auto;
+}
+
+div.private-area {
+  width: 527px;
+  margin: 0 auto;
+}
+
+div.balance-alert-area {
+  width: 45%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  background: $next-color;
+}
+
+div.private-alert-area {
+  width: 45%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  background: $next-color;
+}
+
+div.scroll-head {
+  width: 100%;
+}
+
+div.scroll-body {
+  width: 100%;
+  height: 280px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+col.bln-year { width:  60px; }
+col.bln-earn { width: 130px; }
+col.bln-bnus { width: 130px; }
+col.bln-exps { width: 130px; }
+col.bln-spcl { width: 130px; }
+col.bln-blnc { width: 130px; }
+col.bln-scrl { width:  16px; }
+
+col.prv-date { width:  90px; }
+col.prv-name { width: 180px; }
+col.prv-cost { width: 120px; }
+col.prv-blnc { width: 120px; }
+col.prv-scrl { width:  16px; }
+
+td.bln-year { text-align: center; }
+td.prv-date { text-align: center; }
+
 table.scroll {
   border: 1px solid $base-color;
   table-layout: fixed;
   border-collapse: collapse;
-  td {
-    border: 1px solid $base-color;
-  }
   th {
     border: 1px solid $base-color;
+    padding: 1%;
     vertical-align: middle;
+    background-color: $next-color;
+    border-bottom-style: hidden;
+  }
+  td {
+    border: 1px solid $base-color;
+    padding: 1%;
+  }
+  tr.total {
     background-color: $next-color;
   }
 }
 
-table.summary {
+.header-area {
   width: 50%;
-  /* border: 1px solid $base-color; */
-  td.type {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 1.0%;
+  h1.header {
+    display: inline;
+  }
+  a:hover img {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    -ms-filter: "alpha(opacity=70)";
+  }
+}
+
+.summary-area {
+  width: 50%;
+  margin: 0 auto;
+}
+
+table.summary-table {
+  width: 100%;
+  border: 1px solid $base-color;
+  border-collapse: collapse;
+  th {
     width: 20%;
-    /* border: 1px solid red; */
+    border: 1px solid $base-color;
+    padding: 1.5%;
+    vertical-align: middle;
+    background-color: $next-color;
   }
-  td.cost {
-    width: 25%;
-    /* border: 1px solid green; */
+  td {
+    width: 30%;
+    border: 1px solid $base-color;
+    padding: 1.5%;
   }
+  .dummy {
+    background-color: transparent;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+  }
+}
+
+hr.line {
+  margin: 0.5em 0;
+  background-color: $base-color;
+}
+
+div.pdf-area {
+  margin-top: 2%;
+  text-align: right;
 }
 
 table.graphic {
