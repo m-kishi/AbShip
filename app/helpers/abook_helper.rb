@@ -19,6 +19,7 @@ module AbookHelper
         )
       end
       Summary.import
+      Graphic.import
       Balance.import
       Private.import
     end
