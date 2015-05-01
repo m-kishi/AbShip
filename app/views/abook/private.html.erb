@@ -1,16 +1,19 @@
 <div class="private-area">
 <% if @privates.empty? %>
-  <h2>Private Data Nothing</h2>
+  <div class="private-alert-area">
+    <h1>Private</h1>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
 <% else %>
     <!-- ヘッダ(thead)を表すDIV -->
     <div class="scroll-head">
       <table class="scroll">
         <colgroup>
-          <col class="prv-date">
-          <col class="prv-name">
-          <col class="prv-cost">
-          <col class="prv-blnc">
-          <col class="prv-scrl">
+          <col class="prv-date" />
+          <col class="prv-name" />
+          <col class="prv-cost" />
+          <col class="prv-blnc" />
+          <col class="prv-scrl" />
         </colgroup>
         <thead>
           <tr>
@@ -27,10 +30,10 @@
     <div class="scroll-body">
       <table class="scroll">
         <colgroup>
-          <col class="prv-date">
-          <col class="prv-name">
-          <col class="prv-cost">
-          <col class="prv-blnc">
+          <col class="prv-date" />
+          <col class="prv-name" />
+          <col class="prv-cost" />
+          <col class="prv-blnc" />
         </colgroup>
         <tbody>
         <% @privates.each do |prv| %>

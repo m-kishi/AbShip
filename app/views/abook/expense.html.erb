@@ -1,17 +1,21 @@
-<% if @expenses.empty? %>
-  <h2>Expense Data Nothing</h2>
-<% else %>
-  <!-- テーブル全体を表すDIV -->
-  <div style="width:557px;">
+<%= render partial: 'header', locals: { obj: @expense, path: :expense_path } %>
+
+<div class="expense-area">
+  <% if @expenses.empty? %>
+    <div class="expense-alert-area">
+      <h1>Expense</h1>
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>
+  <% else %>
     <!-- ヘッダ(thead)を表すDIV -->
-    <div style="width:100%;">
+    <div style="scroll-head">
       <table class="scroll">
         <colgroup>
-          <col style="width:120px;" />
-          <col style="width:180px;" />
-          <col style="width:120px;" />
-          <col style="width:120px;" />
-          <col style="width: 16px;" />
+          <col class="exp-date" />
+          <col class="exp-name" />
+          <col class="exp-type" />
+          <col class="exp-cost" />
+          <col class="exp-scrl" />
         </colgroup>
         <thead>
           <tr>
@@ -25,25 +29,25 @@
       </table>
     </div>
     <!-- ボディ(tbody)を表すDIV -->
-    <div style="width:100%;height:360px;overflow-y:scroll;overflow-x:hidden;">
+    <div class="scroll-body">
       <table class="scroll">
         <colgroup>
-          <col style="width:120px;" />
-          <col style="width:180px;" />
-          <col style="width:120px;" />
-          <col style="width:120px;" />
+          <col class="exp-date" />
+          <col class="exp-name" />
+          <col class="exp-type" />
+          <col class="exp-cost" />
         </colgroup>
         <tbody>
         <% @expenses.each do |exp| %>
           <tr>
-            <td><%= exp.date %></td>
-            <td><%= exp.name %></td>
-            <td><%= exp.type %></td>
+            <td class="exp-date"><%= exp.date %></td>
+            <td                 ><%= exp.name %></td>
+            <td class="exp-type"><%= exp.type %></td>
             <td class="currency"><%= to_currency(exp.cost) %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

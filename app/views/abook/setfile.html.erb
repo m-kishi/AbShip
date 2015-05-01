@@ -1,11 +1,31 @@
-<h1>Upload Abook.db</h1>
+<div class="upload-area">
+  <h1>Upload</h1>
+  <p id="alert"><%= flash[:alert] %></p>
+  <%= form_tag({ controller: :abook, action: :imports, method: :post }, { multipart: true }) do %>
+    <table class="upload">
+      <tr>
+        <td></td>
+        <td class="input"><%= file_field_tag :file, id: 'upd' %></td>
+      </tr>
+      <tr>
+        <td class="vtxt"><input id="txt" type="text" placeholder="Select your db file." readonly></td>
+        <td class="vbtn"><button id="btn">Select</button></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="button"><%= submit_tag "Upload", class: 'btn-upload' %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
 
-<%= form_tag({ controller: :abook, action: :imports, method: :post }, { multipart: true }) do %>
-  <div class="field">
-    <%= label_tag "DBファイルを選択" %><br>
-    <%= file_field_tag :file %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Upload" %>
-  </div>
-<% end %>
+<script>
+$(function() {
+  $('#btn').click(function(e) {
+    e.preventDefault();
+    $('#upd').click();
+  });
+  $('#upd').change(function() {
+    $('#txt').val($('#upd').val());
+  });
+});
+</script>

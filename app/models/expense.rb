@@ -11,4 +11,20 @@ class Expense < ActiveRecord::Base
     where("type IN ('PRVI', 'PRVO')")
   }
 
+  scope :get, ->(y, m) {
+    dtStr = Date.new(y, m, 1)
+    dtEnd = dtStr + 1.month - 1.day
+    Expense.where("date BETWEEN ? AND ?", dtStr, dtEnd)
+  }
+
+  StExpense = Struct.new(:year, :mnth) do
+    def to_title
+      sprintf("%04d年%02d月", year, mnth)
+    end
+  end
+
+  def self.obj(y, m)
+    StExpense.new(y, m)
+  end
+
 end

@@ -2,8 +2,14 @@ class AbookController < ApplicationController
   include AbookHelper
 
   def expense
-    @expenses = Expense.all
+    year = params[:year].to_i
+    mnth = params[:mnth].to_i
+    @expense  = Expense.obj(year, mnth)
+    @expenses = Expense.get(year, mnth)
     @expense_selected = true
+    if @expenses.empty?
+      flash.now[:alert] = 'Expense Data is nothing.'
+    end
   end
 
   def summary
@@ -19,10 +25,6 @@ class AbookController < ApplicationController
     @graphic  = Graphic.get(year, mnth)
     @graphics = Graphic.data(year, mnth)
     @graphic_selected = true
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   def balance
@@ -36,6 +38,9 @@ class AbookController < ApplicationController
   def private
     @privates = Private.all
     @private_selected = true
+    if @privates.empty?
+      flash.now[:alert] = 'Private Data is nothing.'
+    end
   end
 
   def setfile
@@ -43,8 +48,14 @@ class AbookController < ApplicationController
   end
 
   def imports
-    import(params[:file])
-    redirect_to expense_path
+    file = params[:file]
+    if file.blank?
+      flash.now[:alert] = 'DB File not selected.'
+      render :setfile
+    else
+      import(file)
+      redirect_to expense_path(year: Date.today.year, mnth: Date.today.month)
+    end
   end
 
 end
