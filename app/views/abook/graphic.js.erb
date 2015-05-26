@@ -1,0 +1,91 @@
+$(function() {
+  //日付生成
+  <% obj = @graphic %>
+  <% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+  <% dtPy = dtCr - 1.year %>
+  <% dtNy = dtCr + 1.year %>
+  <% dtPm = dtCr - 1.month %>
+  <% dtNm = dtCr + 1.month %>
+  //ヘッダタイトル書き換え
+  $('h1.header').html('<%= obj.to_title %>');
+  //ヘッダパス書き換え
+  //'&'が&amp;になってしまうのでhtml_safeを利用
+  $('a#prev-year').attr('href', '<%= graphic_path(year: dtPy.year, mnth: dtPy.month).html_safe %>');
+  $('a#prev-mnth').attr('href', '<%= graphic_path(year: dtPm.year, mnth: dtPm.month).html_safe %>');
+  $('a#next-mnth').attr('href', '<%= graphic_path(year: dtNm.year, mnth: dtNm.month).html_safe %>');
+  $('a#next-year').attr('href', '<%= graphic_path(year: dtNy.year, mnth: dtNy.month).html_safe %>');
+  //グラフの再描画
+  var lbls = [];
+  var food = [];
+  var otfd = [];
+  var eelc = [];
+  var egas = [];
+  var ewtr = [];
+  <% @graphics.each do |grp| %>
+    lbls.push('<%= sprintf("%02d", grp.mnth) %>');
+    food.push(<%= grp.food     %>);
+    otfd.push(<%= grp.otfd     %>);
+    eelc.push(<%= grp.engy_elc %>);
+    egas.push(<%= grp.engy_gas %>);
+    ewtr.push(<%= grp.engy_wtr %>);
+  <% end %>
+
+  var data = {
+    labels: lbls,
+    datasets: [
+      {
+        data: food,
+        label: "食費",
+        pointColor:  "rgba(256,  0,  0,1)",
+        strokeColor: "rgba(256,192,192,1)",
+      },
+      {
+        data: otfd,
+        label: "外食費",
+        pointColor:  "rgba(243,152,  0,1)",
+        strokeColor: "rgba(256,206,124,1)",
+      },
+      {
+        data: eelc,
+        label: "電気代",
+        pointColor:  "rgba(256,256,  0,1)",
+        strokeColor: "rgba(256,256,192,1)",
+      },
+      {
+        data: egas,
+        label: "ガス代",
+        pointColor:  "rgba(128,128,128,1)",
+        strokeColor: "rgba(192,192,192,1)",
+      },
+      {
+        data: ewtr,
+        label: "水道代",
+        pointColor:  "rgba(  0,  0,256,1)",
+        strokeColor: "rgba(192,192,256,1)",
+      },
+    ]
+  };
+
+  var options = {
+    bezierCurve: false,
+    datasetFill: false,
+    scaleShowVerticalLines: false,
+  };
+
+  Chart.defaults.global.animation = false;
+  Chart.defaults.global.showTooltips = false;
+
+  Chart.defaults.global.scaleOverride = true;
+  Chart.defaults.global.scaleSteps = 6;
+  Chart.defaults.global.scaleStepWidth = 2500;
+  Chart.defaults.global.scaleStartValue = 0;
+
+  Chart.defaults.global.scaleShowLabels = true;
+  Chart.defaults.global.scaleLabel = function(label) {
+    return '￥' + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  var cxt = $("#graphic").get(0).getContext("2d");
+  var lineChart = new Chart(cxt).Line(data, options);
+});
+

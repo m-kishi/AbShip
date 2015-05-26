@@ -1,6 +1,22 @@
-<%= render partial: 'header', locals: { obj: @summary, path: :summary_path } %>
-
-<div class="summary-area">
+$(function() {
+  //日付生成
+  <% obj = @summary %>
+  <% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+  <% dtPy = dtCr - 1.year %>
+  <% dtNy = dtCr + 1.year %>
+  <% dtPm = dtCr - 1.month %>
+  <% dtNm = dtCr + 1.month %>
+  //ヘッダタイトル書き換え
+  $('h1.header').html('<%= obj.to_title %>');
+  //ヘッダパス書き換え
+  //'&'が&amp;になってしまうのでhtml_safeを利用
+  $('a#prev-year').attr('href', '<%= summary_path(year: dtPy.year, mnth: dtPy.month).html_safe %>');
+  $('a#prev-mnth').attr('href', '<%= summary_path(year: dtPm.year, mnth: dtPm.month).html_safe %>');
+  $('a#next-mnth').attr('href', '<%= summary_path(year: dtNm.year, mnth: dtNm.month).html_safe %>');
+  $('a#next-year').attr('href', '<%= summary_path(year: dtNy.year, mnth: dtNy.month).html_safe %>');
+  //集計再描画
+  //うまい方法を思いつかないのでHTMLごと書き直す方向で実装
+  var html = (function() {/*
   <table class="summary-table">
     <tr>
       <th>食費  </th><td class="currency"><%= to_currency(@summary.food) %></td>
@@ -44,5 +60,6 @@
   <div class="pdf-area">
     <%= link_to image_tag(asset_path('pdf.svg')), summary_pdf_path, target: '_blank' %>
   </div>
-</div>
-
+  */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
+  $('div.summary-area').html(html);
+});

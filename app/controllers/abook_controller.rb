@@ -17,6 +17,10 @@ class AbookController < ApplicationController
     mnth = params[:mnth].to_i
     @summary = Summary.get(year, mnth)
     @summary_selected = true
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def graphic
@@ -25,6 +29,10 @@ class AbookController < ApplicationController
     @graphic  = Graphic.get(year, mnth)
     @graphics = Graphic.data(year, mnth)
     @graphic_selected = true
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def balance

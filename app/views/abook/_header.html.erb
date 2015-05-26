@@ -4,10 +4,15 @@
 <% dtPm = dtCr - 1.month %>
 <% dtNm = dtCr + 1.month %>
 
+<% optPy = { id: 'prev-year' }; optPy[:remote] = true if path != :expense_path %>
+<% optPm = { id: 'prev-mnth' }; optPm[:remote] = true if path != :expense_path %>
+<% optNm = { id: 'next-mnth' }; optNm[:remote] = true if path != :expense_path %>
+<% optNy = { id: 'next-year' }; optNy[:remote] = true if path != :expense_path %>
+
 <div class="header-area">
-<%= link_to image_tag(asset_path('prevy.svg')), self.send(path, year: dtPy.year, mnth: dtPy.month) %>
-<%= link_to image_tag(asset_path('prevm.svg')), self.send(path, year: dtPm.year, mnth: dtPm.month) %>
+<%= link_to image_tag(asset_path('prevy.svg')), self.send(path, year: dtPy.year, mnth: dtPy.month), optPy %>
+<%= link_to image_tag(asset_path('prevm.svg')), self.send(path, year: dtPm.year, mnth: dtPm.month), optPm %>
 <h1 class="header"><%= obj.to_title %></h1>
-<%= link_to image_tag(asset_path('nextm.svg')), self.send(path, year: dtNm.year, mnth: dtNm.month) %>
-<%= link_to image_tag(asset_path('nexty.svg')), self.send(path, year: dtNy.year, mnth: dtNy.month) %>
+<%= link_to image_tag(asset_path('nextm.svg')), self.send(path, year: dtNm.year, mnth: dtNm.month), optNm %>
+<%= link_to image_tag(asset_path('nexty.svg')), self.send(path, year: dtNy.year, mnth: dtNy.month), optNy %>
 </div>
