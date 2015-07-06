@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
 
-  root to: 'user#index'
+  root to: 'abook#expense'
 
-  get    '/user'          => 'user#index', as: 'users'
-  get    '/user/new'      => 'user#new'  , as: 'new_user'
-  get    '/user/:id/edit' => 'user#edit' , as: 'edit_user'
-  get    '/user/:id'      => 'user#show' , as: 'user'
-  post   '/user'          => 'user#create'
-  put    '/user/:id'      => 'user#update'
-  patch  '/user/:id'      => 'user#update'
-  delete '/user/:id'      => 'user#destroy'
+  get    '/user'          => 'user#index'  , as: 'users'
+  post   '/user'          => 'user#create' , as: ''
+  get    '/user/new'      => 'user#new'    , as: 'new_user'
+  get    '/user/:id/edit' => 'user#edit'   , as: 'edit_user'
+  put    '/user/:id'      => 'user#update' , as: 'user'
+  patch  '/user/:id'      => 'user#update' , as: ''
+  delete '/user/:id'      => 'user#destroy', as: ''
 
   get    'session/new' => 'session#new'
   post   'session'     => 'session#create'

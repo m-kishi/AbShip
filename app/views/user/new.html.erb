@@ -1,5 +1,6 @@
-<h1>New User</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', users_path %>
+<div class="user-area">
+  <h1>New User</h1>
+  <p id="alert" ><%= flash[:alert ] %></p>
+  <p id="notice"><%= flash[:notice] %></p>
+  <%= render 'form' %>
+</div>

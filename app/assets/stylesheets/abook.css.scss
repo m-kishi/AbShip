@@ -10,7 +10,7 @@ div.expense-area {
 }
 
 div.summary-area {
-  width: 50%;
+  width: 527px;
   margin: 0 auto;
 }
 
@@ -139,6 +139,11 @@ table.summary-table {
     width: 30%;
     border: 1px solid $base-color;
     padding: 1.5%;
+  }
+  td.space {
+    width: 8%;
+    border-top-style: hidden;
+    border-bottom-style: hidden;
   }
   .dummy {
     background-color: transparent;

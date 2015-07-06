@@ -1,14 +1,10 @@
 class UserController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy]
   skip_before_filter :require_login, only: [:new, :create]
 
   # GET /user
   def index
     @users = User.all
-  end
-
-  # GET /user/1
-  def show
   end
 
   # GET /user/new
@@ -24,7 +20,7 @@ class UserController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to :users, notice: 'User was successfully created.'
+      redirect_to :login, notice: 'User was successfully created.'
     else
       render :new
     end
@@ -33,7 +29,8 @@ class UserController < ApplicationController
   # PATCH/PUT /user/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      logout
+      redirect_to :login, notice: 'Please login again.'
     else
       render :edit
     end

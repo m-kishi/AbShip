@@ -7,7 +7,7 @@ class SessionController < ApplicationController
 
   def create
     if @user = login(params[:mail], params[:password])
-      redirect_back_or_to(:users, notice: 'Login successful.')
+      redirect_to(expense_path(year: Date.today.year, mnth: Date.today.month))
     else
       flash.now[:alert] = 'Login failed.'
       render action: 'new'

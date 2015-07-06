@@ -1,6 +1,6 @@
-<h1>Editing User</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="user-area">
+  <h1>Edit User</h1>
+  <p id="alert" ><%= flash[:alert ] %></p>
+  <p id="notice"><%= flash[:notice] %></p>
+  <%= render 'form' %>
+</div>

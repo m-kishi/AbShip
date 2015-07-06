@@ -1,3 +1,166 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bases.css.scss";
+
+.user-area {
+  width: 45%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  background: $next-color;
+}
+
+.user-list-area {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+h1 {
+  margin-bottom: 2%;
+}
+
+table.user-table {
+  width: 100%;
+  border: 1px solid $base-color;
+  border-collapse: collapse;
+  th.id {
+    width: 6%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.mail {
+    width: 54%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.date {
+    width: 30%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.operation {
+    width: 10%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  td.id {
+    width: 6%;
+    border: 1px solid $base-color;
+    padding: 1%;
+  }
+  td.mail {
+    width: 54%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    a {
+      text-decoration: none;
+    }
+    a:link {
+      color: $base-color;
+    }
+    a:visited {
+      color: $base-color;
+    }
+    a:hover {
+      color: $next-color;
+    }
+  }
+  td.date {
+    width: 30%;
+    border: 1px solid $base-color;
+    padding: 1%;
+  }
+  td.operation {
+    width: 10%;
+    border: 1px solid $base-color;
+    padding-left: 1%;
+    a {
+      text-decoration: none;
+    }
+    a:link {
+      color: $base-color;
+    }
+    a:visited {
+      color: $base-color;
+    }
+    a:hover {
+      color: $next-color;
+    }
+  }
+}
+
+div.user-nav {
+  padding-bottom: 1%;
+}
+
+a.new-user-link {
+  text-decoration: none;
+}
+
+a.new-user-link:link {
+  color: $base-color;
+}
+a.new-user-link:visited {
+  color: $base-color;
+}
+
+a.new-user-link:hover {
+  color: $next-color;
+}
+
+table.user {
+  width: 100%;
+  td {
+    padding: 1%;
+  }
+  td.label {
+    width: 20%;
+    text-align: right;
+  }
+  td.input {
+    width: 80%;
+  }
+  td.button {
+    text-align: right;
+  }
+}
+
+.txt-mail {
+  width: 98%;
+}
+
+.txt-pass {
+  width: 98%;
+}
+
+.btn-submit-user {
+  color: $btn-text-color;
+  background: $base-color;
+}
+
+.btn-submit-user:hover {
+  color: $btn-text-hover-color;
+  background: $btn-hover-background-color;
+}
+
+div#user-error-area {
+  width: 90%;
+  margin: 0 auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 4%;
+}
+
+li.message {
+  color: $err-color;
+  font-size: 85%;
+  font-weight: bold;
+  padding-bottom: 1.5%;
+}
