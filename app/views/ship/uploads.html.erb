@@ -1,7 +1,7 @@
 <div class="upload-area">
   <h1>Upload</h1>
   <p id="alert"><%= flash[:alert] %></p>
-  <%= form_tag({ controller: :abook, action: :imports, method: :post }, { multipart: true }) do %>
+  <%= form_tag({ controller: :ship, action: :imports, method: :post }, { multipart: true }) do %>
     <table class="upload">
       <tr>
         <td></td>

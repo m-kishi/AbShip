@@ -1,4 +1,5 @@
-class CreatePrivates < ActiveRecord::Migration
+class CreatePrivate < ActiveRecord::Migration
+
   def change
     create_table :privates do |t|
       t.string  :date
@@ -7,4 +8,5 @@ class CreatePrivates < ActiveRecord::Migration
       t.integer :blnc
     end
   end
+
 end

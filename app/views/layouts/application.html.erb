@@ -31,7 +31,7 @@
       <li class="<%= @graphic_selected ? 'on' : 'off' %>"><%= link_to 'グラフ', graphic_path(year: Date.today.year, mnth: Date.today.month) %></li>
       <li class="<%= @balance_selected ? 'on' : 'off' %>"><%= link_to '収支  ', balance_path %></li>
       <li class="<%= @private_selected ? 'on' : 'off' %>"><%= link_to '秘密  ', private_path %></li>
-      <li class="<%= @setfile_selected ? 'on' : 'off' %>"><%= link_to 'ＤＢ  ', setfile_path %></li>
+      <li class="<%= @uploads_selected ? 'on' : 'off' %>"><%= link_to 'ＤＢ  ', uploads_path %></li>
     </ul>
   </div>
   <div class="context">

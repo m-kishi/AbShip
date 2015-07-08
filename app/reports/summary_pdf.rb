@@ -1,10 +1,10 @@
-class PDFSummary
-  extend AbpdfHelper
+class SummaryPdf
+  extend CostHelper
 
   def self.create(summaries)
-    report = ThinReports::Report.new layout: "app/pdfs/summary.tlf"
+    report = ThinReports::Report.new layout: "app/reports/summary.tlf"
     report.layout.config.list(:summary_list) do
-      extend AbpdfHelper
+      extend CostHelper
 
       use_stores :total => Hash.new(0)
 

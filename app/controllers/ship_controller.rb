@@ -1,5 +1,5 @@
-class AbookController < ApplicationController
-  include AbookHelper
+class ShipController < ApplicationController
+  include ShipHelper
 
   def expense
     year = params[:year].to_i
@@ -51,8 +51,8 @@ class AbookController < ApplicationController
     end
   end
 
-  def setfile
-    @setfile_selected = true
+  def uploads
+    @uploads_selected = true
   end
 
   def imports
@@ -64,6 +64,22 @@ class AbookController < ApplicationController
       import(file)
       redirect_to expense_path(year: Date.today.year, mnth: Date.today.month)
     end
+  end
+
+  def summary_pdf
+    report = SummaryPdf.create Summary.all
+    send_data report.generate,
+      :type        => "application/pdf",
+      :filename    => "summary.pdf",
+      :disposition => "inline"
+  end
+
+  def balance_pdf
+    report = BalancePdf.create Balance.all
+    send_data report.generate,
+      :type        => "application/pdf",
+      :filename    => "balance.pdf",
+      :disposition => "inline"
   end
 
 end

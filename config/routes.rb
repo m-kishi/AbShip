@@ -1,85 +1,29 @@
 Rails.application.routes.draw do
 
-  root to: 'abook#expense'
+  root to: 'ship#expense'
 
-  get    '/user'          => 'user#index'  , as: 'users'
-  post   '/user'          => 'user#create' , as: ''
-  get    '/user/new'      => 'user#new'    , as: 'new_user'
-  get    '/user/:id/edit' => 'user#edit'   , as: 'edit_user'
-  put    '/user/:id'      => 'user#update' , as: 'user'
-  patch  '/user/:id'      => 'user#update' , as: ''
-  delete '/user/:id'      => 'user#destroy', as: ''
+  get    'login'           , to: 'auth#new'        , as: 'login'
+  post   'logout'          , to: 'auth#destroy'    , as: 'logout'
+  post   'auth'            , to: 'auth#create'
+  delete 'auth/:id'        , to: 'auth#destroy'
 
-  get    'session/new' => 'session#new'
-  post   'session'     => 'session#create'
-  delete 'session/:id' => 'session#destroy'
+  get    '/user'           , to: 'user#index'      , as: 'users'
+  post   '/user'           , to: 'user#create'     , as: ''
+  get    '/user/new'       , to: 'user#new'        , as: 'new_user'
+  get    '/user/:id/edit'  , to: 'user#edit'       , as: 'edit_user'
+  put    '/user/:id'       , to: 'user#update'     , as: 'user'
+  patch  '/user/:id'       , to: 'user#update'     , as: ''
+  delete '/user/:id'       , to: 'user#destroy'    , as: ''
 
-  get  'login'  => 'session#new'    , as: 'login'
-  post 'logout' => 'session#destroy', as: 'logout'
+  get    'ship/expense'    , to: 'ship#expense'    , as: :expense
+  get    'ship/summary'    , to: 'ship#summary'    , as: :summary
+  get    'ship/graphic'    , to: 'ship#graphic'    , as: :graphic
+  get    'ship/balance'    , to: 'ship#balance'    , as: :balance
+  get    'ship/private'    , to: 'ship#private'    , as: :private
+  get    'ship/uploads'    , to: 'ship#uploads'    , as: :uploads
+  post   'ship/imports'    , to: 'ship#imports'    , as: :imports
 
-  get  'abook/expense', as: :expense
-  get  'abook/summary', as: :summary
-  get  'abook/graphic', as: :graphic
-  get  'abook/balance', as: :balance
-  get  'abook/private', as: :private
-  get  'abook/setfile', as: :setfile
-  post 'abook/imports', as: :imports
+  get    'ship/pdf/summary', to: 'ship#summary_pdf', as: :summary_pdf
+  get    'ship/pdf/balance', to: 'ship#balance_pdf', as: :balance_pdf
 
-  get  'abpdf/summary', as: :summary_pdf
-  get  'abpdf/balance', as: :balance_pdf
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

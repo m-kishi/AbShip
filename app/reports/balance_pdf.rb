@@ -1,10 +1,10 @@
-class PDFBalance
-  extend AbpdfHelper
+class BalancePdf
+  extend CostHelper
 
   def self.create(balances)
-    report = ThinReports::Report.new layout: "app/pdfs/balance.tlf"
+    report = ThinReports::Report.new layout: "app/reports/balance.tlf"
     report.layout.config.list(:balance_list) do
-      extend AbpdfHelper
+      extend CostHelper
 
       use_stores :sub   => Hash.new(0),
                  :total => Hash.new(0)

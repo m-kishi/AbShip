@@ -1,4 +1,5 @@
-class CreateBalances < ActiveRecord::Migration
+class CreateBalance < ActiveRecord::Migration
+
   def change
     create_table :balances do |t|
       t.integer :year
@@ -9,4 +10,5 @@ class CreateBalances < ActiveRecord::Migration
       t.integer :balance
     end
   end
+
 end

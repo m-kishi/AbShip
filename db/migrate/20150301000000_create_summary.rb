@@ -1,4 +1,5 @@
-class CreateSummaries < ActiveRecord::Migration
+class CreateSummary < ActiveRecord::Migration
+
   def change
     create_table :summaries do |t|
       t.integer :year
@@ -24,4 +25,5 @@ class CreateSummaries < ActiveRecord::Migration
       t.integer :blnc
     end
   end
+
 end

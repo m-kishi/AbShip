@@ -1,4 +1,5 @@
-class CreateGraphics < ActiveRecord::Migration
+class CreateGraphic < ActiveRecord::Migration
+
   def change
     create_table :graphics do |t|
       t.integer :year
@@ -10,4 +11,5 @@ class CreateGraphics < ActiveRecord::Migration
       t.integer :engy_wtr
     end
   end
+
 end
