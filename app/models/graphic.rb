@@ -1,4 +1,5 @@
 class Graphic < ActiveRecord::Base
+  belongs_to :user
 
   # 年月順
   default_scope -> {
@@ -34,28 +35,6 @@ class Graphic < ActiveRecord::Base
   # グラフタイトル
   def to_title
     sprintf("%04d年%02d月", year, mnth)
-  end
-
-  # グラフデータ登録処理
-  def self.import
-    Graphic.delete_all
-    graphics = connection.execute(graphic_sql)
-    graphics.each do |grp|
-      Graphic.create(
-        year: grp["year"],
-        mnth: grp["mnth"],
-        food: grp["food"],
-        otfd: grp["otfd"],
-        engy_elc: grp["engy_elc"],
-        engy_gas: grp["engy_gas"],
-        engy_wtr: grp["engy_wtr"]
-      )
-    end
-  end
-
-  private
-  def self.graphic_sql
-    File.open("#{Rails.root}/db/sql/graphic.sql").read
   end
 
   private

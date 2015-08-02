@@ -1,15 +1,15 @@
 <%= form_tag auth_path, :method => :post do %>
   <table class="login">
     <tr>
-      <td class="label"><%= label_tag :mail, 'Mail:' %></td>
-      <td class="input"><%= text_field_tag :mail, '', class: 'txt-mail' %></td>
+      <td><%= text_field_tag :mail, '', class: 'txt-mail', placeholder: 'メールアドレス' %></td>
     </tr>
     <tr>
-      <td class="label"><%= label_tag :password, 'Pass:' %></td>
-      <td class="input"><%= password_field_tag :password, '', class: 'txt-pass' %></td>
+      <td><%= password_field_tag :password, '', class: 'txt-pass', placeholder: 'パスワード' %></td>
     </tr>
     <tr>
-      <td colspan="2" class="button"><%= submit_tag "Login", class: 'btn-login' %></td>
+      <td class="button">
+        <%= submit_tag "ログイン", class: 'btn-login' %>
+      </td>
     </tr>
   </table>
 <% end %>

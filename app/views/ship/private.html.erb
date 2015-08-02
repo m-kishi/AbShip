@@ -1,52 +1,44 @@
 <div class="private-area">
-<% if @privates.empty? %>
-  <div class="private-alert-area">
-    <h1>Private</h1>
-    <p id="alert"><%= flash[:alert] %></p>
+  <!-- ヘッダ(thead)を表すDIV -->
+  <div class="scroll-head">
+    <table class="scroll">
+      <colgroup>
+        <col class="prv-date" />
+        <col class="prv-name" />
+        <col class="prv-cost" />
+        <col class="prv-blnc" />
+        <col class="prv-scrl" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>名称</th>
+          <th>金額</th>
+          <th>収支</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
   </div>
-<% else %>
-    <!-- ヘッダ(thead)を表すDIV -->
-    <div class="scroll-head">
-      <table class="scroll">
-        <colgroup>
-          <col class="prv-date" />
-          <col class="prv-name" />
-          <col class="prv-cost" />
-          <col class="prv-blnc" />
-          <col class="prv-scrl" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>日付</th>
-            <th>名称</th>
-            <th>金額</th>
-            <th>収支</th>
-            <th></th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <!-- ボディ(tbody)を表すDIV -->
-    <div class="scroll-body">
-      <table class="scroll">
-        <colgroup>
-          <col class="prv-date" />
-          <col class="prv-name" />
-          <col class="prv-cost" />
-          <col class="prv-blnc" />
-        </colgroup>
-        <tbody>
+  <!-- ボディ(tbody)を表すDIV -->
+  <div class="scroll-body">
+    <table class="scroll">
+      <colgroup>
+        <col class="prv-date" />
+        <col class="prv-name" />
+        <col class="prv-cost" />
+        <col class="prv-blnc" />
+      </colgroup>
+      <tbody>
         <% @privates.each do |prv| %>
           <tr>
             <td class="prv-date"><%= prv.date %></td>
-            <td                 ><%= prv.name %></td>
+            <td class="prv-name"><%= prv.name %></td>
             <td class="currency"><%= to_currency(prv.cost) %></td>
             <td class="currency"><%= to_currency(prv.blnc) %></td>
           </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
-</table>
-<% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

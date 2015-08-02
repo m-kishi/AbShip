@@ -2,21 +2,17 @@ class UserController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   skip_before_filter :require_login, only: [:new, :create]
 
-  # GET /user
   def index
     @users = User.all
   end
 
-  # GET /user/new
   def new
     @user = User.new
   end
 
-  # GET /user/1/edit
   def edit
   end
 
-  # POST /user
   def create
     @user = User.new(user_params)
     if @user.save
@@ -26,7 +22,6 @@ class UserController < ApplicationController
     end
   end
 
-  # PATCH/PUT /user/1
   def update
     if @user.update(user_params)
       logout
@@ -36,20 +31,27 @@ class UserController < ApplicationController
     end
   end
 
-  # DELETE /user/1
   def destroy
-    @user.destroy
+    # dependent: :destroy では遅すぎるため直接削除
+    ActiveRecord::Base.transaction do
+      @user.expenses.delete_all
+      @user.graphics.delete_all
+      @user.balances.delete_all
+      @user.privates.delete_all
+      @user.summaries.delete_all
+      @user.destroy
+    end
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:mail, :password, :password_confirmation)
-    end
+  private
+  def user_params
+    params.require(:user).permit(:mail, :password, :password_confirmation)
+  end
+
 end

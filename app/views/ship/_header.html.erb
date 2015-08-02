@@ -4,10 +4,10 @@
 <% dtPm = dtCr - 1.month %>
 <% dtNm = dtCr + 1.month %>
 
-<% optPy = { id: 'prev-year' }; optPy[:remote] = true if path != :expense_path %>
-<% optPm = { id: 'prev-mnth' }; optPm[:remote] = true if path != :expense_path %>
-<% optNm = { id: 'next-mnth' }; optNm[:remote] = true if path != :expense_path %>
-<% optNy = { id: 'next-year' }; optNy[:remote] = true if path != :expense_path %>
+<% optPy = { id: 'prev-year' }; optPy[:remote] = true %>
+<% optPm = { id: 'prev-mnth' }; optPm[:remote] = true %>
+<% optNm = { id: 'next-mnth' }; optNm[:remote] = true %>
+<% optNy = { id: 'next-year' }; optNy[:remote] = true %>
 
 <div class="header-area">
   <%= link_to image_tag(asset_path('prev_year.svg')), self.send(path, year: dtPy.year, mnth: dtPy.month), optPy %>

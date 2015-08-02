@@ -1,4 +1,5 @@
 class Summary < ActiveRecord::Base
+  belongs_to :user
 
   #年月順
   default_scope -> {
@@ -13,42 +14,6 @@ class Summary < ActiveRecord::Base
   # 集計タイトル
   def to_title
     sprintf("%04d年%02d月", year, mnth)
-  end
-
-  #集計の登録処理
-  def self.import
-    Summary.delete_all
-    summaries = connection.execute(summary_sql)
-    summaries.each do |sum|
-      Summary.create(
-        year: sum["year"],
-        mnth: sum["mnth"],
-        food: sum["food"],
-        otfd: sum["otfd"],
-        good: sum["good"],
-        frnd: sum["frnd"],
-        trfc: sum["trfc"],
-        play: sum["play"],
-        hous: sum["hous"],
-        engy: sum["engy"],
-        cnct: sum["cnct"],
-        medi: sum["medi"],
-        insu: sum["insu"],
-        othr: sum["othr"],
-        earn: sum["earn"],
-        bnus: sum["bnus"],
-        spcl: sum["spcl"],
-        prvi: sum["prvi"],
-        prvo: sum["prvo"],
-        ttal: sum["ttal"],
-        blnc: sum["blnc"]
-      )
-    end
-  end
-
-  private
-  def self.summary_sql
-    File.open("#{Rails.root}/db/sql/summary.sql").read
   end
 
   private

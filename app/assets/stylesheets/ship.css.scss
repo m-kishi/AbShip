@@ -1,7 +1,19 @@
 @import "base.css.scss";
 
-.currency {
-  text-align: right;
+div.header-area {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 1.0%;
+  h1.header {
+    display: inline;
+  }
+  a:hover img {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    -ms-filter: "alpha(opacity=70)";
+  }
 }
 
 div.expense-area {
@@ -15,41 +27,31 @@ div.summary-area {
 }
 
 div.graphic-area {
-  width: 80%;
+  width: 98%;
   margin: 0 auto;
 }
 
 div.balance-area {
-  width: 727px;
+  /* =================================== *
+   * ぴったり606pxにするとヘッダ行が     *
+   * なぜか605pxになってしまうため+1する *
+   * =================================== */
+  width: 607px;
   margin: 0 auto;
 }
 
 div.private-area {
   width: 527px;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
-div.expense-alert-area {
-  width: 264px;
+div.nothing-area {
+  width: 40%;
   margin: 0 auto;
   border: 1px solid $base-color;
   padding: 1%;
-  background: $next-color;
-}
-
-div.balance-alert-area {
-  width: 264px;
-  margin: 0 auto;
-  border: 1px solid $base-color;
-  padding: 1%;
-  background: $next-color;
-}
-
-div.private-alert-area {
-  width: 264px;
-  margin: 0 auto;
-  border: 1px solid $base-color;
-  padding: 1%;
+  margin-top: 30px;
   background: $next-color;
 }
 
@@ -64,6 +66,37 @@ div.scroll-body {
   overflow-y: scroll;
 }
 
+table.scroll {
+  border: 1px solid $base-color;
+  table-layout: fixed;
+  border-collapse: collapse;
+  tr.total {
+    background-color: $next-color;
+  }
+  th {
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  td {
+    border: 1px solid $base-color;
+    padding: 1%;
+  }
+  td.exp-date {
+    text-align: center;
+  }
+  td.exp-type {
+    text-align: center;
+  }
+  td.bln-year {
+    text-align: center;
+  }
+  td.prv-date {
+    text-align: center;
+  }
+}
+
 col.exp-date { width: 120px; }
 col.exp-name { width: 170px; }
 col.exp-type { width:  75px; }
@@ -71,11 +104,11 @@ col.exp-cost { width: 110px; }
 col.exp-scrl { width:  16px; }
 
 col.bln-year { width:  60px; }
-col.bln-earn { width: 130px; }
-col.bln-bnus { width: 130px; }
-col.bln-exps { width: 130px; }
-col.bln-spcl { width: 130px; }
-col.bln-blnc { width: 130px; }
+col.bln-earn { width: 106px; }
+col.bln-bnus { width: 106px; }
+col.bln-exps { width: 106px; }
+col.bln-spcl { width: 106px; }
+col.bln-blnc { width: 106px; }
 col.bln-scrl { width:  16px; }
 
 col.prv-date { width:  90px; }
@@ -84,66 +117,29 @@ col.prv-cost { width: 120px; }
 col.prv-blnc { width: 120px; }
 col.prv-scrl { width:  16px; }
 
-td.exp-date { text-align: center; }
-td.exp-type { text-align: center; }
-td.bln-year { text-align: center; }
-td.prv-date { text-align: center; }
-
-table.scroll {
-  border: 1px solid $base-color;
-  table-layout: fixed;
-  border-collapse: collapse;
-  th {
-    border: 1px solid $base-color;
-    padding: 1%;
-    vertical-align: middle;
-    background-color: $next-color;
-    //border-bottom-style: hidden;
-  }
-  td {
-    border: 1px solid $base-color;
-    padding: 1%;
-  }
-  tr.total {
-    background-color: $next-color;
-  }
-}
-
-.header-area {
-  width: 50%;
+div.summary-pdf-area {
+  width: 80%;
   margin: 0 auto;
-  text-align: center;
-  margin-bottom: 1.0%;
-  h1.header {
-    display: inline;
-  }
-  a:hover img {
-    opacity: 0.7;
-    filter: alpha(opacity=70);
-    -ms-filter: "alpha(opacity=70)";
-  }
+  margin-top: -1.0%;
+  text-align: right;
 }
 
-table.summary-table {
-  width: 100%;
+table.summary {
+  width: 80%;
+  margin: 0 auto;
   border: 1px solid $base-color;
   border-collapse: collapse;
   th {
-    width: 20%;
+    width: 18%;
     border: 1px solid $base-color;
-    padding: 1.5%;
+    padding: 1.2%;
     vertical-align: middle;
     background-color: $next-color;
   }
   td {
-    width: 30%;
+    width: 32%;
     border: 1px solid $base-color;
-    padding: 1.5%;
-  }
-  td.space {
-    width: 8%;
-    border-top-style: hidden;
-    border-bottom-style: hidden;
+    padding: 1.2%;
   }
   .dummy {
     background-color: transparent;
@@ -154,73 +150,105 @@ table.summary-table {
 }
 
 hr.line {
-  margin: 0.5em 0;
+  width: 80%;
+  margin: 0.5em auto;
   background-color: $base-color;
-}
-
-div.pdf-area {
-  margin-top: 2%;
-  text-align: right;
 }
 
 #graphic {
   width: 100%;
-  height: 340px;
+  height: 300px;
 }
 
-.upload-area {
+tbody#balance-table-body td {
+  font-size: 90%;
+}
+
+div.balance-pdf-area {
+  width: 606px;
+  margin: 0 auto;
+  margin-top: 0%;
+  text-align: right;
+}
+
+div.upload-area {
   width: 45%;
   margin: 0 auto;
   border: 1px solid $base-color;
   padding: 1%;
+  margin-top: 30px;
   background: $next-color;
 }
 
 table.upload {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   td {
     padding: 1%;
   }
   td.vtxt {
-    width: 80%;
-    padding-left: 10%;
+    width: 75%;
   }
   td.vbtn {
-    width: 20%;
-    text-align: center;
-  }
-  td.button {
+    width: 25%;
     text-align: right;
   }
 }
 
-#upd {
+input#upd {
   display: none;
 }
 
-#txt {
+input#txt {
   width: 100%;
 }
 
-#btn {
-  color: $btn-text-color;
-  background: $base-color;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-}
-
-#btn:hover {
-  color: $btn-text-hover-color;
-  background: $btn-hover-background-color;
-}
-
-.btn-upload {
+input#btn {
+  width: 90%;
   color: $btn-text-color;
   background: $base-color;
 }
 
-.btn-upload:hover {
+input#btn:hover {
   color: $btn-text-hover-color;
   background: $btn-hover-background-color;
 }
+
+input.btn-upload {
+  width: 90%;
+  color: $btn-text-color;
+  background: $base-color;
+}
+
+input.btn-upload:hover {
+  color: $btn-text-hover-color;
+  background: $btn-hover-background-color;
+}
+
+div#loading {
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f7f7f9;
+  filter: alpha(opacity=65);
+  -moz-opacity: 0.65;
+  -khtml-opacity: 0.65;
+  opacity: 0.65;
+  background-image: url('../assets/ajax-loader.gif');
+  background-position: 402px 212px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/*
+div#uploading {
+  text-align: center;
+  padding-top: 26%;
+  color: #000;
+  font-weight: bold;
+}
+*/

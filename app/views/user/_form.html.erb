@@ -1,6 +1,8 @@
+<div class="user-margin-area"></div>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="user-error-area">
+    <div class="user-error-area">
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li class="message"><%= message %></li>
@@ -8,21 +10,20 @@
       </ul>
     </div>
   <% end %>
-  <table class="user">
+  <table class="user-form">
     <tr>
-      <td class="label"><%= f.label :mail, 'Mail:' %></td>
-      <td class="input"><%= f.text_field :mail, class: 'txt-mail' %></td>
+      <td><%= f.text_field :mail, class: 'txt-mail', placeholder: 'メールアドレス' %></td>
     </tr>
     <tr>
-      <td class="label"><%= f.label :password, 'Pass:' %></td>
-      <td class="input"><%= f.password_field :password, class: 'txt-pass' %></td>
+      <td><%= f.password_field :password, class: 'txt-pass', placeholder: 'パスワード' %></td>
     </tr>
     <tr>
-      <td class="label"><%= f.label :password, '(Re)Pass:' %></td>
-      <td class="input"><%= f.password_field :password_confirmation, class: 'txt-pass' %></td>
+      <td><%= f.password_field :password_confirmation, class: 'txt-pass', placeholder: 'パスワード再入力' %></td>
     </tr>
     <tr>
-      <td colspan="2" class="button"><%= f.submit class: 'btn-submit-user' %></td>
+      <td class="button">
+        <%= f.submit (@user.id.nil? ? '登録' : '更新'), class: 'btn-submit-user' %>
+      </td>
     </tr>
   </table>
 <% end %>

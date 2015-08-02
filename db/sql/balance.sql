@@ -13,7 +13,8 @@ SELECT
 FROM
     expenses
 WHERE
-    type NOT IN ('PRVI','PRVO')
+      user_id = [user_id]
+  AND type NOT IN ('PRVI','PRVO')
 GROUP BY
     year
 UNION ALL
@@ -27,7 +28,8 @@ SELECT
 FROM
     expenses
 WHERE
-    type NOT IN ('PRVI','PRVO')
+      user_id = [user_id]
+  AND type NOT IN ('PRVI','PRVO')
 ORDER BY
     year
 ;

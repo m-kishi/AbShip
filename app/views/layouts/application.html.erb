@@ -27,13 +27,13 @@
 </head>
 <body>
 <div class="application-area">
-  <div id="nav">
+  <div class="navigation-area">
     <table>
       <tr>
-        <td><%= link_to image_tag(asset_path('apps-icon.png')), :root %></td>
-        <td class="nav-text">
+        <td><%= link_to image_tag(asset_path('apps_icon.svg'), width: '32px;', height: '32px;'), :root %></td>
+        <td class="navigation-link">
           <% if current_user %>
-            <%= link_to '編集', edit_user_path(current_user.id) %> |
+            <%= link_to '編集', edit_user_path(current_user.id) %> <span class="pipe-line">|</span>
             <%= link_to 'ログアウト', :logout, method: :post %>
           <% else %>
             <%= link_to '登録', new_user_path %> |
@@ -55,6 +55,9 @@
   </div>
   <div class="context">
     <div class="main-area">
+      <div id="loading">
+        <!-- <div id="uploading">Uploading...</div> -->
+      </div>
       <%= yield %>
     </div>
   </div>

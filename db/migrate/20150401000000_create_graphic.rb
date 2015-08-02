@@ -9,6 +9,7 @@ class CreateGraphic < ActiveRecord::Migration
       t.integer :engy_elc
       t.integer :engy_gas
       t.integer :engy_wtr
+      t.references :user
     end
   end
 

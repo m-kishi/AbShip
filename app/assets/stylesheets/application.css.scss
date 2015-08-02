@@ -6,15 +6,15 @@
 @import "base.css.scss";
 
 body {
-  width: 1000px;
+  width: 1024px;
   .application-area {
-    width: 800px;
+    width: 620px;
     margin: 0 auto;
   }
 }
 
-#nav {
-  width: 792px;
+div.navigation-area {
+  width: 612px;
   padding: 4px;
   font-size: 90%;
   margin-bottom: 4px;
@@ -24,26 +24,29 @@ body {
     tr {
       width: 100%;
     }
-    td.nav-text {
+    td.navigation-link {
       text-align: right;
       vertical-align: middle;
+      span.pipe-line {
+        color: $navigation-link-color;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        color: $navigation-link-color;
+      }
+      a:visited {
+        color: $navigation-link-color;
+      }
+      a:hover {
+        color: $navigation-link-hover-color;
+      }
     }
-  }
-  a {
-    text-decoration: none;
-  }
-  a:link {
-    color: $nav-text-color;
-  }
-  a:visited {
-    color: $nav-text-color;
-  }
-  a:hover {
-    color: $nav-text-hover-color;
   }
 }
 
-.tab-menu {
+div.tab-menu {
   height: 26px;
   font-size: 90%;
   ul {
@@ -53,69 +56,67 @@ body {
       display: block;
       position: relative;
     }
+    .on {
+      background-color: $base-color;
+      width: 64px;
+      height: 26px;
+      margin-right: 5px;
+      text-align: center;
+      a {
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        text-decoration: none;
+      }
+      a:link {
+        color: $on-text-color;
+      }
+      a:hover {
+        color: $on-text-color;
+      }
+      a:visited {
+        color: $on-text-color;
+      }
+    }
+    .off {
+      background-color: $next-color;
+      width: 64px;
+      height: 26px;
+      margin-right: 5px;
+      text-align: center;
+      a {
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        text-decoration: none;
+      }
+      a:link {
+        color: $off-text-color;
+      }
+      a:visited {
+        color: $off-text-color;
+      }
+      a:hover {
+        color: $off-text-hover-color;
+      }
+    }
   }
 }
 
-.on {
-  background-color: $base-color;
-  width: 64px;
-  height: 26px;
-  margin-right: 5px;
-  text-align: center;
-  a {
-    width: 100%;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    text-decoration: none;
-  }
-  a:link {
-    color: $on-text-color;
-  }
-  a:hover {
-    color: $on-text-color;
-  }
-  a:visited {
-    color: $on-text-color;
-  }
-}
-
-.off {
-  background-color: $next-color;
-  width: 64px;
-  height: 26px;
-  margin-right: 5px;
-  text-align: center;
-  a {
-    width: 100%;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    text-decoration: none;
-  }
-  a:link {
-    color: $off-text-color;
-  }
-  a:visited {
-    color: $off-text-color;
-  }
-  a:hover {
-    color: $off-text-hover-color;
-  }
-}
-
-.context {
+div.context {
   clear: both;
   border-top   : solid 10px $base-color;
   border-left  : solid  1px $base-color;
   border-right : solid  1px $base-color;
   border-bottom: solid  1px $base-color;
   .main-area {
-    width: 95%;
-    height: 500px;
+    width: 98%;
+    height: 330px;
     margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0.5%;
+    margin-bottom: 8px;
     //border-top   : solid 1px #165e83;
     //border-left  : solid 1px #165e83;
     //border-right : solid 1px #165e83;
@@ -123,7 +124,12 @@ body {
   }
 }
 
-p#alert {
+h1.title {
+  color: $text-color;
+  font-weight: bold;
+}
+
+p.alert {
   color: $err-color;
   font-size: 85%;
   font-weight: bold;
@@ -131,10 +137,14 @@ p#alert {
   padding-bottom: 1.5%;
 }
 
-p#notice {
+p.notice {
   color: $inf-color;
   font-size: 85%;
   font-weight: bold;
   text-align: center;
   padding-bottom: 1.5%;
+}
+
+.currency {
+  text-align: right;
 }

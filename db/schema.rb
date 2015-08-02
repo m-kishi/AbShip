@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150601000000) do
     t.integer "expense"
     t.integer "special"
     t.integer "balance"
+    t.integer "user_id"
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150601000000) do
     t.string  "name"
     t.string  "type"
     t.integer "cost"
+    t.integer "user_id"
   end
 
   create_table "graphics", force: :cascade do |t|
@@ -37,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150601000000) do
     t.integer "engy_elc"
     t.integer "engy_gas"
     t.integer "engy_wtr"
+    t.integer "user_id"
   end
 
   create_table "privates", force: :cascade do |t|
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150601000000) do
     t.string  "name"
     t.integer "cost"
     t.integer "blnc"
+    t.integer "user_id"
   end
 
   create_table "summaries", force: :cascade do |t|
@@ -68,12 +72,13 @@ ActiveRecord::Schema.define(version: 20150601000000) do
     t.integer "prvo"
     t.integer "ttal"
     t.integer "blnc"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "mail",             null: false
-    t.string   "salt"
-    t.string   "crypted_password"
+    t.string   "salt",             null: false
+    t.string   "crypted_password", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

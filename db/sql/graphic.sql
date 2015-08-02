@@ -8,6 +8,8 @@ SELECT
   , SUM(CASE name WHEN '水道代' THEN cost ELSE 0 END) AS engy_wtr
 FROM
     expenses
+WHERE
+    user_id = [user_id]
 GROUP BY
     year
   , mnth

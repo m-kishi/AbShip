@@ -1,18 +1,18 @@
 <div class="upload-area">
-  <h1>Upload</h1>
-  <p id="alert"><%= flash[:alert] %></p>
-  <%= form_tag({ controller: :ship, action: :imports, method: :post }, { multipart: true }) do %>
+  <h1 class="title">Upload</h1>
+  <p class="alert"><%= flash[:alert] %></p>
+  <%= form_tag({ controller: :ship, action: :imports, method: :post }, { id: 'form-upload', multipart: true }) do %>
     <table class="upload">
       <tr>
-        <td></td>
-        <td class="input"><%= file_field_tag :file, id: 'upd' %></td>
+        <td class="input" colspan="2"><%= file_field_tag :file, id: 'upd' %></td>
       </tr>
       <tr>
         <td class="vtxt"><input id="txt" type="text" placeholder="Select your db file." readonly></td>
-        <td class="vbtn"><button id="btn">Select</button></td>
+        <td class="vbtn"><input id="btn" type="button" value="Select"></td>
       </tr>
       <tr>
-        <td colspan="2" class="button"><%= submit_tag "Upload", class: 'btn-upload' %></td>
+        <td class="vtxt"></td>
+        <td class="vbtn"><%= submit_tag "Upload", class: 'btn-upload' %></td>
       </tr>
     </table>
   <% end %>
@@ -20,12 +20,17 @@
 
 <script>
 $(function() {
+  $('#loading').hide();
   $('#btn').click(function(e) {
     e.preventDefault();
     $('#upd').click();
   });
   $('#upd').change(function() {
     $('#txt').val($('#upd').val());
+  });
+  $('.btn-upload').click(function(e) {
+    $('#loading').show();
+    /* $('#form-upload').submit(); */
   });
 });
 </script>

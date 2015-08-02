@@ -1,10 +1,7 @@
 <div class="balance-area">
-<% if @balances.empty? %>
-  <div class="balance-alert-area">
-    <h1>Balance</h1>
-    <p id="alert"><%= flash[:alert] %></p>
+  <div class="balance-pdf-area">
+    <%= link_to image_tag(asset_path('links_pdf.svg')), balance_pdf_path, target: '_blank' %>
   </div>
-<% else %>
   <!-- ヘッダ(thead)を表すDIV -->
   <div class="scroll-head">
     <table class="scroll">
@@ -41,7 +38,7 @@
         <col class="bln-spcl" />
         <col class="bln-blnc" />
       </colgroup>
-      <tbody>
+      <tbody id="balance-table-body">
         <% @balances.each do |blc| %>
           <tr class="<%= total(blc.year) %>">
             <td class="bln-year"><%= blc.year %></td>
@@ -55,8 +52,4 @@
       </tbody>
     </table>
   </div>
-  <div class="pdf-area">
-    <%= link_to image_tag(asset_path('link_pdfs.svg')), balance_pdf_path, target: '_blank' %>
-  </div>
-<% end %>
 </div>

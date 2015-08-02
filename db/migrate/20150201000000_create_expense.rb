@@ -6,6 +6,7 @@ class CreateExpense < ActiveRecord::Migration
       t.string  :name
       t.string  :type
       t.integer :cost
+      t.references :user
     end
   end
 

@@ -1,53 +1,46 @@
 <%= render partial: 'header', locals: { obj: @expense, path: :expense_path } %>
 
 <div class="expense-area">
-  <% if @expenses.empty? %>
-    <div class="expense-alert-area">
-      <h1>Expense</h1>
-      <p id="alert"><%= flash[:alert] %></p>
-    </div>
-  <% else %>
-    <!-- ヘッダ(thead)を表すDIV -->
-    <div style="scroll-head">
-      <table class="scroll">
-        <colgroup>
-          <col class="exp-date" />
-          <col class="exp-name" />
-          <col class="exp-type" />
-          <col class="exp-cost" />
-          <col class="exp-scrl" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th>日付</th>
-            <th>名称</th>
-            <th>種別</th>
-            <th>金額</th>
-            <th></th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    <!-- ボディ(tbody)を表すDIV -->
-    <div class="scroll-body">
-      <table class="scroll">
-        <colgroup>
-          <col class="exp-date" />
-          <col class="exp-name" />
-          <col class="exp-type" />
-          <col class="exp-cost" />
-        </colgroup>
-        <tbody>
+  <!-- ヘッダ(thead)を表すDIV -->
+  <div style="scroll-head">
+    <table class="scroll">
+      <colgroup>
+        <col class="exp-date" />
+        <col class="exp-name" />
+        <col class="exp-type" />
+        <col class="exp-cost" />
+        <col class="exp-scrl" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>名称</th>
+          <th>種別</th>
+          <th>金額</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <!-- ボディ(tbody)を表すDIV -->
+  <div class="scroll-body">
+    <table class="scroll">
+      <colgroup>
+        <col class="exp-date" />
+        <col class="exp-name" />
+        <col class="exp-type" />
+        <col class="exp-cost" />
+      </colgroup>
+      <tbody id="expense-table-body">
         <% @expenses.each do |exp| %>
           <tr>
             <td class="exp-date"><%= exp.date %></td>
-            <td                 ><%= exp.name %></td>
+            <td class="exp-name"><%= exp.name %></td>
             <td class="exp-type"><%= exp.type %></td>
             <td class="currency"><%= to_currency(exp.cost) %></td>
           </tr>
         <% end %>
-        </tbody>
-      </table>
-    </div>
-  <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,8 +1,12 @@
-<div class="user-list-area">
-  <div class="user-nav">
+<div class="user-index-area">
+  <div class="user-navigation">
     <%= link_to 'New User', new_user_path, class: 'new-user-link' %>
+    <% if flash[:alert] || flash[:notice] %>
+      <p class="alert" ><%= flash[:alert ] %></p>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
   </div>
-  <table class="user-table">
+  <table class="user-index">
     <thead>
       <th class="id">ID</th>
       <th class="mail">Mail</th>
@@ -23,4 +27,3 @@
     </tbody>
   </table>
 </div>
-

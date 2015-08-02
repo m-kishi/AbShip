@@ -6,6 +6,7 @@ class CreatePrivate < ActiveRecord::Migration
       t.string  :name
       t.integer :cost
       t.integer :blnc
+      t.references :user
     end
   end
 

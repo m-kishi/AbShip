@@ -8,6 +8,7 @@ class CreateBalance < ActiveRecord::Migration
       t.integer :expense
       t.integer :special
       t.integer :balance
+      t.references :user
     end
   end
 

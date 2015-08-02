@@ -22,6 +22,8 @@ SELECT
   , SUM(CASE WHEN type = 'EARN' THEN cost WHEN type NOT IN ('BNUS','SPCL','PRVI','PRVO') THEN -cost ELSE 0 END) AS blnc
 FROM
     expenses
+WHERE
+    user_id = [user_id]
 GROUP BY
     year
   , mnth

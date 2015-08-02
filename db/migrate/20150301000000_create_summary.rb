@@ -23,6 +23,7 @@ class CreateSummary < ActiveRecord::Migration
       t.integer :prvo
       t.integer :ttal
       t.integer :blnc
+      t.references :user
     end
   end
 

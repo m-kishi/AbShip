@@ -1,24 +1,34 @@
 @import "base.css.scss";
 
-.user-area {
-  width: 45%;
-  margin: 0 auto;
-  border: 1px solid $base-color;
-  padding: 1%;
-  background: $next-color;
-}
-
-.user-list-area {
-  width: 90%;
+div.user-index-area {
+  width: 96%;
   margin: 0 auto;
   padding: 1%;
 }
 
-h1 {
-  margin-bottom: 2%;
+div.user-navigation {
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 1%;
 }
 
-table.user-table {
+a.new-user-link {
+  color: $navigation-link-color;
+  text-decoration: none;
+}
+
+a.new-user-link:link {
+  color: $navigation-link-color;
+}
+a.new-user-link:visited {
+  color: $navigation-link-color;
+}
+
+a.new-user-link:hover {
+  color: $navigation-link-hover-color;
+}
+
+table.user-index {
   width: 100%;
   border: 1px solid $base-color;
   border-collapse: collapse;
@@ -54,113 +64,100 @@ table.user-table {
     width: 6%;
     border: 1px solid $base-color;
     padding: 1%;
+    text-align: center;
   }
   td.mail {
     width: 54%;
     border: 1px solid $base-color;
     padding: 1%;
     a {
-      text-decoration: none;
+      //text-decoration: none;
     }
     a:link {
-      color: $base-color;
+      color: $navigation-link-color;
     }
     a:visited {
-      color: $base-color;
+      color: $navigation-link-color;
     }
     a:hover {
-      color: $next-color;
+      color: $navigation-link-hover-color;
     }
   }
   td.date {
     width: 30%;
     border: 1px solid $base-color;
     padding: 1%;
+    font-size: 90%;
+    text-align: center;
   }
   td.operation {
     width: 10%;
     border: 1px solid $base-color;
-    padding-left: 1%;
+    font-size: 90%;
+    text-align: center;
     a {
       text-decoration: none;
     }
     a:link {
-      color: $base-color;
+      color: $navigation-link-color;
     }
     a:visited {
-      color: $base-color;
+      color: $navigation-link-color;
     }
     a:hover {
-      color: $next-color;
+      color: $navigation-link-hover-color;
     }
   }
 }
 
-div.user-nav {
-  padding-bottom: 1%;
+div.user-form-area {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  margin-top: 30px;
+  background: $next-color;
 }
 
-a.new-user-link {
-  text-decoration: none;
+div.user-margin-area {
+  margin-top: 3%;
 }
 
-a.new-user-link:link {
-  color: $base-color;
-}
-a.new-user-link:visited {
-  color: $base-color;
-}
-
-a.new-user-link:hover {
-  color: $next-color;
-}
-
-table.user {
-  width: 100%;
+table.user-form {
+  width: 90%;
+  margin: 0 auto;
   td {
     padding: 1%;
-  }
-  td.label {
-    width: 20%;
-    text-align: right;
-  }
-  td.input {
-    width: 80%;
   }
   td.button {
     text-align: right;
   }
 }
 
-.txt-mail {
-  width: 98%;
-}
-
-.txt-pass {
-  width: 98%;
-}
-
-.btn-submit-user {
+input.btn-submit-user {
   color: $btn-text-color;
   background: $base-color;
 }
 
-.btn-submit-user:hover {
+input.btn-submit-user:hover {
   color: $btn-text-hover-color;
   background: $btn-hover-background-color;
 }
 
-div#user-error-area {
-  width: 90%;
+div.user-error-area {
+  width: 88%;
   margin: 0 auto;
-  padding-left: 1%;
-  padding-right: 1%;
-  padding-bottom: 4%;
+}
+
+div.field_with_errors {
+  padding: 2px;
+  background-color: $err-color;
 }
 
 li.message {
   color: $err-color;
-  font-size: 85%;
+  font-size: 82%;
   font-weight: bold;
   padding-bottom: 1.5%;
+  list-style-type: none;
 }

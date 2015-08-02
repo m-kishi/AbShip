@@ -1,4 +1,5 @@
 class Expense < ActiveRecord::Base
+  belongs_to :user
 
   #カラム名として"type"を使うための設定
   self.inheritance_column = :_type_disabled

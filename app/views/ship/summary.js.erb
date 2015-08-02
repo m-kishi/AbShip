@@ -14,52 +14,19 @@ $(function() {
   $('a#prev-mnth').attr('href', '<%= summary_path(year: dtPm.year, mnth: dtPm.month).html_safe %>');
   $('a#next-mnth').attr('href', '<%= summary_path(year: dtNm.year, mnth: dtNm.month).html_safe %>');
   $('a#next-year').attr('href', '<%= summary_path(year: dtNy.year, mnth: dtNy.month).html_safe %>');
-  //集計再描画
-  //うまい方法を思いつかないのでHTMLごと書き直す方向で実装
-  var html = (function() {/*
-  <table class="summary-table">
-    <tr>
-      <th>食費  </th><td class="currency"><%= to_currency(@summary.food) %></td>
-      <th>家賃  </th><td class="currency"><%= to_currency(@summary.hous) %></td>
-    </tr>
-    <tr>
-      <th>外食費</th><td class="currency"><%= to_currency(@summary.otfd) %></td>
-      <th>光熱費</th><td class="currency"><%= to_currency(@summary.engy) %></td>
-    </tr>
-  </table>
-  <hr class="line" />
-  <table class="summary-table">
-    <tr>
-      <th>雑貨  </th><td class="currency"><%= to_currency(@summary.good) %></td>
-      <th>通信費</th><td class="currency"><%= to_currency(@summary.cnct) %></td>
-    </tr>
-    <tr>
-      <th>交際費</th><td class="currency"><%= to_currency(@summary.frnd) %></td>
-      <th>医療費</th><td class="currency"><%= to_currency(@summary.medi) %></td>
-    </tr>
-    <tr>
-      <th>交通費</th><td class="currency"><%= to_currency(@summary.trfc) %></td>
-      <th>保険料</th><td class="currency"><%= to_currency(@summary.insu) %></td>
-    </tr>
-    <tr>
-      <th>遊行費</th><td class="currency"><%= to_currency(@summary.play) %></td>
-      <th>その他</th><td class="currency"><%= to_currency(@summary.othr) %></td>
-    </tr>
-  </table>
-  <hr class="line" />
-  <table class="summary-table">
-    <tr>
-      <th class="dummy"></th><td class="dummy"></td>
-      <th>合計  </th><td class="currency"><%= to_currency(@summary.ttal) %></td>
-    </tr>
-    <tr>
-      <th class="dummy"></th><td class="dummy"></td>
-      <th>収支  </th><td class="currency"><%= to_currency(@summary.blnc) %></td>
-    </tr>
-  </table>
-  <div class="pdf-area">
-    <%= link_to image_tag(asset_path('link_pdfs.svg')), summary_pdf_path, target: '_blank' %>
-  </div>
-  */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
-  $('div.summary-area').html(html);
+  //再描画
+  $('#sum-food').html('<%= to_currency(@summary.food) %>');
+  $('#sum-otfd').html('<%= to_currency(@summary.otfd) %>');
+  $('#sum-good').html('<%= to_currency(@summary.good) %>');
+  $('#sum-frnd').html('<%= to_currency(@summary.frnd) %>');
+  $('#sum-trfc').html('<%= to_currency(@summary.trfc) %>');
+  $('#sum-play').html('<%= to_currency(@summary.play) %>');
+  $('#sum-hous').html('<%= to_currency(@summary.hous) %>');
+  $('#sum-engy').html('<%= to_currency(@summary.engy) %>');
+  $('#sum-cnct').html('<%= to_currency(@summary.cnct) %>');
+  $('#sum-medi').html('<%= to_currency(@summary.medi) %>');
+  $('#sum-insu').html('<%= to_currency(@summary.insu) %>');
+  $('#sum-othr').html('<%= to_currency(@summary.othr) %>');
+  $('#sum-ttal').html('<%= to_currency(@summary.ttal) %>');
+  $('#sum-blnc').html('<%= to_currency(@summary.blnc) %>');
 });
