@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get    'ship/pdf/summary', to: 'ship#summary_pdf', as: :summary_pdf
   get    'ship/pdf/balance', to: 'ship#balance_pdf', as: :balance_pdf
 
+  match '*path' => 'application#error404', via: :all
+
 end
