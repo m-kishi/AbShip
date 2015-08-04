@@ -31,7 +31,11 @@
     <table>
       <tr>
         <td class="app-title"><%= link_to image_tag(asset_path('app_title.svg'), width: '121px;', height: '32px;'), :root %></td>
-        <td class="apps-icon"><%= link_to image_tag(asset_path('apps_icon.svg'), width: '32px;', height: '32px;'), :root %></td>
+        <td class="apps-icon">
+          <div id="icon-animation">
+            <%= link_to image_tag(asset_path('apps_icon.svg'), width: '32px;', height: '32px;'), :root %>
+          </div>
+        </td>
         <td class="navigation-link">
           <% if current_user %>
             <%= link_to '編集', edit_user_path(current_user.id) %> <span class="pipe-line">|</span>
