@@ -26,6 +26,13 @@ Rails.application.routes.draw do
   get    'ship/pdf/summary', to: 'ship#summary_pdf', as: :summary_pdf
   get    'ship/pdf/balance', to: 'ship#balance_pdf', as: :balance_pdf
 
+  namespace :api do
+    namespace :v1 do
+      post 'login' , to: 'api#create'
+      post 'upload', to: 'api#upload'
+    end
+  end
+
   match '*path' => 'application#error404', via: :all
 
 end
