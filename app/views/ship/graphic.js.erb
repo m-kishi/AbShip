@@ -1,0 +1,33 @@
+$(function() {
+  //日付生成
+  <% obj = @graphic %>
+  <% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+  <% dtPy = dtCr - 1.year %>
+  <% dtNy = dtCr + 1.year %>
+  <% dtPm = dtCr - 1.month %>
+  <% dtNm = dtCr + 1.month %>
+  //ヘッダタイトル書き換え
+  $('h1.header').html('<%= obj.to_title %>');
+  //ヘッダパス書き換え
+  //'&'が&amp;になってしまうのでhtml_safeを利用
+  $('a#prev-year').attr('href', '<%= graphic_path(year: dtPy.year, mnth: dtPy.month).html_safe %>');
+  $('a#prev-mnth').attr('href', '<%= graphic_path(year: dtPm.year, mnth: dtPm.month).html_safe %>');
+  $('a#next-mnth').attr('href', '<%= graphic_path(year: dtNm.year, mnth: dtNm.month).html_safe %>');
+  $('a#next-year').attr('href', '<%= graphic_path(year: dtNy.year, mnth: dtNy.month).html_safe %>');
+  //グラフの再描画
+  var lbls = [];
+  var food = [];
+  var otfd = [];
+  var eelc = [];
+  var egas = [];
+  var ewtr = [];
+  <% @graphics.each do |grp| %>
+    lbls.push('<%= sprintf("%02d", grp.mnth) %>');
+    food.push(<%= grp.food     %>);
+    otfd.push(<%= grp.otfd     %>);
+    eelc.push(<%= grp.engy_elc %>);
+    egas.push(<%= grp.engy_gas %>);
+    ewtr.push(<%= grp.engy_wtr %>);
+  <% end %>
+  drawGraph(lbls, food, otfd, eelc, egas, ewtr);
+});

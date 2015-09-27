@@ -1,0 +1,29 @@
+<div class="user-margin-area"></div>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="user-error-area">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li class="message"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="user-form">
+    <tr>
+      <td><%= f.text_field :mail, class: 'txt-mail', placeholder: 'メールアドレス' %></td>
+    </tr>
+    <tr>
+      <td><%= f.password_field :password, class: 'txt-pass', placeholder: 'パスワード' %></td>
+    </tr>
+    <tr>
+      <td><%= f.password_field :password_confirmation, class: 'txt-pass', placeholder: 'パスワード再入力' %></td>
+    </tr>
+    <tr>
+      <td class="button">
+        <%= f.submit (@user.id.nil? ? '登録' : '更新'), class: 'btn-submit-user' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

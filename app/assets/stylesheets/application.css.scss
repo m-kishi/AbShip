@@ -1,0 +1,207 @@
+/*
+ *= require_tree .
+ *= require_self
+ *= require html5reset-1.6.1
+ */
+@import "base.css.scss";
+
+body {
+  width: 1024px;
+  .application-area {
+    width: 620px;
+    margin: 0 auto;
+  }
+}
+
+div.navigation-area {
+  width: 612px;
+  padding: 4px;
+  font-size: 90%;
+  margin-bottom: 4px;
+  background-color: $next-color;
+  table {
+    width: 100%;
+    tr {
+      width: 100%;
+    }
+    td.app-title {
+      width: 121px;
+    }
+    td.apps-icon {
+      width: 368px;
+      text-align: right;
+    }
+    td.navigation-link {
+      text-align: right;
+      vertical-align: middle;
+      span.pipe-line {
+        color: $navigation-link-color;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        color: $navigation-link-color;
+      }
+      a:visited {
+        color: $navigation-link-color;
+      }
+      a:hover {
+        color: $navigation-link-hover-color;
+      }
+    }
+  }
+}
+
+div.tab-menu {
+  height: 26px;
+  font-size: 90%;
+  ul {
+    margin: 0px;
+    li {
+      float: left;
+      display: block;
+      position: relative;
+    }
+    .on {
+      background-color: $base-color;
+      width: 64px;
+      height: 26px;
+      margin-right: 5px;
+      text-align: center;
+      a {
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        text-decoration: none;
+      }
+      a:link {
+        color: $on-text-color;
+      }
+      a:hover {
+        color: $on-text-color;
+      }
+      a:visited {
+        color: $on-text-color;
+      }
+    }
+    .off {
+      background-color: $next-color;
+      width: 64px;
+      height: 26px;
+      margin-right: 5px;
+      text-align: center;
+      a {
+        width: 100%;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        text-decoration: none;
+      }
+      a:link {
+        color: $off-text-color;
+      }
+      a:visited {
+        color: $off-text-color;
+      }
+      a:hover {
+        color: $off-text-hover-color;
+      }
+    }
+  }
+}
+
+div.context {
+  clear: both;
+  border-top   : solid 10px $base-color;
+  border-left  : solid  1px $base-color;
+  border-right : solid  1px $base-color;
+  border-bottom: solid  1px $base-color;
+  .main-area {
+    width: 98%;
+    height: 330px;
+    margin: 0 auto;
+    margin-top: 0.5%;
+    margin-bottom: 8px;
+    //border-top   : solid 1px #165e83;
+    //border-left  : solid 1px #165e83;
+    //border-right : solid 1px #165e83;
+    //border-bottom: solid 1px #165e83;
+  }
+}
+
+div.error-area {
+  width: 58%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  margin-top: 30px;
+  background: $next-color;
+}
+
+h1.title {
+  color: $text-color;
+  font-weight: bold;
+}
+
+p.alert {
+  color: $err-color;
+  font-size: 85%;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5%;
+}
+
+p.notice {
+  color: $inf-color;
+  font-size: 85%;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.5%;
+}
+
+h1.error-title {
+  color: $err-color;
+  font-weight: bold;
+}
+
+p.error-message {
+  color: $err-color;
+  font-size: 112%;
+  text-align: center;
+  padding-top: 2%;
+  //padding-bottom: 1.5%;
+}
+
+.currency {
+  text-align: right;
+}
+
+div#icon-animation {
+  width: 32px;
+  animation: translate 40s;
+  animation-direction: normal;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  -webkit-animation: translate 40s;
+  -webkit-animation-direction: normal;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes translate {
+    0% { transform: translate(332px, 0px); }
+   45% { transform: translate(0px, 0px); }
+   50% { transform: scaleX(-1); }
+   95% { transform: scaleX(-1) translate(-332px, 0px); }
+  100% { transform: translate(332px, 0px); }
+}
+
+@-webkit-keyframes translate {
+    0% { -webkit-transform: translate(332px, 0px); }
+   45% { -webkit-transform: translate(0px, 0px); }
+   50% { -webkit-transform: scaleX(-1); }
+   95% { -webkit-transform: scaleX(-1) translate(-332px, 0px); }
+  100% { -webkit-transform: translate(332px, 0px); }
+}

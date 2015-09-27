@@ -1,0 +1,29 @@
+$(function() {
+  //日付生成
+  <% obj = @expense %>
+  <% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+  <% dtPy = dtCr - 1.year %>
+  <% dtNy = dtCr + 1.year %>
+  <% dtPm = dtCr - 1.month %>
+  <% dtNm = dtCr + 1.month %>
+  //ヘッダタイトル書き換え
+  $('h1.header').html('<%= obj.to_title %>');
+  //ヘッダパス書き換え
+  //'&'が&amp;になってしまうのでhtml_safeを利用
+  $('a#prev-year').attr('href', '<%= expense_path(year: dtPy.year, mnth: dtPy.month).html_safe %>');
+  $('a#prev-mnth').attr('href', '<%= expense_path(year: dtPm.year, mnth: dtPm.month).html_safe %>');
+  $('a#next-mnth').attr('href', '<%= expense_path(year: dtNm.year, mnth: dtNm.month).html_safe %>');
+  $('a#next-year').attr('href', '<%= expense_path(year: dtNy.year, mnth: dtNy.month).html_safe %>');
+  //再描画
+  var tbody = $('tbody#expense-table-body');
+  $('tbody#expense-table-body tr').remove();
+  <% @expenses.each do |exp| %>
+    var tr = '<tr>' +
+               '<td class="exp-date"><%= exp.date %></td>' +
+               '<td class="exp-name"><%= exp.name %></td>' +
+               '<td class="exp-type"><%= exp.type %></td>' +
+               '<td class="exp-cost"><%= to_currency(exp.cost) %></td>' +
+             '</tr>';
+    tbody.append(tr);
+  <% end %>
+});

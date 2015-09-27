@@ -1,56 +1,38 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'ship#expense'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get    'login'           , to: 'auth#new'        , as: 'login'
+  post   'logout'          , to: 'auth#destroy'    , as: 'logout'
+  post   'auth'            , to: 'auth#create'
+  delete 'auth/:id'        , to: 'auth#destroy'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get    '/user'           , to: 'user#index'      , as: 'users'
+  post   '/user'           , to: 'user#create'     , as: ''
+  get    '/user/new'       , to: 'user#new'        , as: 'new_user'
+  get    '/user/:id/edit'  , to: 'user#edit'       , as: 'edit_user'
+  put    '/user/:id'       , to: 'user#update'     , as: 'user'
+  patch  '/user/:id'       , to: 'user#update'     , as: ''
+  delete '/user/:id'       , to: 'user#destroy'    , as: ''
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  get    'ship/expense'    , to: 'ship#expense'    , as: :expense
+  get    'ship/summary'    , to: 'ship#summary'    , as: :summary
+  get    'ship/graphic'    , to: 'ship#graphic'    , as: :graphic
+  get    'ship/balance'    , to: 'ship#balance'    , as: :balance
+  get    'ship/private'    , to: 'ship#private'    , as: :private
+  get    'ship/uploads'    , to: 'ship#uploads'    , as: :uploads
+  post   'ship/imports'    , to: 'ship#imports'    , as: :imports
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  get    'ship/pdf/summary', to: 'ship#summary_pdf', as: :summary_pdf
+  get    'ship/pdf/balance', to: 'ship#balance_pdf', as: :balance_pdf
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  namespace :api do
+    namespace :v1 do
+      post 'login' , to: 'api#create'
+      post 'upload', to: 'api#upload'
+    end
+  end
 
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
+  match '*path' => 'application#error404', via: :all
 
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

@@ -1,0 +1,18 @@
+<% dtCr = Date.new(obj.year, obj.mnth, 1) %>
+<% dtPy = dtCr - 1.year %>
+<% dtNy = dtCr + 1.year %>
+<% dtPm = dtCr - 1.month %>
+<% dtNm = dtCr + 1.month %>
+
+<% optPy = { id: 'prev-year' }; optPy[:remote] = true %>
+<% optPm = { id: 'prev-mnth' }; optPm[:remote] = true %>
+<% optNm = { id: 'next-mnth' }; optNm[:remote] = true %>
+<% optNy = { id: 'next-year' }; optNy[:remote] = true %>
+
+<div class="header-area">
+  <%= link_to image_tag(asset_path('prev_year.svg')), self.send(path, year: dtPy.year, mnth: dtPy.month), optPy %>
+  <%= link_to image_tag(asset_path('prev_mnth.svg')), self.send(path, year: dtPm.year, mnth: dtPm.month), optPm %>
+  <h1 class="header"><%= obj.to_title %></h1>
+  <%= link_to image_tag(asset_path('next_mnth.svg')), self.send(path, year: dtNm.year, mnth: dtNm.month), optNm %>
+  <%= link_to image_tag(asset_path('next_year.svg')), self.send(path, year: dtNy.year, mnth: dtNy.month), optNy %>
+</div>

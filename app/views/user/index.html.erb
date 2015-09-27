@@ -1,0 +1,29 @@
+<div class="user-index-area">
+  <div class="user-navigation">
+    <%= link_to 'New User', new_user_path, class: 'new-user-link' %>
+    <% if flash[:alert] || flash[:notice] %>
+      <p class="alert" ><%= flash[:alert ] %></p>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+  <table class="user-index">
+    <thead>
+      <th class="id">ID</th>
+      <th class="mail">Mail</th>
+      <th class="date">Updated</th>
+      <th class="operation"></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="id"><%= user.id %></td>
+          <td class="mail"><%= link_to user.mail, edit_user_path(user) %></td>
+          <td class="date"><%= user.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+          <td class="operation">
+            <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

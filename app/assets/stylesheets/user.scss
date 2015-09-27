@@ -1,0 +1,163 @@
+@import "base.css.scss";
+
+div.user-index-area {
+  width: 96%;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+div.user-navigation {
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 1%;
+}
+
+a.new-user-link {
+  color: $navigation-link-color;
+  text-decoration: none;
+}
+
+a.new-user-link:link {
+  color: $navigation-link-color;
+}
+a.new-user-link:visited {
+  color: $navigation-link-color;
+}
+
+a.new-user-link:hover {
+  color: $navigation-link-hover-color;
+}
+
+table.user-index {
+  width: 100%;
+  border: 1px solid $base-color;
+  border-collapse: collapse;
+  th.id {
+    width: 6%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.mail {
+    width: 54%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.date {
+    width: 30%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  th.operation {
+    width: 10%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    vertical-align: middle;
+    background-color: $next-color;
+  }
+  td.id {
+    width: 6%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    text-align: center;
+  }
+  td.mail {
+    width: 54%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    a {
+      //text-decoration: none;
+    }
+    a:link {
+      color: $navigation-link-color;
+    }
+    a:visited {
+      color: $navigation-link-color;
+    }
+    a:hover {
+      color: $navigation-link-hover-color;
+    }
+  }
+  td.date {
+    width: 30%;
+    border: 1px solid $base-color;
+    padding: 1%;
+    font-size: 90%;
+    text-align: center;
+  }
+  td.operation {
+    width: 10%;
+    border: 1px solid $base-color;
+    font-size: 90%;
+    text-align: center;
+    a {
+      text-decoration: none;
+    }
+    a:link {
+      color: $navigation-link-color;
+    }
+    a:visited {
+      color: $navigation-link-color;
+    }
+    a:hover {
+      color: $navigation-link-hover-color;
+    }
+  }
+}
+
+div.user-form-area {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  margin-top: 30px;
+  background: $next-color;
+}
+
+div.user-margin-area {
+  margin-top: 3%;
+}
+
+table.user-form {
+  width: 90%;
+  margin: 0 auto;
+  td {
+    padding: 1%;
+  }
+  td.button {
+    text-align: right;
+  }
+}
+
+input.btn-submit-user {
+  color: $btn-text-color;
+  background: $base-color;
+}
+
+input.btn-submit-user:hover {
+  color: $btn-text-hover-color;
+  background: $btn-hover-background-color;
+}
+
+div.user-error-area {
+  width: 88%;
+  margin: 0 auto;
+}
+
+div.field_with_errors {
+  padding: 2px;
+  background-color: $err-color;
+}
+
+li.message {
+  color: $err-color;
+  font-size: 82%;
+  font-weight: bold;
+  padding-bottom: 1.5%;
+  list-style-type: none;
+}

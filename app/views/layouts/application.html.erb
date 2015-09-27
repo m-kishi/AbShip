@@ -5,10 +5,67 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-title" content="AbShip">
+  <meta name="application-name" content="AbShip">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-
-<%= yield %>
-
+<div class="application-area">
+  <div class="navigation-area">
+    <table>
+      <tr>
+        <td class="app-title"><%= link_to image_tag(asset_path('app_title.svg'), width: '121px;', height: '32px;'), :root %></td>
+        <td class="apps-icon">
+          <div id="icon-animation">
+            <%= link_to image_tag(asset_path('apps_icon.svg'), width: '32px;', height: '32px;'), :root %>
+          </div>
+        </td>
+        <td class="navigation-link">
+          <% if current_user %>
+            <%= link_to '編集', edit_user_path(current_user.id) %> <span class="pipe-line">|</span>
+            <%= link_to 'ログアウト', :logout, method: :post %>
+          <% else %>
+            <%= link_to '登録', new_user_path %> |
+            <%= link_to 'ログイン', :login %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="tab-menu">
+    <ul>
+      <li class="<%= @expense_selected ? 'on' : 'off' %>"><%= link_to '支出  ', expense_path(year: Date.today.year, mnth: Date.today.month) %></li>
+      <li class="<%= @summary_selected ? 'on' : 'off' %>"><%= link_to '集計  ', summary_path(year: Date.today.year, mnth: Date.today.month) %></li>
+      <li class="<%= @graphic_selected ? 'on' : 'off' %>"><%= link_to 'グラフ', graphic_path(year: Date.today.year, mnth: Date.today.month) %></li>
+      <li class="<%= @balance_selected ? 'on' : 'off' %>"><%= link_to '収支  ', balance_path %></li>
+      <li class="<%= @private_selected ? 'on' : 'off' %>"><%= link_to '秘密  ', private_path %></li>
+      <li class="<%= @uploads_selected ? 'on' : 'off' %>"><%= link_to 'ＤＢ  ', uploads_path %></li>
+    </ul>
+  </div>
+  <div class="context">
+    <div class="main-area">
+      <div id="loading">
+        <!-- <div id="uploading">Uploading...</div> -->
+      </div>
+      <%= yield %>
+    </div>
+  </div>
+</div>
 </body>
 </html>

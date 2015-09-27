@@ -1,0 +1,39 @@
+@import "base.css.scss";
+
+div.login-area {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid $base-color;
+  padding: 1%;
+  margin-top: 30px;
+  background: $next-color;
+}
+
+table.login {
+  width: 90%;
+  margin: 0 auto;
+  td {
+    padding: 1%;
+  }
+  td.button {
+    text-align: right;
+  }
+}
+
+input.txt-mail {
+  width: 97%;
+}
+
+input.txt-pass {
+  width: 97%;
+}
+
+input.btn-login {
+  color: $btn-text-color;
+  background: $base-color;
+}
+
+input.btn-login:hover {
+  color: $btn-text-hover-color;
+  background: $btn-hover-background-color;
+}

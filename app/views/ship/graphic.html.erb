@@ -1,0 +1,25 @@
+<%= render partial: 'header', locals: { obj: @graphic, path: :graphic_path } %>
+
+<div class="graphic-area">
+  <canvas id="graphic"></canvas>
+</div>
+
+<script>
+$(function() {
+  var lbls = [];
+  var food = [];
+  var otfd = [];
+  var eelc = [];
+  var egas = [];
+  var ewtr = [];
+  <% @graphics.each do |grp| %>
+    lbls.push('<%= sprintf("%02d", grp.mnth) %>');
+    food.push(<%= grp.food     %>);
+    otfd.push(<%= grp.otfd     %>);
+    eelc.push(<%= grp.engy_elc %>);
+    egas.push(<%= grp.engy_gas %>);
+    ewtr.push(<%= grp.engy_wtr %>);
+  <% end %>
+  drawGraph(lbls, food, otfd, eelc, egas, ewtr);
+});
+</script>

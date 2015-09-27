@@ -1,0 +1,55 @@
+<div class="balance-area">
+  <div class="balance-pdf-area">
+    <%= link_to image_tag(asset_path('links_pdf.svg')), balance_pdf_path, target: '_blank' %>
+  </div>
+  <!-- ヘッダ(thead)を表すDIV -->
+  <div class="scroll-head">
+    <table class="scroll">
+      <colgroup>
+        <col class="bln-year" />
+        <col class="bln-earn" />
+        <col class="bln-bnus" />
+        <col class="bln-exps" />
+        <col class="bln-spcl" />
+        <col class="bln-blnc" />
+        <col class="bln-scrl" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>年度</th>
+          <th>収入</th>
+          <th>特入</th>
+          <th>支出</th>
+          <th>特出</th>
+          <th>収支</th>
+          <th></th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <!-- ボディ(tbody)を表すDIV -->
+  <div class="scroll-body">
+    <table class="scroll">
+      <colgroup>
+        <col class="bln-year" />
+        <col class="bln-earn" />
+        <col class="bln-bnus" />
+        <col class="bln-exps" />
+        <col class="bln-spcl" />
+        <col class="bln-blnc" />
+      </colgroup>
+      <tbody id="balance-table-body">
+        <% @balances.each do |blc| %>
+          <tr class="<%= total(blc.year) %>">
+            <td class="bln-year"><%= blc.year %></td>
+            <td class="currency"><%= to_currency(blc.earn   ) %></td>
+            <td class="currency"><%= to_currency(blc.bnus   ) %></td>
+            <td class="currency"><%= to_currency(blc.expense) %></td>
+            <td class="currency"><%= to_currency(blc.special) %></td>
+            <td class="currency"><%= to_currency(blc.balance) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
