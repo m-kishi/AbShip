@@ -1,6 +1,6 @@
 SELECT
-    STRFTIME('%Y', date) AS year
-  , STRFTIME('%m', date) AS mnth
+    TO_CHAR(date, 'YYYY') AS year
+  , TO_CHAR(date,   'MM') AS mnth
   , SUM(CASE type WHEN 'FOOD' THEN cost ELSE 0 END) AS food
   , SUM(CASE type WHEN 'OTFD' THEN cost ELSE 0 END) AS otfd
   , SUM(CASE type WHEN 'GOOD' THEN cost ELSE 0 END) AS good

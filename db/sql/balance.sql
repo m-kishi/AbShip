@@ -1,9 +1,9 @@
 SELECT
-    CASE WHEN STRFTIME('%m', date) > '03'
+    CASE WHEN TO_CHAR(date, 'MM') > '03'
       THEN
-        STRFTIME('%Y', date) + 0
+        TO_CHAR(date, 'YYYY')::integer + 0
       ELSE
-        STRFTIME('%Y', date) - 1
+        TO_CHAR(date, 'YYYY')::integer - 1
     END                                                                    AS year
   , SUM(CASE type WHEN 'EARN' THEN cost ELSE 0 END)                        AS earn
   , SUM(CASE type WHEN 'BNUS' THEN cost ELSE 0 END)                        AS bnus
