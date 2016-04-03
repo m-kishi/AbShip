@@ -52,7 +52,7 @@ class SummaryPdf
         earn = sum["earn"].to_i
         blnc = sum["blnc"].to_i
 
-        list.add_row :mnth => "#{year}/#{mnth}",
+        list.add_row :mnth => sprintf("%04d/%02d", year, mnth),
                      :food => to_currency(food),
                      :otfd => to_currency(otfd),
                      :good => to_currency(good),
