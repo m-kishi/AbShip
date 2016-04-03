@@ -1,0 +1,87 @@
+s001: {
+  user: kishi,
+  year: 2009,
+  mnth: 4,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s002: {
+  user: kishi,
+  year: 2009,
+  mnth: 5,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s003: {
+  user: kishi,
+  year: 2009,
+  mnth: 6,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s004: {
+  user: kishi,
+  year: 2009,
+  mnth: 7,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s005: {
+  user: kishi,
+  year: 2009,
+  mnth: 8,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s006: {
+  user: kishi,
+  year: 2009,
+  mnth: 9,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s007: {
+  user: kishi,
+  year: 2009,
+  mnth: 10,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+
+s101: {
+  user: -1,
+  year: 2008,
+  mnth: 10,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s102: {
+  user: -1,
+  year: 2008,
+  mnth: 11,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s103: {
+  user: -1,
+  year: 2008,
+  mnth: 12,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s104: {
+  user: -1,
+  year: 2010,
+  mnth: 1,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s105: {
+  user: -1,
+  year: 2010,
+  mnth: 2,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+s106: {
+  user: -1,
+  year: 2010,
+  mnth: 3,
+  food: 0, otfd: 0, good: 0, frnd: 0, trfc: 0, play: 0, hous: 0, engy: 0, cnct: 0, medi: 0, insu: 0, othr: 0, earn: 0, bnus: 0, spcl: 0, prvi: 0, prvo: 0, ttal: 0, blnc: 0
+}
+
+s201: {
+  user: -1,
+  year: 2015,
+  mnth: 4,
+  food: 1000, otfd: 2000, good: 3000, frnd: 4000, trfc: 5000, play: 6000, hous: 7000, engy: 8000, cnct: 9000, medi: 1010, insu: 2020, othr: 3030, earn: 4040, bnus: 5050, spcl: 6060, prvi: 7070, prvo: 8080, ttal: 9090, blnc: 9999
+}
+

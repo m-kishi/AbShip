@@ -7,6 +7,10 @@ class ShipController < ApplicationController
     @expense  = current_user.expenses.obj(year, mnth)
     @expenses = current_user.expenses.get(year, mnth)
     @expense_selected = true
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def summary

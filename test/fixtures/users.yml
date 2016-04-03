@@ -1,0 +1,14 @@
+kishi:
+  mail: kishi@example.com
+  salt: <%= salt = "kishi@example.com" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("kishi@example.com", salt) %>
+
+kishi2:
+  mail: kishi2@example.com
+  salt: <%= salt = "kishi2@example.com" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("kishi2@example.com", salt) %>
+
+kishi3:
+  mail: kishi3@example.com
+  salt: <%= salt = "kishi3@example.com" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("kishi3@example.com", salt) %>

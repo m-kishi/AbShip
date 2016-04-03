@@ -25,7 +25,7 @@ module Api
         token = request.headers[:HTTP_ACCESS_TOKEN]
         if file.blank?
           # internal server error
-          render text: 'DB date nothing.', status: 500
+          render text: 'DB data nothing.', status: 500
         else
           @user = User.find_by_token(token)
           begin
