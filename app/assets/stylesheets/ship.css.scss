@@ -122,7 +122,21 @@ div.summary-pdf-area {
   width: 80%;
   margin: 0 auto;
   margin-top: -1.0%;
+  margin-bottom: 1.0%;
   text-align: right;
+  a.pdf-link {
+    font-weight: bold;
+    text-decoration: none;
+  }
+  a:link {
+    color: $pdf-link-color;
+  }
+  a:visited {
+    color: $pdf-link-color;
+  }
+  a:hover {
+    color: $pdf-link-hover-color;
+  }
 }
 
 table.summary {
@@ -168,8 +182,22 @@ tbody#balance-table-body td {
 div.balance-pdf-area {
   width: 606px;
   margin: 0 auto;
-  margin-top: 0%;
+  margin-top: 1.0%;
   text-align: right;
+  margin-bottom: 1.0%;
+  a.pdf-link {
+    font-weight: bold;
+    text-decoration: none;
+  }
+  a:link {
+    color: $pdf-link-color;
+  }
+  a:visited {
+    color: $pdf-link-color;
+  }
+  a:hover {
+    color: $pdf-link-hover-color;
+  }
 }
 
 div.upload-area {
