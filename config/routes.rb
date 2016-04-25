@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get    '/ship/pdf/summary', to: 'ship#summary_pdf', as: :summary_pdf
   get    '/ship/pdf/balance', to: 'ship#balance_pdf', as: :balance_pdf
+  get    '/ship/pdf/energie', to: 'ship#energie_pdf', as: :energie_pdf
 
   namespace :api do
     namespace :v1 do

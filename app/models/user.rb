@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :graphics , dependent: :destroy
   has_many :balances , dependent: :destroy
   has_many :privates , dependent: :destroy
+  has_many :energies , dependent: :destroy, class_name: "Energie"
   has_many :summaries, dependent: :destroy
 
   validates :mail, presence: true

@@ -98,4 +98,21 @@ class ShipController < ApplicationController
     end
   end
 
+  def energie_pdf
+    el = current_user.energies.where(type: "ELE")
+    gs = current_user.energies.where(type: "GAS")
+    wt = current_user.energies.where(type: "WTR")
+    energies = { el: el, gs: gs, wt: wt }
+    if el.empty? || gs.empty? || wt.empty?
+      flash.now[:alert] = 'No Energies Data.'
+      render :nothing
+    else
+      report = EnergiePdf.create energies
+      send_data report.generate,
+        :type        => "application/pdf",
+        :filename    => "energie.pdf",
+        :disposition => "inline"
+    end
+  end
+
 end
