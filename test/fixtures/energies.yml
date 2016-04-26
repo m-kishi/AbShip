@@ -1,0 +1,9 @@
+engE001: { user: kishi, year: 2009, type: "ELE", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engG001: { user: kishi, year: 2009, type: "GAS", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engW001: { user: kishi, year: 2009, type: "WTR", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engE002: { user: kishi, year: 2010, type: "ELE", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engG002: { user: kishi, year: 2010, type: "GAS", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engW002: { user: kishi, year: 2010, type: "WTR", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engE003: { user: kishi, year: 2011, type: "ELE", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engG003: { user: kishi, year: 2011, type: "GAS", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }
+engW003: { user: kishi, year: 2011, type: "WTR", mnth04: 0, mnth05: 0, mnth06: 0, mnth07: 0, mnth08: 0, mnth09: 0, mnth10: 0, mnth11: 0, mnth12: 0, mnth01: 0, mnth02: 0, mnth03: 0 }

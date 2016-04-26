@@ -68,6 +68,31 @@ class ShipControllerTest < ActionController::TestCase
   end
 
   # ------------------------------------------------------------
+  # routing '/ship/pdf/summary
+  # ------------------------------------------------------------
+  test "should route to summary_pdf" do
+    assert_routing summary_pdf_path   , controller: 'ship', action: 'summary_pdf'
+    assert_routing '/ship/pdf/summary', controller: 'ship', action: 'summary_pdf'
+  end
+
+  # ------------------------------------------------------------
+  # routing '/ship/pdf/balance
+  # ------------------------------------------------------------
+  test "should route to balance_pdf" do
+    assert_routing balance_pdf_path   , controller: 'ship', action: 'balance_pdf'
+    assert_routing '/ship/pdf/balance', controller: 'ship', action: 'balance_pdf'
+  end
+
+  # ------------------------------------------------------------
+  # routing '/ship/pdf/energie
+  # ------------------------------------------------------------
+  test "should route to energie_pdf" do
+    assert_routing energie_pdf_path   , controller: 'ship', action: 'energie_pdf'
+    assert_routing '/ship/pdf/energie', controller: 'ship', action: 'energie_pdf'
+  end
+
+
+  # ------------------------------------------------------------
   # action expense
   # ------------------------------------------------------------
   test "should get expense" do
@@ -212,6 +237,28 @@ class ShipControllerTest < ActionController::TestCase
   end
 
   # ------------------------------------------------------------
+  # action energie_pdf
+  # ------------------------------------------------------------
+  test "should get energie_pdf with no data" do
+    @user.energies.delete_all
+
+    get :energie_pdf
+
+    # メッセージを確認
+    assert_equal 'No Energies Data.', flash[:alert]
+  end
+
+  # ------------------------------------------------------------
+  # action energie_pdf
+  # ------------------------------------------------------------
+  test "should get energie_pdf with success" do
+    get :energie_pdf
+    assert_equal 'application/pdf', response.header["Content-Type"]
+    assert_equal 'inline; filename="energie.pdf"', response.header["Content-Disposition"]
+  end
+
+
+  # ------------------------------------------------------------
   # render expense
   # ------------------------------------------------------------
   test "expense should render correct template and layout" do
@@ -316,7 +363,7 @@ class ShipControllerTest < ActionController::TestCase
   # ------------------------------------------------------------
   # render nothing(summary_pdf)
   # ------------------------------------------------------------
-  test "summary_pdf should render correct tenplate and layout" do
+  test "summary_pdf should render correct template and layout" do
     @user.summaries.delete_all
 
     get :summary_pdf
@@ -328,7 +375,7 @@ class ShipControllerTest < ActionController::TestCase
   # ------------------------------------------------------------
   # render nothing(balance_pdf)
   # ------------------------------------------------------------
-  test "balance_pdf should render correct tenplate and layout" do
+  test "balance_pdf should render correct template and layout" do
     @user.balances.delete_all
 
     get :balance_pdf
@@ -336,6 +383,19 @@ class ShipControllerTest < ActionController::TestCase
     assert_template :nothing
     assert_template layout: 'layouts/application'
   end
+
+  # ------------------------------------------------------------
+  # render nothing(energie_pdf)
+  # ------------------------------------------------------------
+  test "energie_pdf should render correct template and layout" do
+    @user.energies.delete_all
+
+    get :energie_pdf
+
+    assert_template :nothing
+    assert_template layout: 'layouts/application'
+  end
+
 
   # ------------------------------------------------------------
   # require_login expense
@@ -449,6 +509,18 @@ class ShipControllerTest < ActionController::TestCase
     assert_not logged_in?
 
     get :balance_pdf
+    assert_redirected_to login_path
+    assert_equal 'Please login first.', flash[:alert]
+  end
+
+  # ------------------------------------------------------------
+  # require_login energie_pdf
+  # ------------------------------------------------------------
+  test "energie_pdf should require login" do
+    logout_user
+    assert_not logged_in?
+
+    get :energie_pdf
     assert_redirected_to login_path
     assert_equal 'Please login first.', flash[:alert]
   end

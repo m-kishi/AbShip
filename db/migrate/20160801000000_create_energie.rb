@@ -2,7 +2,7 @@ class CreateEnergie < ActiveRecord::Migration
 
   def change
     create_table :energies do |t|
-      t.string  :year
+      t.integer :year
       t.string  :type
       t.integer :mnth04
       t.integer :mnth05

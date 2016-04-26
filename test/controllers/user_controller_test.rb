@@ -178,6 +178,7 @@ class UserControllerTest < ActionController::TestCase
     assert_equal 0, Graphic.where(user_id: @user.id).count
     assert_equal 0, Balance.where(user_id: @user.id).count
     assert_equal 0, Private.where(user_id: @user.id).count
+    assert_equal 0, Energie.where(user_id: @user.id).count
 
     # ユーザ一覧画面へリダイレクト
     assert_redirected_to users_path

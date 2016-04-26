@@ -4,6 +4,9 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
 
+  # テーブル名とクラス名の紐付け
+  set_fixture_class energies: Energie
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 

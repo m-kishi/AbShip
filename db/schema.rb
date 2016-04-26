@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160801000000) do
   end
 
   create_table "energies", force: :cascade do |t|
-    t.string  "year"
+    t.integer "year"
     t.string  "type"
     t.integer "mnth04"
     t.integer "mnth05"
