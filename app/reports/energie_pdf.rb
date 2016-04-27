@@ -57,18 +57,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("電気代")
-    el04 = energies[:el].map {|el| el["mnth04"] }
-    el05 = energies[:el].map {|el| el["mnth05"] }
-    el06 = energies[:el].map {|el| el["mnth06"] }
-    el07 = energies[:el].map {|el| el["mnth07"] }
-    el08 = energies[:el].map {|el| el["mnth08"] }
-    el09 = energies[:el].map {|el| el["mnth09"] }
-    el10 = energies[:el].map {|el| el["mnth10"] }
-    el11 = energies[:el].map {|el| el["mnth11"] }
-    el12 = energies[:el].map {|el| el["mnth12"] }
-    el01 = energies[:el].map {|el| el["mnth01"] }
-    el02 = energies[:el].map {|el| el["mnth02"] }
-    el03 = energies[:el].map {|el| el["mnth03"] }
+    el04 = energies[:el].map {|el| el["mnth04"] }.select {|el| el > 0 }
+    el05 = energies[:el].map {|el| el["mnth05"] }.select {|el| el > 0 }
+    el06 = energies[:el].map {|el| el["mnth06"] }.select {|el| el > 0 }
+    el07 = energies[:el].map {|el| el["mnth07"] }.select {|el| el > 0 }
+    el08 = energies[:el].map {|el| el["mnth08"] }.select {|el| el > 0 }
+    el09 = energies[:el].map {|el| el["mnth09"] }.select {|el| el > 0 }
+    el10 = energies[:el].map {|el| el["mnth10"] }.select {|el| el > 0 }
+    el11 = energies[:el].map {|el| el["mnth11"] }.select {|el| el > 0 }
+    el12 = energies[:el].map {|el| el["mnth12"] }.select {|el| el > 0 }
+    el01 = energies[:el].map {|el| el["mnth01"] }.select {|el| el > 0 }
+    el02 = energies[:el].map {|el| el["mnth02"] }.select {|el| el > 0 }
+    el03 = energies[:el].map {|el| el["mnth03"] }.select {|el| el > 0 }
 
     el_once = false
     energies[:el].each do |el|
@@ -178,18 +178,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("ガス代")
-    gs04 = energies[:gs].map {|gs| gs["mnth04"] }
-    gs05 = energies[:gs].map {|gs| gs["mnth05"] }
-    gs06 = energies[:gs].map {|gs| gs["mnth06"] }
-    gs07 = energies[:gs].map {|gs| gs["mnth07"] }
-    gs08 = energies[:gs].map {|gs| gs["mnth08"] }
-    gs09 = energies[:gs].map {|gs| gs["mnth09"] }
-    gs10 = energies[:gs].map {|gs| gs["mnth10"] }
-    gs11 = energies[:gs].map {|gs| gs["mnth11"] }
-    gs12 = energies[:gs].map {|gs| gs["mnth12"] }
-    gs01 = energies[:gs].map {|gs| gs["mnth01"] }
-    gs02 = energies[:gs].map {|gs| gs["mnth02"] }
-    gs03 = energies[:gs].map {|gs| gs["mnth03"] }
+    gs04 = energies[:gs].map {|gs| gs["mnth04"] }.select {|gs| gs > 0 }
+    gs05 = energies[:gs].map {|gs| gs["mnth05"] }.select {|gs| gs > 0 }
+    gs06 = energies[:gs].map {|gs| gs["mnth06"] }.select {|gs| gs > 0 }
+    gs07 = energies[:gs].map {|gs| gs["mnth07"] }.select {|gs| gs > 0 }
+    gs08 = energies[:gs].map {|gs| gs["mnth08"] }.select {|gs| gs > 0 }
+    gs09 = energies[:gs].map {|gs| gs["mnth09"] }.select {|gs| gs > 0 }
+    gs10 = energies[:gs].map {|gs| gs["mnth10"] }.select {|gs| gs > 0 }
+    gs11 = energies[:gs].map {|gs| gs["mnth11"] }.select {|gs| gs > 0 }
+    gs12 = energies[:gs].map {|gs| gs["mnth12"] }.select {|gs| gs > 0 }
+    gs01 = energies[:gs].map {|gs| gs["mnth01"] }.select {|gs| gs > 0 }
+    gs02 = energies[:gs].map {|gs| gs["mnth02"] }.select {|gs| gs > 0 }
+    gs03 = energies[:gs].map {|gs| gs["mnth03"] }.select {|gs| gs > 0 }
 
     gs_once = false
     energies[:gs].each do |gs|
@@ -299,18 +299,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("水道代")
-    wt04 = energies[:wt].map {|wt| wt["mnth04"] }
-    wt05 = energies[:wt].map {|wt| wt["mnth05"] }
-    wt06 = energies[:wt].map {|wt| wt["mnth06"] }
-    wt07 = energies[:wt].map {|wt| wt["mnth07"] }
-    wt08 = energies[:wt].map {|wt| wt["mnth08"] }
-    wt09 = energies[:wt].map {|wt| wt["mnth09"] }
-    wt10 = energies[:wt].map {|wt| wt["mnth10"] }
-    wt11 = energies[:wt].map {|wt| wt["mnth11"] }
-    wt12 = energies[:wt].map {|wt| wt["mnth12"] }
-    wt01 = energies[:wt].map {|wt| wt["mnth01"] }
-    wt02 = energies[:wt].map {|wt| wt["mnth02"] }
-    wt03 = energies[:wt].map {|wt| wt["mnth03"] }
+    wt04 = energies[:wt].map {|wt| wt["mnth04"] }.select {|wt| wt > 0 }
+    wt05 = energies[:wt].map {|wt| wt["mnth05"] }.select {|wt| wt > 0 }
+    wt06 = energies[:wt].map {|wt| wt["mnth06"] }.select {|wt| wt > 0 }
+    wt07 = energies[:wt].map {|wt| wt["mnth07"] }.select {|wt| wt > 0 }
+    wt08 = energies[:wt].map {|wt| wt["mnth08"] }.select {|wt| wt > 0 }
+    wt09 = energies[:wt].map {|wt| wt["mnth09"] }.select {|wt| wt > 0 }
+    wt10 = energies[:wt].map {|wt| wt["mnth10"] }.select {|wt| wt > 0 }
+    wt11 = energies[:wt].map {|wt| wt["mnth11"] }.select {|wt| wt > 0 }
+    wt12 = energies[:wt].map {|wt| wt["mnth12"] }.select {|wt| wt > 0 }
+    wt01 = energies[:wt].map {|wt| wt["mnth01"] }.select {|wt| wt > 0 }
+    wt02 = energies[:wt].map {|wt| wt["mnth02"] }.select {|wt| wt > 0 }
+    wt03 = energies[:wt].map {|wt| wt["mnth03"] }.select {|wt| wt > 0 }
 
     wt_once = false
     energies[:wt].each do |wt|
