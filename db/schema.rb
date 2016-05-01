@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701000000) do
+ActiveRecord::Schema.define(version: 20160801000000) do
 
   create_table "api_keys", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,6 +28,24 @@ ActiveRecord::Schema.define(version: 20150701000000) do
     t.integer "expense"
     t.integer "special"
     t.integer "balance"
+    t.integer "user_id"
+  end
+
+  create_table "energies", force: :cascade do |t|
+    t.integer "year"
+    t.string  "type"
+    t.integer "mnth04"
+    t.integer "mnth05"
+    t.integer "mnth06"
+    t.integer "mnth07"
+    t.integer "mnth08"
+    t.integer "mnth09"
+    t.integer "mnth10"
+    t.integer "mnth11"
+    t.integer "mnth12"
+    t.integer "mnth01"
+    t.integer "mnth02"
+    t.integer "mnth03"
     t.integer "user_id"
   end
 

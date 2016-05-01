@@ -1,0 +1,147 @@
+e001:
+  user: kishi
+  date: 2015-11-11
+  name: おにぎり
+  type: FOOD
+  cost: 100
+
+e002:
+  user: kishi
+  date: 2015-11-12
+  name: 弁当
+  type: OTFD
+  cost: 200
+
+e003:
+  user: kishi
+  date: 2015-11-13
+  name: ボールペン
+  type: GOOD
+  cost: 300
+
+e004:
+  user: kishi
+  date: 2015-11-14
+  name: 電車
+  type: TRFC
+  cost: 400
+
+e005:
+  user: kishi
+  date: 2015-11-15
+  name: 飲み会
+  type: FRND
+  cost: 500
+
+e101:
+  user: -1
+  date: 2015-12-01
+  name: name
+  type: FOOD
+  cost: 1001
+
+e102:
+  user: -1
+  date: 2015-12-02
+  name: name
+  type: PRVI
+  cost: 1002
+
+e103:
+  user: -1
+  date: 2015-12-03
+  name: name
+  type: PRVO
+  cost: 1003
+
+e104:
+  user: -1
+  date: 2015-12-04
+  name: name
+  type: PRVI
+  cost: 1004
+
+e105:
+  user: -1
+  date: 2015-12-05
+  name: name
+  type: OTFD
+  cost: 1005
+
+e106:
+  user: -1
+  date: 2015-12-06
+  name: name
+  type: PRVO
+  cost: 1006
+
+e201:
+  user: kishi2
+  date: 2013-06-30
+  name: name
+  type: FOOD
+  cost: 1000
+
+e202:
+  user: kishi2
+  date: 2013-07-01
+  name: name
+  type: FOOD
+  cost: 1000
+
+e203:
+  user: kishi2
+  date: 2013-07-15
+  name: name
+  type: PRVI
+  cost: 1000
+
+e204:
+  user: kishi2
+  date: 2013-07-10
+  name: name
+  type: GOOD
+  cost: 1000
+
+e205:
+  user: kishi2
+  date: 2013-07-15
+  name: name
+  type: TRFC
+  cost: 1000
+
+e206:
+  user: kishi2
+  date: 2013-07-20
+  name: name
+  type: FRND
+  cost: 1000
+
+e207:
+  user: kishi2
+  date: 2013-07-25
+  name: name
+  type: PLAY
+  cost: 1000
+
+e208:
+  user: kishi2
+  date: 2013-07-30
+  name: name
+  type: PRVO
+  cost: 1000
+
+e209:
+  user: kishi2
+  date: 2013-07-31
+  name: name
+  type: HOUS
+  cost: 1000
+
+e210:
+  user: kishi2
+  date: 2013-08-01
+  name: name
+  type: FOOD
+  cost: 1000
+

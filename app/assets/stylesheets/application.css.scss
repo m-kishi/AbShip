@@ -14,8 +14,8 @@ body {
 }
 
 div.navigation-area {
-  width: 612px;
-  padding: 4px;
+  width: 604px;
+  padding: 8px;
   font-size: 90%;
   margin-bottom: 4px;
   background-color: $next-color;
@@ -26,10 +26,25 @@ div.navigation-area {
     }
     td.app-title {
       width: 121px;
-    }
-    td.apps-icon {
-      width: 368px;
-      text-align: right;
+      text-align: center;
+      vertical-align: middle;
+      .app-name {
+        font-size: 200%;
+        font-weight: bold;
+        color: $app-name-color;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        color: $app-name-color;
+      }
+      a:visited {
+        color: $app-name-color;
+      }
+      a:hover {
+        color: $app-name-hover-color;
+      }
     }
     td.navigation-link {
       text-align: right;
@@ -178,30 +193,3 @@ p.error-message {
   text-align: right;
 }
 
-div#icon-animation {
-  width: 32px;
-  animation: translate 40s;
-  animation-direction: normal;
-  animation-timing-function: ease;
-  animation-iteration-count: infinite;
-  -webkit-animation: translate 40s;
-  -webkit-animation-direction: normal;
-  -webkit-animation-timing-function: ease;
-  -webkit-animation-iteration-count: infinite;
-}
-
-@keyframes translate {
-    0% { transform: translate(332px, 0px); }
-   45% { transform: translate(0px, 0px); }
-   50% { transform: scaleX(-1); }
-   95% { transform: scaleX(-1) translate(-332px, 0px); }
-  100% { transform: translate(332px, 0px); }
-}
-
-@-webkit-keyframes translate {
-    0% { -webkit-transform: translate(332px, 0px); }
-   45% { -webkit-transform: translate(0px, 0px); }
-   50% { -webkit-transform: scaleX(-1); }
-   95% { -webkit-transform: scaleX(-1) translate(-332px, 0px); }
-  100% { -webkit-transform: translate(332px, 0px); }
-}

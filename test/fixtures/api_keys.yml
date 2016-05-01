@@ -1,0 +1,19 @@
+expired:
+  user: kishi2
+  token: <%= SecureRandom.hex %>
+  expires_at: <%= DateTime.new(1999, 12, 31, 0, 0, 0) %>
+
+valid_key:
+  user: kishi
+  token: <%= SecureRandom.hex %>
+  expires_at: <%= DateTime.new(2999, 12, 31, 0, 0, 0) %>
+
+user_not_found:
+  user_id: -1
+  token: <%= SecureRandom.hex %>
+  expires_at: <%= DateTime.new(2999, 12, 31, 0, 0, 0) %>
+
+kishi3_token:
+  user: kishi3
+  token: 6f6b960c729c81a956d084e0e4e9e758
+  expires_at: <%= DateTime.new(2999, 12, 31, 0, 0, 0) %>
