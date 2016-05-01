@@ -7,6 +7,10 @@ class ShipController < ApplicationController
     @expense  = current_user.expenses.obj(year, mnth)
     @expenses = current_user.expenses.get(year, mnth)
     @expense_selected = true
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def summary
@@ -90,6 +94,23 @@ class ShipController < ApplicationController
       send_data report.generate,
         :type        => "application/pdf",
         :filename    => "balance.pdf",
+        :disposition => "inline"
+    end
+  end
+
+  def energie_pdf
+    el = current_user.energies.where(type: "ELE")
+    gs = current_user.energies.where(type: "GAS")
+    wt = current_user.energies.where(type: "WTR")
+    energies = { el: el, gs: gs, wt: wt }
+    if el.empty? || gs.empty? || wt.empty?
+      flash.now[:alert] = 'No Energies Data.'
+      render :nothing
+    else
+      report = EnergiePdf.create energies
+      send_data report.generate,
+        :type        => "application/pdf",
+        :filename    => "energie.pdf",
         :disposition => "inline"
     end
   end

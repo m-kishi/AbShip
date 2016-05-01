@@ -19,6 +19,10 @@
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-title" content="AbShip">
   <meta name="application-name" content="AbShip">
   <meta name="msapplication-TileColor" content="#da532c">
@@ -30,12 +34,7 @@
   <div class="navigation-area">
     <table>
       <tr>
-        <td class="app-title"><%= link_to image_tag(asset_path('app_title.svg'), width: '121px;', height: '32px;'), :root %></td>
-        <td class="apps-icon">
-          <div id="icon-animation">
-            <%= link_to image_tag(asset_path('apps_icon.svg'), width: '32px;', height: '32px;'), :root %>
-          </div>
-        </td>
+        <td class="app-title"><%= link_to 'AbShip', :root, class: 'app-name' %></td>
         <td class="navigation-link">
           <% if current_user %>
             <%= link_to '編集', edit_user_path(current_user.id) %> <span class="pipe-line">|</span>

@@ -15,6 +15,7 @@ class Importer
       graphic_import(@user)
       balance_import(@user)
       private_import(@user)
+      energie_import(@user)
     end
   end
 
@@ -62,6 +63,7 @@ class Importer
     when :summary; file = 'summary.sql'
     when :graphic; file = 'graphic.sql'
     when :balance; file = 'balance.sql'
+    when :energie; file = 'energie.sql'
     end
     sql = File.open("#{Rails.root}/db/sql/#{file}").read
     sql.gsub('[user_id]', id.to_s)
@@ -147,6 +149,30 @@ class Importer
         blnc: blnc
       )
       balance = blnc
+    end
+  end
+
+  def energie_import(user)
+    user.energies.delete_all
+    sql = read_sql(user.id, :energie)
+    energies = ActiveRecord::Base.connection.execute(sql)
+    energies.each do |eng|
+      user.energies.create(
+        year:   eng["year"],
+        type:   eng["type"],
+        mnth04: eng["mnth04"],
+        mnth05: eng["mnth05"],
+        mnth06: eng["mnth06"],
+        mnth07: eng["mnth07"],
+        mnth08: eng["mnth08"],
+        mnth09: eng["mnth09"],
+        mnth10: eng["mnth10"],
+        mnth11: eng["mnth11"],
+        mnth12: eng["mnth12"],
+        mnth01: eng["mnth01"],
+        mnth02: eng["mnth02"],
+        mnth03: eng["mnth03"],
+      )
     end
   end
 

@@ -2,7 +2,8 @@
 
 <div class="summary-area">
   <div class="summary-pdf-area">
-    <%= link_to image_tag(asset_path('links_pdf.svg')), summary_pdf_path, target: '_blank' %>
+    <%= link_to '収支表', summary_pdf_path, target: '_blank', class: 'pdf-link' %>
+    <%= link_to '光熱費', energie_pdf_path, target: '_blank', class: 'pdf-link' %>
   </div>
   <table class="summary">
     <tr>

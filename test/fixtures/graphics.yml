@@ -1,0 +1,233 @@
+g001: {
+  user: kishi,
+  year: 2015,
+  mnth: 11,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g002: {
+  user: kishi,
+  year: 2015,
+  mnth: 12,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g003: {
+  user: kishi,
+  year: 2016,
+  mnth: 1,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g004: {
+  user: kishi,
+  year: 2016,
+  mnth: 2,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g005: {
+  user: kishi,
+  year: 2016,
+  mnth: 3,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g006: {
+  user: kishi,
+  year: 2016,
+  mnth: 4,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+
+g101: {
+  user: -1,
+  year: 2014,
+  mnth: 10,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g102: {
+  user: -1,
+  year: 2014,
+  mnth: 11,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g103: {
+  user: -1,
+  year: 2014,
+  mnth: 12,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g104: {
+  user: -1,
+  year: 2017,
+  mnth: 1,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g105: {
+  user: -1,
+  year: 2017,
+  mnth: 2,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+g106: {
+  user: -1,
+  year: 2017,
+  mnth: 3,
+  food: 0, otfd: 0, engy_elc: 0, engy_gas: 0, engy_wtr: 0
+}
+
+g201: {
+  user: -1,
+  year: 2018,
+  mnth: 9,
+  food: 1000, otfd: 2000, engy_elc: 3000, engy_gas: 4000, engy_wtr: 5000
+}
+
+g301: {
+  user: -1,
+  year: 2020,
+  mnth: 6,
+  food: 1000, otfd: 2000, engy_elc: 3000, engy_gas: 4000, engy_wtr: 5000
+}
+g302: {
+  user: -1,
+  year: 2020,
+  mnth: 7,
+  food: 2000, otfd: 3000, engy_elc: 4000, engy_gas: 5000, engy_wtr: 6000
+}
+g303: {
+  user: -1,
+  year: 2020,
+  mnth: 8,
+  food: 3000, otfd: 4000, engy_elc: 5000, engy_gas: 6000, engy_wtr: 7000
+}
+g304: {
+  user: -1,
+  year: 2020,
+  mnth: 9,
+  food: 4000, otfd: 5000, engy_elc: 6000, engy_gas: 7000, engy_wtr: 8000
+}
+g305: {
+  user: -1,
+  year: 2020,
+  mnth: 10,
+  food: 5000, otfd: 6000, engy_elc: 7000, engy_gas: 8000, engy_wtr: 9000
+}
+g306: {
+  user: -1,
+  year: 2020,
+  mnth: 11,
+  food: 6000, otfd: 7000, engy_elc: 8000, engy_gas: 9000, engy_wtr: 1010
+}
+g307: {
+  user: -1,
+  year: 2020,
+  mnth: 12,
+  food: 7000, otfd: 8000, engy_elc: 9000, engy_gas: 1010, engy_wtr: 2020
+}
+g308: {
+  user: -1,
+  year: 2021,
+  mnth: 1,
+  food: 8000, otfd: 9000, engy_elc: 1010, engy_gas: 2020, engy_wtr: 3030
+}
+g309: {
+  user: -1,
+  year: 2021,
+  mnth: 2,
+  food: 9000, otfd: 1010, engy_elc: 2020, engy_gas: 3030, engy_wtr: 4040
+}
+g310: {
+  user: -1,
+  year: 2021,
+  mnth: 3,
+  food: 1010, otfd: 2020, engy_elc: 3030, engy_gas: 4040, engy_wtr: 5050
+}
+g311: {
+  user: -1,
+  year: 2021,
+  mnth: 4,
+  food: 2020, otfd: 3030, engy_elc: 4040, engy_gas: 5050, engy_wtr: 6060
+}
+g312: {
+  user: -1,
+  year: 2021,
+  mnth: 5,
+  food: 3030, otfd: 4040, engy_elc: 5050, engy_gas: 6060, engy_wtr: 7070
+}
+g313: {
+  user: -1,
+  year: 2021,
+  mnth: 6,
+  food: 4040, otfd: 5050, engy_elc: 6060, engy_gas: 7070, engy_wtr: 8080
+}
+g314: {
+  user: -1,
+  year: 2021,
+  mnth: 7,
+  food: 5050, otfd: 6060, engy_elc: 7070, engy_gas: 8080, engy_wtr: 9090
+}
+
+g401: {
+  user: -1,
+  year: 2098,
+  mnth: 12,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g402: {
+  user: -1,
+  year: 2100,
+  mnth: 2,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+
+g501: {
+  user: -1,
+  year: 2050,
+  mnth: 1,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g502: {
+  user: -1,
+  year: 2050,
+  mnth: 2,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g503: {
+  user: -1,
+  year: 2050,
+  mnth: 4,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g504: {
+  user: -1,
+  year: 2050,
+  mnth: 5,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g505: {
+  user: -1,
+  year: 2050,
+  mnth: 7,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g506: {
+  user: -1,
+  year: 2050,
+  mnth: 8,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g507: {
+  user: -1,
+  year: 2050,
+  mnth: 10,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g508: {
+  user: -1,
+  year: 2050,
+  mnth: 11,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}
+g509: {
+  user: -1,
+  year: 2051,
+  mnth: 1,
+  food: 9999, otfd: 9999, engy_elc: 9999, engy_gas: 9999, engy_wtr: 9999
+}

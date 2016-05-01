@@ -21,8 +21,8 @@ $(function() {
     var tr = '<tr>' +
                '<td class="exp-date"><%= exp.date %></td>' +
                '<td class="exp-name"><%= exp.name %></td>' +
-               '<td class="exp-type"><%= exp.type %></td>' +
-               '<td class="exp-cost"><%= to_currency(exp.cost) %></td>' +
+               '<td class="exp-type"><%= to_jp_type(exp.type) %></td>' +
+               '<td class="exp-cost currency"><%= to_currency(exp.cost) %></td>' +
              '</tr>';
     tbody.append(tr);
   <% end %>
