@@ -1,5 +1,6 @@
 class EnergiePdf
   extend CostHelper
+  extend EngyHelper
 
   def self.create(energies)
     report = ThinReports::Report.new layout: "app/reports/energie.tlf"
@@ -57,18 +58,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("電気代")
-    el04 = energies[:el].map {|el| el["mnth04"] }.select {|el| el > 0 }
-    el05 = energies[:el].map {|el| el["mnth05"] }.select {|el| el > 0 }
-    el06 = energies[:el].map {|el| el["mnth06"] }.select {|el| el > 0 }
-    el07 = energies[:el].map {|el| el["mnth07"] }.select {|el| el > 0 }
-    el08 = energies[:el].map {|el| el["mnth08"] }.select {|el| el > 0 }
-    el09 = energies[:el].map {|el| el["mnth09"] }.select {|el| el > 0 }
-    el10 = energies[:el].map {|el| el["mnth10"] }.select {|el| el > 0 }
-    el11 = energies[:el].map {|el| el["mnth11"] }.select {|el| el > 0 }
-    el12 = energies[:el].map {|el| el["mnth12"] }.select {|el| el > 0 }
-    el01 = energies[:el].map {|el| el["mnth01"] }.select {|el| el > 0 }
-    el02 = energies[:el].map {|el| el["mnth02"] }.select {|el| el > 0 }
-    el03 = energies[:el].map {|el| el["mnth03"] }.select {|el| el > 0 }
+    el04 = get_energies_by_month(energies, :el, "mnth04")
+    el05 = get_energies_by_month(energies, :el, "mnth05")
+    el06 = get_energies_by_month(energies, :el, "mnth06")
+    el07 = get_energies_by_month(energies, :el, "mnth07")
+    el08 = get_energies_by_month(energies, :el, "mnth08")
+    el09 = get_energies_by_month(energies, :el, "mnth09")
+    el10 = get_energies_by_month(energies, :el, "mnth10")
+    el11 = get_energies_by_month(energies, :el, "mnth11")
+    el12 = get_energies_by_month(energies, :el, "mnth12")
+    el01 = get_energies_by_month(energies, :el, "mnth01")
+    el02 = get_energies_by_month(energies, :el, "mnth02")
+    el03 = get_energies_by_month(energies, :el, "mnth03")
 
     el_once = false
     energies[:el].each do |el|
@@ -89,44 +90,44 @@ class EnergiePdf
 
        if !el_once
           el_once = true
-          list.store.min[:mnth04] = el04.min
-          list.store.min[:mnth05] = el05.min
-          list.store.min[:mnth06] = el06.min
-          list.store.min[:mnth07] = el07.min
-          list.store.min[:mnth08] = el08.min
-          list.store.min[:mnth09] = el09.min
-          list.store.min[:mnth10] = el10.min
-          list.store.min[:mnth11] = el11.min
-          list.store.min[:mnth12] = el12.min
-          list.store.min[:mnth01] = el01.min
-          list.store.min[:mnth02] = el02.min
-          list.store.min[:mnth03] = el03.min
+          list.store.min[:mnth04] = footer_min(el04)
+          list.store.min[:mnth05] = footer_min(el05)
+          list.store.min[:mnth06] = footer_min(el06)
+          list.store.min[:mnth07] = footer_min(el07)
+          list.store.min[:mnth08] = footer_min(el08)
+          list.store.min[:mnth09] = footer_min(el09)
+          list.store.min[:mnth10] = footer_min(el10)
+          list.store.min[:mnth11] = footer_min(el11)
+          list.store.min[:mnth12] = footer_min(el12)
+          list.store.min[:mnth01] = footer_min(el01)
+          list.store.min[:mnth02] = footer_min(el02)
+          list.store.min[:mnth03] = footer_min(el03)
 
-          list.store.ave[:mnth04] = (el04.reduce(:+) / el04.size.to_f).ceil
-          list.store.ave[:mnth05] = (el05.reduce(:+) / el05.size.to_f).ceil
-          list.store.ave[:mnth06] = (el06.reduce(:+) / el06.size.to_f).ceil
-          list.store.ave[:mnth07] = (el07.reduce(:+) / el07.size.to_f).ceil
-          list.store.ave[:mnth08] = (el08.reduce(:+) / el08.size.to_f).ceil
-          list.store.ave[:mnth09] = (el09.reduce(:+) / el09.size.to_f).ceil
-          list.store.ave[:mnth10] = (el10.reduce(:+) / el10.size.to_f).ceil
-          list.store.ave[:mnth11] = (el11.reduce(:+) / el11.size.to_f).ceil
-          list.store.ave[:mnth12] = (el12.reduce(:+) / el12.size.to_f).ceil
-          list.store.ave[:mnth01] = (el01.reduce(:+) / el01.size.to_f).ceil
-          list.store.ave[:mnth02] = (el02.reduce(:+) / el02.size.to_f).ceil
-          list.store.ave[:mnth03] = (el03.reduce(:+) / el03.size.to_f).ceil
+          list.store.ave[:mnth04] = footer_ave(el04)
+          list.store.ave[:mnth05] = footer_ave(el05)
+          list.store.ave[:mnth06] = footer_ave(el06)
+          list.store.ave[:mnth07] = footer_ave(el07)
+          list.store.ave[:mnth08] = footer_ave(el08)
+          list.store.ave[:mnth09] = footer_ave(el09)
+          list.store.ave[:mnth10] = footer_ave(el10)
+          list.store.ave[:mnth11] = footer_ave(el11)
+          list.store.ave[:mnth12] = footer_ave(el12)
+          list.store.ave[:mnth01] = footer_ave(el01)
+          list.store.ave[:mnth02] = footer_ave(el02)
+          list.store.ave[:mnth03] = footer_ave(el03)
 
-          list.store.max[:mnth04] = el04.max
-          list.store.max[:mnth05] = el05.max
-          list.store.max[:mnth06] = el06.max
-          list.store.max[:mnth07] = el07.max
-          list.store.max[:mnth08] = el08.max
-          list.store.max[:mnth09] = el09.max
-          list.store.max[:mnth10] = el10.max
-          list.store.max[:mnth11] = el11.max
-          list.store.max[:mnth12] = el12.max
-          list.store.max[:mnth01] = el01.max
-          list.store.max[:mnth02] = el02.max
-          list.store.max[:mnth03] = el03.max
+          list.store.max[:mnth04] = footer_max(el04)
+          list.store.max[:mnth05] = footer_max(el05)
+          list.store.max[:mnth06] = footer_max(el06)
+          list.store.max[:mnth07] = footer_max(el07)
+          list.store.max[:mnth08] = footer_max(el08)
+          list.store.max[:mnth09] = footer_max(el09)
+          list.store.max[:mnth10] = footer_max(el10)
+          list.store.max[:mnth11] = footer_max(el11)
+          list.store.max[:mnth12] = footer_max(el12)
+          list.store.max[:mnth01] = footer_max(el01)
+          list.store.max[:mnth02] = footer_max(el02)
+          list.store.max[:mnth03] = footer_max(el03)
         end
 
         list.add_row do |row|
@@ -144,31 +145,31 @@ class EnergiePdf
           row.item(:mnth02).value(to_currency(mnth02))
           row.item(:mnth03).value(to_currency(mnth03))
 
-          row.item(:mnth04).style(:color, '#0000ff') if el04.min == mnth04
-          row.item(:mnth05).style(:color, '#0000ff') if el05.min == mnth05
-          row.item(:mnth06).style(:color, '#0000ff') if el06.min == mnth06
-          row.item(:mnth07).style(:color, '#0000ff') if el07.min == mnth07
-          row.item(:mnth08).style(:color, '#0000ff') if el08.min == mnth08
-          row.item(:mnth09).style(:color, '#0000ff') if el09.min == mnth09
-          row.item(:mnth10).style(:color, '#0000ff') if el10.min == mnth10
-          row.item(:mnth11).style(:color, '#0000ff') if el11.min == mnth11
-          row.item(:mnth12).style(:color, '#0000ff') if el12.min == mnth12
-          row.item(:mnth01).style(:color, '#0000ff') if el01.min == mnth01
-          row.item(:mnth02).style(:color, '#0000ff') if el02.min == mnth02
-          row.item(:mnth03).style(:color, '#0000ff') if el03.min == mnth03
+          row.item(:mnth04).style(:color, '#0000ff') if eq_min(el04, mnth04)
+          row.item(:mnth05).style(:color, '#0000ff') if eq_min(el05, mnth05)
+          row.item(:mnth06).style(:color, '#0000ff') if eq_min(el06, mnth06)
+          row.item(:mnth07).style(:color, '#0000ff') if eq_min(el07, mnth07)
+          row.item(:mnth08).style(:color, '#0000ff') if eq_min(el08, mnth08)
+          row.item(:mnth09).style(:color, '#0000ff') if eq_min(el09, mnth09)
+          row.item(:mnth10).style(:color, '#0000ff') if eq_min(el10, mnth10)
+          row.item(:mnth11).style(:color, '#0000ff') if eq_min(el11, mnth11)
+          row.item(:mnth12).style(:color, '#0000ff') if eq_min(el12, mnth12)
+          row.item(:mnth01).style(:color, '#0000ff') if eq_min(el01, mnth01)
+          row.item(:mnth02).style(:color, '#0000ff') if eq_min(el02, mnth02)
+          row.item(:mnth03).style(:color, '#0000ff') if eq_min(el03, mnth03)
 
-          row.item(:mnth04).style(:color, '#ff0000') if el04.max == mnth04
-          row.item(:mnth05).style(:color, '#ff0000') if el05.max == mnth05
-          row.item(:mnth06).style(:color, '#ff0000') if el06.max == mnth06
-          row.item(:mnth07).style(:color, '#ff0000') if el07.max == mnth07
-          row.item(:mnth08).style(:color, '#ff0000') if el08.max == mnth08
-          row.item(:mnth09).style(:color, '#ff0000') if el09.max == mnth09
-          row.item(:mnth10).style(:color, '#ff0000') if el10.max == mnth10
-          row.item(:mnth11).style(:color, '#ff0000') if el11.max == mnth11
-          row.item(:mnth12).style(:color, '#ff0000') if el12.max == mnth12
-          row.item(:mnth01).style(:color, '#ff0000') if el01.max == mnth01
-          row.item(:mnth02).style(:color, '#ff0000') if el02.max == mnth02
-          row.item(:mnth03).style(:color, '#ff0000') if el03.max == mnth03
+          row.item(:mnth04).style(:color, '#ff0000') if eq_max(el04, mnth04)
+          row.item(:mnth05).style(:color, '#ff0000') if eq_max(el05, mnth05)
+          row.item(:mnth06).style(:color, '#ff0000') if eq_max(el06, mnth06)
+          row.item(:mnth07).style(:color, '#ff0000') if eq_max(el07, mnth07)
+          row.item(:mnth08).style(:color, '#ff0000') if eq_max(el08, mnth08)
+          row.item(:mnth09).style(:color, '#ff0000') if eq_max(el09, mnth09)
+          row.item(:mnth10).style(:color, '#ff0000') if eq_max(el10, mnth10)
+          row.item(:mnth11).style(:color, '#ff0000') if eq_max(el11, mnth11)
+          row.item(:mnth12).style(:color, '#ff0000') if eq_max(el12, mnth12)
+          row.item(:mnth01).style(:color, '#ff0000') if eq_max(el01, mnth01)
+          row.item(:mnth02).style(:color, '#ff0000') if eq_max(el02, mnth02)
+          row.item(:mnth03).style(:color, '#ff0000') if eq_max(el03, mnth03)
          end
       end
     end
@@ -178,18 +179,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("ガス代")
-    gs04 = energies[:gs].map {|gs| gs["mnth04"] }.select {|gs| gs > 0 }
-    gs05 = energies[:gs].map {|gs| gs["mnth05"] }.select {|gs| gs > 0 }
-    gs06 = energies[:gs].map {|gs| gs["mnth06"] }.select {|gs| gs > 0 }
-    gs07 = energies[:gs].map {|gs| gs["mnth07"] }.select {|gs| gs > 0 }
-    gs08 = energies[:gs].map {|gs| gs["mnth08"] }.select {|gs| gs > 0 }
-    gs09 = energies[:gs].map {|gs| gs["mnth09"] }.select {|gs| gs > 0 }
-    gs10 = energies[:gs].map {|gs| gs["mnth10"] }.select {|gs| gs > 0 }
-    gs11 = energies[:gs].map {|gs| gs["mnth11"] }.select {|gs| gs > 0 }
-    gs12 = energies[:gs].map {|gs| gs["mnth12"] }.select {|gs| gs > 0 }
-    gs01 = energies[:gs].map {|gs| gs["mnth01"] }.select {|gs| gs > 0 }
-    gs02 = energies[:gs].map {|gs| gs["mnth02"] }.select {|gs| gs > 0 }
-    gs03 = energies[:gs].map {|gs| gs["mnth03"] }.select {|gs| gs > 0 }
+    gs04 = get_energies_by_month(energies, :gs, "mnth04")
+    gs05 = get_energies_by_month(energies, :gs, "mnth05")
+    gs06 = get_energies_by_month(energies, :gs, "mnth06")
+    gs07 = get_energies_by_month(energies, :gs, "mnth07")
+    gs08 = get_energies_by_month(energies, :gs, "mnth08")
+    gs09 = get_energies_by_month(energies, :gs, "mnth09")
+    gs10 = get_energies_by_month(energies, :gs, "mnth10")
+    gs11 = get_energies_by_month(energies, :gs, "mnth11")
+    gs12 = get_energies_by_month(energies, :gs, "mnth12")
+    gs01 = get_energies_by_month(energies, :gs, "mnth01")
+    gs02 = get_energies_by_month(energies, :gs, "mnth02")
+    gs03 = get_energies_by_month(energies, :gs, "mnth03")
 
     gs_once = false
     energies[:gs].each do |gs|
@@ -210,44 +211,44 @@ class EnergiePdf
 
        if !gs_once
           gs_once = true
-          list.store.min[:mnth04] = gs04.min
-          list.store.min[:mnth05] = gs05.min
-          list.store.min[:mnth06] = gs06.min
-          list.store.min[:mnth07] = gs07.min
-          list.store.min[:mnth08] = gs08.min
-          list.store.min[:mnth09] = gs09.min
-          list.store.min[:mnth10] = gs10.min
-          list.store.min[:mnth11] = gs11.min
-          list.store.min[:mnth12] = gs12.min
-          list.store.min[:mnth01] = gs01.min
-          list.store.min[:mnth02] = gs02.min
-          list.store.min[:mnth03] = gs03.min
+          list.store.min[:mnth04] = footer_min(gs04)
+          list.store.min[:mnth05] = footer_min(gs05)
+          list.store.min[:mnth06] = footer_min(gs06)
+          list.store.min[:mnth07] = footer_min(gs07)
+          list.store.min[:mnth08] = footer_min(gs08)
+          list.store.min[:mnth09] = footer_min(gs09)
+          list.store.min[:mnth10] = footer_min(gs10)
+          list.store.min[:mnth11] = footer_min(gs11)
+          list.store.min[:mnth12] = footer_min(gs12)
+          list.store.min[:mnth01] = footer_min(gs01)
+          list.store.min[:mnth02] = footer_min(gs02)
+          list.store.min[:mnth03] = footer_min(gs03)
 
-          list.store.ave[:mnth04] = (gs04.reduce(:+) / gs04.size.to_f).ceil
-          list.store.ave[:mnth05] = (gs05.reduce(:+) / gs05.size.to_f).ceil
-          list.store.ave[:mnth06] = (gs06.reduce(:+) / gs06.size.to_f).ceil
-          list.store.ave[:mnth07] = (gs07.reduce(:+) / gs07.size.to_f).ceil
-          list.store.ave[:mnth08] = (gs08.reduce(:+) / gs08.size.to_f).ceil
-          list.store.ave[:mnth09] = (gs09.reduce(:+) / gs09.size.to_f).ceil
-          list.store.ave[:mnth10] = (gs10.reduce(:+) / gs10.size.to_f).ceil
-          list.store.ave[:mnth11] = (gs11.reduce(:+) / gs11.size.to_f).ceil
-          list.store.ave[:mnth12] = (gs12.reduce(:+) / gs12.size.to_f).ceil
-          list.store.ave[:mnth01] = (gs01.reduce(:+) / gs01.size.to_f).ceil
-          list.store.ave[:mnth02] = (gs02.reduce(:+) / gs02.size.to_f).ceil
-          list.store.ave[:mnth03] = (gs03.reduce(:+) / gs03.size.to_f).ceil
+          list.store.ave[:mnth04] = footer_ave(gs04)
+          list.store.ave[:mnth05] = footer_ave(gs05)
+          list.store.ave[:mnth06] = footer_ave(gs06)
+          list.store.ave[:mnth07] = footer_ave(gs07)
+          list.store.ave[:mnth08] = footer_ave(gs08)
+          list.store.ave[:mnth09] = footer_ave(gs09)
+          list.store.ave[:mnth10] = footer_ave(gs10)
+          list.store.ave[:mnth11] = footer_ave(gs11)
+          list.store.ave[:mnth12] = footer_ave(gs12)
+          list.store.ave[:mnth01] = footer_ave(gs01)
+          list.store.ave[:mnth02] = footer_ave(gs02)
+          list.store.ave[:mnth03] = footer_ave(gs03)
 
-          list.store.max[:mnth04] = gs04.max
-          list.store.max[:mnth05] = gs05.max
-          list.store.max[:mnth06] = gs06.max
-          list.store.max[:mnth07] = gs07.max
-          list.store.max[:mnth08] = gs08.max
-          list.store.max[:mnth09] = gs09.max
-          list.store.max[:mnth10] = gs10.max
-          list.store.max[:mnth11] = gs11.max
-          list.store.max[:mnth12] = gs12.max
-          list.store.max[:mnth01] = gs01.max
-          list.store.max[:mnth02] = gs02.max
-          list.store.max[:mnth03] = gs03.max
+          list.store.max[:mnth04] = footer_max(gs04)
+          list.store.max[:mnth05] = footer_max(gs05)
+          list.store.max[:mnth06] = footer_max(gs06)
+          list.store.max[:mnth07] = footer_max(gs07)
+          list.store.max[:mnth08] = footer_max(gs08)
+          list.store.max[:mnth09] = footer_max(gs09)
+          list.store.max[:mnth10] = footer_max(gs10)
+          list.store.max[:mnth11] = footer_max(gs11)
+          list.store.max[:mnth12] = footer_max(gs12)
+          list.store.max[:mnth01] = footer_max(gs01)
+          list.store.max[:mnth02] = footer_max(gs02)
+          list.store.max[:mnth03] = footer_max(gs03)
         end
 
         list.add_row do |row|
@@ -265,31 +266,31 @@ class EnergiePdf
           row.item(:mnth02).value(to_currency(mnth02))
           row.item(:mnth03).value(to_currency(mnth03))
 
-          row.item(:mnth04).style(:color, '#0000ff') if gs04.min == mnth04
-          row.item(:mnth05).style(:color, '#0000ff') if gs05.min == mnth05
-          row.item(:mnth06).style(:color, '#0000ff') if gs06.min == mnth06
-          row.item(:mnth07).style(:color, '#0000ff') if gs07.min == mnth07
-          row.item(:mnth08).style(:color, '#0000ff') if gs08.min == mnth08
-          row.item(:mnth09).style(:color, '#0000ff') if gs09.min == mnth09
-          row.item(:mnth10).style(:color, '#0000ff') if gs10.min == mnth10
-          row.item(:mnth11).style(:color, '#0000ff') if gs11.min == mnth11
-          row.item(:mnth12).style(:color, '#0000ff') if gs12.min == mnth12
-          row.item(:mnth01).style(:color, '#0000ff') if gs01.min == mnth01
-          row.item(:mnth02).style(:color, '#0000ff') if gs02.min == mnth02
-          row.item(:mnth03).style(:color, '#0000ff') if gs03.min == mnth03
+          row.item(:mnth04).style(:color, '#0000ff') if eq_min(gs04, mnth04)
+          row.item(:mnth05).style(:color, '#0000ff') if eq_min(gs05, mnth05)
+          row.item(:mnth06).style(:color, '#0000ff') if eq_min(gs06, mnth06)
+          row.item(:mnth07).style(:color, '#0000ff') if eq_min(gs07, mnth07)
+          row.item(:mnth08).style(:color, '#0000ff') if eq_min(gs08, mnth08)
+          row.item(:mnth09).style(:color, '#0000ff') if eq_min(gs09, mnth09)
+          row.item(:mnth10).style(:color, '#0000ff') if eq_min(gs10, mnth10)
+          row.item(:mnth11).style(:color, '#0000ff') if eq_min(gs11, mnth11)
+          row.item(:mnth12).style(:color, '#0000ff') if eq_min(gs12, mnth12)
+          row.item(:mnth01).style(:color, '#0000ff') if eq_min(gs01, mnth01)
+          row.item(:mnth02).style(:color, '#0000ff') if eq_min(gs02, mnth02)
+          row.item(:mnth03).style(:color, '#0000ff') if eq_min(gs03, mnth03)
 
-          row.item(:mnth04).style(:color, '#ff0000') if gs04.max == mnth04
-          row.item(:mnth05).style(:color, '#ff0000') if gs05.max == mnth05
-          row.item(:mnth06).style(:color, '#ff0000') if gs06.max == mnth06
-          row.item(:mnth07).style(:color, '#ff0000') if gs07.max == mnth07
-          row.item(:mnth08).style(:color, '#ff0000') if gs08.max == mnth08
-          row.item(:mnth09).style(:color, '#ff0000') if gs09.max == mnth09
-          row.item(:mnth10).style(:color, '#ff0000') if gs10.max == mnth10
-          row.item(:mnth11).style(:color, '#ff0000') if gs11.max == mnth11
-          row.item(:mnth12).style(:color, '#ff0000') if gs12.max == mnth12
-          row.item(:mnth01).style(:color, '#ff0000') if gs01.max == mnth01
-          row.item(:mnth02).style(:color, '#ff0000') if gs02.max == mnth02
-          row.item(:mnth03).style(:color, '#ff0000') if gs03.max == mnth03
+          row.item(:mnth04).style(:color, '#ff0000') if eq_max(gs04, mnth04)
+          row.item(:mnth05).style(:color, '#ff0000') if eq_max(gs05, mnth05)
+          row.item(:mnth06).style(:color, '#ff0000') if eq_max(gs06, mnth06)
+          row.item(:mnth07).style(:color, '#ff0000') if eq_max(gs07, mnth07)
+          row.item(:mnth08).style(:color, '#ff0000') if eq_max(gs08, mnth08)
+          row.item(:mnth09).style(:color, '#ff0000') if eq_max(gs09, mnth09)
+          row.item(:mnth10).style(:color, '#ff0000') if eq_max(gs10, mnth10)
+          row.item(:mnth11).style(:color, '#ff0000') if eq_max(gs11, mnth11)
+          row.item(:mnth12).style(:color, '#ff0000') if eq_max(gs12, mnth12)
+          row.item(:mnth01).style(:color, '#ff0000') if eq_max(gs01, mnth01)
+          row.item(:mnth02).style(:color, '#ff0000') if eq_max(gs02, mnth02)
+          row.item(:mnth03).style(:color, '#ff0000') if eq_max(gs03, mnth03)
          end
       end
     end
@@ -299,18 +300,18 @@ class EnergiePdf
     # --------------------------------------------------
     report.start_new_page
     report.page.item(:title).value("水道代")
-    wt04 = energies[:wt].map {|wt| wt["mnth04"] }.select {|wt| wt > 0 }
-    wt05 = energies[:wt].map {|wt| wt["mnth05"] }.select {|wt| wt > 0 }
-    wt06 = energies[:wt].map {|wt| wt["mnth06"] }.select {|wt| wt > 0 }
-    wt07 = energies[:wt].map {|wt| wt["mnth07"] }.select {|wt| wt > 0 }
-    wt08 = energies[:wt].map {|wt| wt["mnth08"] }.select {|wt| wt > 0 }
-    wt09 = energies[:wt].map {|wt| wt["mnth09"] }.select {|wt| wt > 0 }
-    wt10 = energies[:wt].map {|wt| wt["mnth10"] }.select {|wt| wt > 0 }
-    wt11 = energies[:wt].map {|wt| wt["mnth11"] }.select {|wt| wt > 0 }
-    wt12 = energies[:wt].map {|wt| wt["mnth12"] }.select {|wt| wt > 0 }
-    wt01 = energies[:wt].map {|wt| wt["mnth01"] }.select {|wt| wt > 0 }
-    wt02 = energies[:wt].map {|wt| wt["mnth02"] }.select {|wt| wt > 0 }
-    wt03 = energies[:wt].map {|wt| wt["mnth03"] }.select {|wt| wt > 0 }
+    wt04 = get_energies_by_month(energies, :wt, "mnth04")
+    wt05 = get_energies_by_month(energies, :wt, "mnth05")
+    wt06 = get_energies_by_month(energies, :wt, "mnth06")
+    wt07 = get_energies_by_month(energies, :wt, "mnth07")
+    wt08 = get_energies_by_month(energies, :wt, "mnth08")
+    wt09 = get_energies_by_month(energies, :wt, "mnth09")
+    wt10 = get_energies_by_month(energies, :wt, "mnth10")
+    wt11 = get_energies_by_month(energies, :wt, "mnth11")
+    wt12 = get_energies_by_month(energies, :wt, "mnth12")
+    wt01 = get_energies_by_month(energies, :wt, "mnth01")
+    wt02 = get_energies_by_month(energies, :wt, "mnth02")
+    wt03 = get_energies_by_month(energies, :wt, "mnth03")
 
     wt_once = false
     energies[:wt].each do |wt|
@@ -331,44 +332,44 @@ class EnergiePdf
 
        if !wt_once
           wt_once = true
-          list.store.min[:mnth04] = wt04.min
-          list.store.min[:mnth05] = wt05.min
-          list.store.min[:mnth06] = wt06.min
-          list.store.min[:mnth07] = wt07.min
-          list.store.min[:mnth08] = wt08.min
-          list.store.min[:mnth09] = wt09.min
-          list.store.min[:mnth10] = wt10.min
-          list.store.min[:mnth11] = wt11.min
-          list.store.min[:mnth12] = wt12.min
-          list.store.min[:mnth01] = wt01.min
-          list.store.min[:mnth02] = wt02.min
-          list.store.min[:mnth03] = wt03.min
+          list.store.min[:mnth04] = footer_min(wt04)
+          list.store.min[:mnth05] = footer_min(wt05)
+          list.store.min[:mnth06] = footer_min(wt06)
+          list.store.min[:mnth07] = footer_min(wt07)
+          list.store.min[:mnth08] = footer_min(wt08)
+          list.store.min[:mnth09] = footer_min(wt09)
+          list.store.min[:mnth10] = footer_min(wt10)
+          list.store.min[:mnth11] = footer_min(wt11)
+          list.store.min[:mnth12] = footer_min(wt12)
+          list.store.min[:mnth01] = footer_min(wt01)
+          list.store.min[:mnth02] = footer_min(wt02)
+          list.store.min[:mnth03] = footer_min(wt03)
 
-          list.store.ave[:mnth04] = (wt04.reduce(:+) / wt04.size.to_f).ceil
-          list.store.ave[:mnth05] = (wt05.reduce(:+) / wt05.size.to_f).ceil
-          list.store.ave[:mnth06] = (wt06.reduce(:+) / wt06.size.to_f).ceil
-          list.store.ave[:mnth07] = (wt07.reduce(:+) / wt07.size.to_f).ceil
-          list.store.ave[:mnth08] = (wt08.reduce(:+) / wt08.size.to_f).ceil
-          list.store.ave[:mnth09] = (wt09.reduce(:+) / wt09.size.to_f).ceil
-          list.store.ave[:mnth10] = (wt10.reduce(:+) / wt10.size.to_f).ceil
-          list.store.ave[:mnth11] = (wt11.reduce(:+) / wt11.size.to_f).ceil
-          list.store.ave[:mnth12] = (wt12.reduce(:+) / wt12.size.to_f).ceil
-          list.store.ave[:mnth01] = (wt01.reduce(:+) / wt01.size.to_f).ceil
-          list.store.ave[:mnth02] = (wt02.reduce(:+) / wt02.size.to_f).ceil
-          list.store.ave[:mnth03] = (wt03.reduce(:+) / wt03.size.to_f).ceil
+          list.store.ave[:mnth04] = footer_ave(wt04)
+          list.store.ave[:mnth05] = footer_ave(wt05)
+          list.store.ave[:mnth06] = footer_ave(wt06)
+          list.store.ave[:mnth07] = footer_ave(wt07)
+          list.store.ave[:mnth08] = footer_ave(wt08)
+          list.store.ave[:mnth09] = footer_ave(wt09)
+          list.store.ave[:mnth10] = footer_ave(wt10)
+          list.store.ave[:mnth11] = footer_ave(wt11)
+          list.store.ave[:mnth12] = footer_ave(wt12)
+          list.store.ave[:mnth01] = footer_ave(wt01)
+          list.store.ave[:mnth02] = footer_ave(wt02)
+          list.store.ave[:mnth03] = footer_ave(wt03)
 
-          list.store.max[:mnth04] = wt04.max
-          list.store.max[:mnth05] = wt05.max
-          list.store.max[:mnth06] = wt06.max
-          list.store.max[:mnth07] = wt07.max
-          list.store.max[:mnth08] = wt08.max
-          list.store.max[:mnth09] = wt09.max
-          list.store.max[:mnth10] = wt10.max
-          list.store.max[:mnth11] = wt11.max
-          list.store.max[:mnth12] = wt12.max
-          list.store.max[:mnth01] = wt01.max
-          list.store.max[:mnth02] = wt02.max
-          list.store.max[:mnth03] = wt03.max
+          list.store.max[:mnth04] = footer_max(wt04)
+          list.store.max[:mnth05] = footer_max(wt05)
+          list.store.max[:mnth06] = footer_max(wt06)
+          list.store.max[:mnth07] = footer_max(wt07)
+          list.store.max[:mnth08] = footer_max(wt08)
+          list.store.max[:mnth09] = footer_max(wt09)
+          list.store.max[:mnth10] = footer_max(wt10)
+          list.store.max[:mnth11] = footer_max(wt11)
+          list.store.max[:mnth12] = footer_max(wt12)
+          list.store.max[:mnth01] = footer_max(wt01)
+          list.store.max[:mnth02] = footer_max(wt02)
+          list.store.max[:mnth03] = footer_max(wt03)
         end
 
         list.add_row do |row|
@@ -386,31 +387,31 @@ class EnergiePdf
           row.item(:mnth02).value(to_currency(mnth02))
           row.item(:mnth03).value(to_currency(mnth03))
 
-          row.item(:mnth04).style(:color, '#0000ff') if wt04.min == mnth04
-          row.item(:mnth05).style(:color, '#0000ff') if wt05.min == mnth05
-          row.item(:mnth06).style(:color, '#0000ff') if wt06.min == mnth06
-          row.item(:mnth07).style(:color, '#0000ff') if wt07.min == mnth07
-          row.item(:mnth08).style(:color, '#0000ff') if wt08.min == mnth08
-          row.item(:mnth09).style(:color, '#0000ff') if wt09.min == mnth09
-          row.item(:mnth10).style(:color, '#0000ff') if wt10.min == mnth10
-          row.item(:mnth11).style(:color, '#0000ff') if wt11.min == mnth11
-          row.item(:mnth12).style(:color, '#0000ff') if wt12.min == mnth12
-          row.item(:mnth01).style(:color, '#0000ff') if wt01.min == mnth01
-          row.item(:mnth02).style(:color, '#0000ff') if wt02.min == mnth02
-          row.item(:mnth03).style(:color, '#0000ff') if wt03.min == mnth03
+          row.item(:mnth04).style(:color, '#0000ff') if eq_min(wt04, mnth04)
+          row.item(:mnth05).style(:color, '#0000ff') if eq_min(wt05, mnth05)
+          row.item(:mnth06).style(:color, '#0000ff') if eq_min(wt06, mnth06)
+          row.item(:mnth07).style(:color, '#0000ff') if eq_min(wt07, mnth07)
+          row.item(:mnth08).style(:color, '#0000ff') if eq_min(wt08, mnth08)
+          row.item(:mnth09).style(:color, '#0000ff') if eq_min(wt09, mnth09)
+          row.item(:mnth10).style(:color, '#0000ff') if eq_min(wt10, mnth10)
+          row.item(:mnth11).style(:color, '#0000ff') if eq_min(wt11, mnth11)
+          row.item(:mnth12).style(:color, '#0000ff') if eq_min(wt12, mnth12)
+          row.item(:mnth01).style(:color, '#0000ff') if eq_min(wt01, mnth01)
+          row.item(:mnth02).style(:color, '#0000ff') if eq_min(wt02, mnth02)
+          row.item(:mnth03).style(:color, '#0000ff') if eq_min(wt03, mnth03)
 
-          row.item(:mnth04).style(:color, '#ff0000') if wt04.max == mnth04
-          row.item(:mnth05).style(:color, '#ff0000') if wt05.max == mnth05
-          row.item(:mnth06).style(:color, '#ff0000') if wt06.max == mnth06
-          row.item(:mnth07).style(:color, '#ff0000') if wt07.max == mnth07
-          row.item(:mnth08).style(:color, '#ff0000') if wt08.max == mnth08
-          row.item(:mnth09).style(:color, '#ff0000') if wt09.max == mnth09
-          row.item(:mnth10).style(:color, '#ff0000') if wt10.max == mnth10
-          row.item(:mnth11).style(:color, '#ff0000') if wt11.max == mnth11
-          row.item(:mnth12).style(:color, '#ff0000') if wt12.max == mnth12
-          row.item(:mnth01).style(:color, '#ff0000') if wt01.max == mnth01
-          row.item(:mnth02).style(:color, '#ff0000') if wt02.max == mnth02
-          row.item(:mnth03).style(:color, '#ff0000') if wt03.max == mnth03
+          row.item(:mnth04).style(:color, '#ff0000') if eq_max(wt04, mnth04)
+          row.item(:mnth05).style(:color, '#ff0000') if eq_max(wt05, mnth05)
+          row.item(:mnth06).style(:color, '#ff0000') if eq_max(wt06, mnth06)
+          row.item(:mnth07).style(:color, '#ff0000') if eq_max(wt07, mnth07)
+          row.item(:mnth08).style(:color, '#ff0000') if eq_max(wt08, mnth08)
+          row.item(:mnth09).style(:color, '#ff0000') if eq_max(wt09, mnth09)
+          row.item(:mnth10).style(:color, '#ff0000') if eq_max(wt10, mnth10)
+          row.item(:mnth11).style(:color, '#ff0000') if eq_max(wt11, mnth11)
+          row.item(:mnth12).style(:color, '#ff0000') if eq_max(wt12, mnth12)
+          row.item(:mnth01).style(:color, '#ff0000') if eq_max(wt01, mnth01)
+          row.item(:mnth02).style(:color, '#ff0000') if eq_max(wt02, mnth02)
+          row.item(:mnth03).style(:color, '#ff0000') if eq_max(wt03, mnth03)
          end
       end
     end
