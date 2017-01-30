@@ -40,7 +40,7 @@
             <%= link_to '編集', edit_user_path(current_user.id) %> <span class="pipe-line">|</span>
             <%= link_to 'ログアウト', :logout, method: :post %>
           <% else %>
-            <%= link_to '登録', new_user_path %> |
+            <%= link_to '登録', new_user_path %> <span class="pipe-line">|</span>
             <%= link_to 'ログイン', :login %>
           <% end %>
         </td>
