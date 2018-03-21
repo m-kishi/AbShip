@@ -3,11 +3,12 @@ source 'https://rubygems.org'
 # --------------------------------------------------
 # Rails関連
 # --------------------------------------------------
-gem 'rails', '4.2.0'
+gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'turbolinks'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8'
 
 # --------------------------------------------------
 # アセット関連
