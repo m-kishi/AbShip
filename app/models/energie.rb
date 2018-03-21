@@ -1,4 +1,4 @@
-class Energie < ActiveRecord::Base
+class Energie < ApplicationRecord
   belongs_to :user
 
   #カラム名として"type"を使うための設定

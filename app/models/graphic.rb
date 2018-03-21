@@ -1,4 +1,4 @@
-class Graphic < ActiveRecord::Base
+class Graphic < ApplicationRecord
   belongs_to :user
 
   # 年月順

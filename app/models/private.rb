@@ -1,3 +1,3 @@
-class Private < ActiveRecord::Base
+class Private < ApplicationRecord
   belongs_to :user
 end
