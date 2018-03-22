@@ -2,38 +2,34 @@ class SummaryPdf
   extend CostHelper
 
   def self.create(summaries)
-    report = ThinReports::Report.new layout: "app/reports/summary.tlf"
-    report.layout.config.list(:summary_list) do
-      extend CostHelper
+    report = Thinreports::Report.new layout: "app/reports/summary.tlf"
+    report.list(:summary_list) do |list|
 
-      use_stores :total => Hash.new(0)
+      total = Hash.new(0)
 
-      events.on :page_footer_insert do |e|
-        e.section.item(:food).value(to_currency(e.store.total[:food]))
-        e.section.item(:otfd).value(to_currency(e.store.total[:otfd]))
-        e.section.item(:good).value(to_currency(e.store.total[:good]))
-        e.section.item(:frnd).value(to_currency(e.store.total[:frnd]))
-        e.section.item(:trfc).value(to_currency(e.store.total[:trfc]))
-        e.section.item(:play).value(to_currency(e.store.total[:play]))
-        e.section.item(:hous).value(to_currency(e.store.total[:hous]))
-        e.section.item(:engy).value(to_currency(e.store.total[:engy]))
-        e.section.item(:cnct).value(to_currency(e.store.total[:cnct]))
-        e.section.item(:medi).value(to_currency(e.store.total[:medi]))
-        e.section.item(:insu).value(to_currency(e.store.total[:insu]))
-        e.section.item(:othr).value(to_currency(e.store.total[:othr]))
-        e.section.item(:ttal).value(to_currency(e.store.total[:ttal]))
-        e.section.item(:earn).value(to_currency(e.store.total[:earn]))
-        e.section.item(:blnc).value(to_currency(e.store.total[:blnc]))
+      list.on_page_footer_insert do |footer|
+        footer.item(:food).value = to_currency(total[:food])
+        footer.item(:otfd).value = to_currency(total[:otfd])
+        footer.item(:good).value = to_currency(total[:good])
+        footer.item(:frnd).value = to_currency(total[:frnd])
+        footer.item(:trfc).value = to_currency(total[:trfc])
+        footer.item(:play).value = to_currency(total[:play])
+        footer.item(:hous).value = to_currency(total[:hous])
+        footer.item(:engy).value = to_currency(total[:engy])
+        footer.item(:cnct).value = to_currency(total[:cnct])
+        footer.item(:medi).value = to_currency(total[:medi])
+        footer.item(:insu).value = to_currency(total[:insu])
+        footer.item(:othr).value = to_currency(total[:othr])
+        footer.item(:ttal).value = to_currency(total[:ttal])
+        footer.item(:earn).value = to_currency(total[:earn])
+        footer.item(:blnc).value = to_currency(total[:blnc])
+
+        total = Hash.new(0)
       end
-    end
 
-    cnt = 0
-    summaries.each do |sum|
-      if cnt % 12 == 0
-        report.start_new_page
-      end
-      cnt = cnt + 1
-      report.page.list(:summary_list) do |list|
+      # 自動改行するようにtlf側でオプションを指定
+      # 1ページ1年(12行+footer)となるように高さを調整済み
+      summaries.each do |sum|
         year = sum["year"]
         mnth = sum["mnth"]
         food = sum["food"].to_i
@@ -53,37 +49,37 @@ class SummaryPdf
         blnc = sum["blnc"].to_i
 
         list.add_row :mnth => sprintf("%04d/%02d", year, mnth),
-                     :food => to_currency(food),
-                     :otfd => to_currency(otfd),
-                     :good => to_currency(good),
-                     :frnd => to_currency(frnd),
-                     :trfc => to_currency(trfc),
-                     :play => to_currency(play),
-                     :hous => to_currency(hous),
-                     :engy => to_currency(engy),
-                     :cnct => to_currency(cnct),
-                     :medi => to_currency(medi),
-                     :insu => to_currency(insu),
-                     :othr => to_currency(othr),
-                     :ttal => to_currency(ttal),
-                     :earn => to_currency(earn),
-                     :blnc => to_currency(blnc)
+          :food => to_currency(food),
+          :otfd => to_currency(otfd),
+          :good => to_currency(good),
+          :frnd => to_currency(frnd),
+          :trfc => to_currency(trfc),
+          :play => to_currency(play),
+          :hous => to_currency(hous),
+          :engy => to_currency(engy),
+          :cnct => to_currency(cnct),
+          :medi => to_currency(medi),
+          :insu => to_currency(insu),
+          :othr => to_currency(othr),
+          :ttal => to_currency(ttal),
+          :earn => to_currency(earn),
+          :blnc => to_currency(blnc)
 
-        list.store.total[:food] += food
-        list.store.total[:otfd] += otfd
-        list.store.total[:good] += good
-        list.store.total[:frnd] += frnd
-        list.store.total[:trfc] += trfc
-        list.store.total[:play] += play
-        list.store.total[:hous] += hous
-        list.store.total[:engy] += engy
-        list.store.total[:cnct] += cnct
-        list.store.total[:medi] += medi
-        list.store.total[:insu] += insu
-        list.store.total[:othr] += othr
-        list.store.total[:ttal] += ttal
-        list.store.total[:earn] += earn
-        list.store.total[:blnc] += blnc
+        total[:food] += food
+        total[:otfd] += otfd
+        total[:good] += good
+        total[:frnd] += frnd
+        total[:trfc] += trfc
+        total[:play] += play
+        total[:hous] += hous
+        total[:engy] += engy
+        total[:cnct] += cnct
+        total[:medi] += medi
+        total[:insu] += insu
+        total[:othr] += othr
+        total[:ttal] += ttal
+        total[:earn] += earn
+        total[:blnc] += blnc
       end
     end
 
