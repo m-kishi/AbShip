@@ -22,7 +22,7 @@ class ApiKeyTest < ActiveSupport::TestCase
   # before_create activate
   # ------------------------------------------------------------
   test "before_create activate" do
-    api_key = ApiKey.create
+    api_key = ApiKey.create(user_id: @user.id)
     assert_not_nil api_key.expires_at
 
     # 現在時刻との差分(Rational型)
@@ -39,7 +39,7 @@ class ApiKeyTest < ActiveSupport::TestCase
   # before_create token_generate
   # ------------------------------------------------------------
   test "before_create token_generate" do
-    api_key = ApiKey.create
+    api_key = ApiKey.create(user_id: @user.id)
     assert_not_nil api_key.token
   end
 
