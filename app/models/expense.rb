@@ -1,4 +1,4 @@
-class Expense < ActiveRecord::Base
+class Expense < ApplicationRecord
   belongs_to :user
 
   #カラム名として"type"を使うための設定

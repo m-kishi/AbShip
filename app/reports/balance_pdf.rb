@@ -2,35 +2,33 @@ class BalancePdf
   extend CostHelper
 
   def self.create(balances)
-    report = ThinReports::Report.new layout: "app/reports/balance.tlf"
-    report.layout.config.list(:balance_list) do
-      extend CostHelper
+    report = Thinreports::Report.new layout: "app/reports/balance.tlf"
+    report.list(:balance_list) do |list|
 
-      use_stores :sub   => Hash.new(0),
-                 :total => Hash.new(0)
+      sub   = Hash.new(0)
+      total = Hash.new(0)
 
-      events.on :page_footer_insert do |e|
-        e.section.item(:earn   ).value(to_currency(e.store.sub[:earn   ]))
-        e.section.item(:bonus  ).value(to_currency(e.store.sub[:bonus  ]))
-        e.section.item(:expense).value(to_currency(e.store.sub[:expense]))
-        e.section.item(:special).value(to_currency(e.store.sub[:special]))
-        e.section.item(:balance).value(to_currency(e.store.sub[:balance]))
-        e.store.sub = Hash.new(0)
+      list.on_page_footer_insert do |footer|
+        footer.item(:earn   ).value = to_currency(sub[:earn   ])
+        footer.item(:bonus  ).value = to_currency(sub[:bonus  ])
+        footer.item(:expense).value = to_currency(sub[:expense])
+        footer.item(:special).value = to_currency(sub[:special])
+        footer.item(:balance).value = to_currency(sub[:balance])
+
+        sub = Hash.new(0)
       end
 
-      events.on :footer_insert do |e|
-        e.section.item(:earn   ).value(to_currency(e.store.total[:earn   ]))
-        e.section.item(:bonus  ).value(to_currency(e.store.total[:bonus  ]))
-        e.section.item(:expense).value(to_currency(e.store.total[:expense]))
-        e.section.item(:special).value(to_currency(e.store.total[:special]))
-        e.section.item(:balance).value(to_currency(e.store.total[:balance]))
+      list.on_footer_insert do |footer|
+        footer.item(:earn   ).value = to_currency(total[:earn   ])
+        footer.item(:bonus  ).value = to_currency(total[:bonus  ])
+        footer.item(:expense).value = to_currency(total[:expense])
+        footer.item(:special).value = to_currency(total[:special])
+        footer.item(:balance).value = to_currency(total[:balance])
       end
-    end
-    report.start_new_page
 
-    balances.each do |bln|
-      next if bln["year"] == 9999
-      report.page.list(:balance_list) do |list|
+      balances.each do |bln|
+        next if bln["year"] == 9999
+
         year    = bln["year"   ]
         earn    = bln["earn"   ].to_i
         bonus   = bln["bnus"   ].to_i
@@ -45,17 +43,17 @@ class BalancePdf
                      :special => to_currency(special),
                      :balance => to_currency(balance)
 
-        list.store.sub[:earn   ] += earn
-        list.store.sub[:bonus  ] += bonus
-        list.store.sub[:expense] += expense
-        list.store.sub[:special] += special
-        list.store.sub[:balance] += balance
+        sub[:earn   ] += earn
+        sub[:bonus  ] += bonus
+        sub[:expense] += expense
+        sub[:special] += special
+        sub[:balance] += balance
 
-        list.store.total[:earn   ] += earn
-        list.store.total[:bonus  ] += bonus
-        list.store.total[:expense] += expense
-        list.store.total[:special] += special
-        list.store.total[:balance] += balance
+        total[:earn   ] += earn
+        total[:bonus  ] += bonus
+        total[:expense] += expense
+        total[:special] += special
+        total[:balance] += balance
       end
     end
 

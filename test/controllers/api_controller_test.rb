@@ -31,7 +31,7 @@ module Api
           mail: 'kishi3@example.com',
           pass: 'kishi3@example.com'
         }
-        post :create, params
+        post :create, params: params
 
         # レスポンスの検証
         assert_response :success
@@ -51,7 +51,7 @@ module Api
           mail: 'kishi3@example.com',
           pass: 'invalid password'
         }
-        post :create, params
+        post :create, params: params
 
         # レスポンスの検証
         assert_response :not_found
@@ -69,7 +69,7 @@ module Api
         @request.headers[:HTTP_ACCESS_TOKEN] = token
 
         # アップロード
-        post :upload, { file: file }
+        post :upload, params: { file: file }
 
         # レスポンスの検証
         assert_response :success
@@ -85,7 +85,7 @@ module Api
         @request.headers[:HTTP_ACCESS_TOKEN] = token
 
         # アップロード
-        post :upload, { file: '' }
+        post :upload, params: { file: '' }
 
         # レスポンスの検証
         assert_response :internal_server_error
@@ -104,7 +104,7 @@ module Api
         @request.headers[:HTTP_ACCESS_TOKEN] = token
 
         # アップロード
-        post :upload, { file: file }
+        post :upload, params: { file: file }
 
         # レスポンスの検証
         assert_response :internal_server_error
@@ -116,7 +116,7 @@ module Api
       # ------------------------------------------------------------
       test "upload should require valid token" do
         # アクション実行
-        post :upload, { file: '' }
+        post :upload, params: { file: '' }
 
         # レスポンスの検証
         assert_response :unauthorized

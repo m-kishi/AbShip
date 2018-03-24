@@ -3,8 +3,8 @@ module Api
 
     class ApiController < ApplicationController
       before_action :require_valid_token
-      skip_before_filter :require_login
-      skip_before_filter :require_valid_token, only: :create
+      skip_before_action :require_login
+      skip_before_action :require_valid_token, only: :create
 
       protect_from_forgery except: [ :create, :upload ]
 
@@ -13,10 +13,10 @@ module Api
           api_key = @user.activate
           @access_token = api_key.token
           # ok
-          render text: @access_token, status: 200
+          render plain: @access_token, status: 200
         else
           # not found
-          render text: '', status: 404
+          render plain: '', status: 404
         end
       end
 
@@ -25,7 +25,7 @@ module Api
         token = request.headers[:HTTP_ACCESS_TOKEN]
         if file.blank?
           # internal server error
-          render text: 'DB data nothing.', status: 500
+          render plain: 'DB data nothing.', status: 500
         else
           @user = User.find_by_token(token)
           begin
@@ -33,10 +33,10 @@ module Api
             importer.import(file)
           rescue => ex
             # internal server error
-            render text: ex.message, status: 500
+            render plain: ex.message, status: 500
           else
             # ok
-            render text: '', status: 200
+            render plain: '', status: 200
           end
         end
       end
@@ -45,7 +45,7 @@ module Api
       def require_valid_token
         token = request.headers[:HTTP_ACCESS_TOKEN]
         if !User.login?(token)
-          render text: '', status: :unauthorized
+          render plain: '', status: :unauthorized
         end
       end
 

@@ -90,7 +90,7 @@ class UserControllerTest < ActionController::TestCase
     # ログイン
     login_user @user, '/auth'
 
-    get :edit, id: @user.id
+    get :edit, params: { id: @user.id }
     assert_response :success
     assert_not_nil assigns(:user)
   end
@@ -106,7 +106,7 @@ class UserControllerTest < ActionController::TestCase
         password: 'password',
         password_confirmation: 'password'
       }
-      post :create, user: params
+      post :create, params: { user: params }
     end
     assert_not_nil assigns(:user)
 
@@ -138,7 +138,7 @@ class UserControllerTest < ActionController::TestCase
         password: 'password',
         password_confirmation: 'password'
       }
-      put :update, id: @user.id, user: params
+      put :update, params: { id: @user.id, user: params }
     end
     assert_not_nil assigns(:user)
 
@@ -169,7 +169,7 @@ class UserControllerTest < ActionController::TestCase
 
     # 件数更新
     assert_difference('User.count', -1) do
-      post :destroy, id: @user.id
+      post :destroy, params: { id: @user.id }
     end
 
     # 関連情報の削除
@@ -228,7 +228,7 @@ class UserControllerTest < ActionController::TestCase
       password: 'password',
       password_confirmation: 'not match password'
     }
-    post :create, user: params
+    post :create, params: { user: params }
     assert_template :new
     assert_template layout: 'layouts/application', partial: '_form'
   end
@@ -248,7 +248,7 @@ class UserControllerTest < ActionController::TestCase
     # ログイン
     login_user @user, '/auth'
 
-    get :edit, id: @user.id
+    get :edit, params: { id: @user.id }
     assert_template :edit
     assert_template layout: 'layouts/application', partial: '_form'
   end
@@ -265,7 +265,7 @@ class UserControllerTest < ActionController::TestCase
       password: 'new password',
       password_confirmation: 'not match password'
     }
-    put :update, id: @user.id, user: params
+    put :update, params: { id: @user.id, user: params }
     assert_template :edit
     assert_template layout: 'layouts/application', partial: '_form'
   end
@@ -277,7 +277,7 @@ class UserControllerTest < ActionController::TestCase
     # ログイン
     login_user @user, '/auth'
 
-    get :edit, id: @user.id
+    get :edit, params: { id: @user.id }
     assert_select 'h1.title', 'Edit User'
   end
 
@@ -306,7 +306,7 @@ class UserControllerTest < ActionController::TestCase
     assert_not logged_in?
 
     # アクション実行
-    get :edit, id: @user.id
+    get :edit, params: { id: @user.id }
 
     # ログインページへリダイレクト
     assert_redirected_to login_path
@@ -328,7 +328,7 @@ class UserControllerTest < ActionController::TestCase
       password: 'new password',
       password_confirmation: 'new password'
     }
-    put :update, id: @user.id, user: params
+    put :update, params: { id: @user.id, user: params }
 
     # ログインページへリダイレクト
     assert_redirected_to login_path
@@ -345,7 +345,7 @@ class UserControllerTest < ActionController::TestCase
     assert_not logged_in?
 
     # アクション実行
-    delete :destroy, id: @user.id
+    delete :destroy, params: { id: @user.id }
 
     # ログインページへリダイレクト
     assert_redirected_to login_path
