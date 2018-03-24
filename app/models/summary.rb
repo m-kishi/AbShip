@@ -1,4 +1,4 @@
-class Summary < ActiveRecord::Base
+class Summary < ApplicationRecord
   belongs_to :user
 
   #年月順

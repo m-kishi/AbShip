@@ -49,7 +49,7 @@ class AuthControllerTest < ActionController::TestCase
   # ------------------------------------------------------------
   test "should post create with success" do
     # アクション実行
-    post :create, mail: 'kishi@example.com', password: 'kishi@example.com'
+    post :create, params: { mail: 'kishi@example.com', password: 'kishi@example.com' }
 
     # ログインできた
     assert logged_in?
@@ -66,7 +66,7 @@ class AuthControllerTest < ActionController::TestCase
   # ------------------------------------------------------------
   test "should post create with failure" do
     # アクション実行
-    post :create, mail: 'kishi@example.com', password: 'incorrect'
+    post :create, params: { mail: 'kishi@example.com', password: 'incorrect' }
 
     # ログイン失敗
     assert_not logged_in?
@@ -90,7 +90,7 @@ class AuthControllerTest < ActionController::TestCase
     assert logged_in?
 
     # アクション実行
-    post :destroy, id: @user.id
+    post :destroy, params: { id: @user.id }
 
     # ログインページへリダイレクト
     assert_redirected_to login_path
@@ -115,7 +115,7 @@ class AuthControllerTest < ActionController::TestCase
   # render new
   # ------------------------------------------------------------
   test "create with failure should render correct template and layout" do
-    post :create, mail: 'kishi@example.com', password: 'incorrect'
+    post :create, params: { mail: 'kishi@example.com', password: 'incorrect' }
     assert_template :new
     assert_template layout: 'layouts/application', partial: '_form'
   end
@@ -136,7 +136,7 @@ class AuthControllerTest < ActionController::TestCase
     assert_not logged_in?
 
     # アクション実行
-    delete :destroy, id: 0
+    delete :destroy, params: { id: 0 }
 
     # ログインページへリダイレクト
     assert_redirected_to login_path

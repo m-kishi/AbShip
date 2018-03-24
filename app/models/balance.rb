@@ -1,4 +1,4 @@
-class Balance < ActiveRecord::Base
+class Balance < ApplicationRecord
   belongs_to :user
 
   #年度順

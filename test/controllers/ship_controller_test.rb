@@ -96,7 +96,7 @@ class ShipControllerTest < ActionController::TestCase
   # action expense
   # ------------------------------------------------------------
   test "should get expense" do
-    get :expense, year: 2015, mnth: 11
+    get :expense, params: { year: 2015, mnth: 11 }
     assert_response :success
     assert_not_nil assigns(:expense)
     assert_not_nil assigns(:expenses)
@@ -107,7 +107,7 @@ class ShipControllerTest < ActionController::TestCase
   # action summary
   # ------------------------------------------------------------
   test "should get summary" do
-    get :summary, year: 2015, mnth: 11
+    get :summary, params: { year: 2015, mnth: 11 }
     assert_response :success
     assert_not_nil assigns(:summary)
     assert assigns(:summary_selected)
@@ -117,7 +117,7 @@ class ShipControllerTest < ActionController::TestCase
   # action graphic
   # ------------------------------------------------------------
   test "should get graphic" do
-    get :graphic, year: 2015, mnth: 11
+    get :graphic, params: { year: 2015, mnth: 11 }
     assert_response :success
     assert_not_nil assigns(:graphic)
     assert_not_nil assigns(:graphics)
@@ -157,7 +157,7 @@ class ShipControllerTest < ActionController::TestCase
   # action imports
   # ------------------------------------------------------------
   test "should post imports with blank file" do
-    post :imports, file: ''
+    post :imports, params: { file: '' }
     assert assigns(:uploads_selected)
 
     # メッセージを確認
@@ -169,7 +169,7 @@ class ShipControllerTest < ActionController::TestCase
   # ------------------------------------------------------------
   test "should post imports with success" do
     # ファイルパスは"test/fixtures"配下から
-    post :imports, file: fixture_file_upload('db/success.db', 'text/plain')
+    post :imports, params: { file: fixture_file_upload('db/success.db', 'text/plain') }
     assert_not assigns(:uploads_selected)
 
     # 取り込み件数の確認
@@ -187,7 +187,7 @@ class ShipControllerTest < ActionController::TestCase
   # action uploads
   # ------------------------------------------------------------
   test "should post imports with failure" do
-    post :imports, file: fixture_file_upload('db/failure.db', 'text/plain')
+    post :imports, params: { file: fixture_file_upload('db/failure.db', 'text/plain') }
     assert assigns(:uploads_selected)
 
     # メッセージを確認
@@ -262,7 +262,7 @@ class ShipControllerTest < ActionController::TestCase
   # render expense
   # ------------------------------------------------------------
   test "expense should render correct template and layout" do
-    get :expense, year: 2015, mnth: 11
+    get :expense, params: { year: 2015, mnth: 11 }
     assert_template :expense
     assert_template layout: 'layouts/application', partial: '_header'
   end
@@ -271,7 +271,7 @@ class ShipControllerTest < ActionController::TestCase
   # expense page
   # ------------------------------------------------------------
   test "title of expense page should 2015-11" do
-    get :expense, year: 2015, mnth: 11
+    get :expense, params: { year: 2015, mnth: 11 }
     assert_select 'h1.header', '2015年11月'
   end
 
@@ -279,7 +279,7 @@ class ShipControllerTest < ActionController::TestCase
   # render summary
   # ------------------------------------------------------------
   test "summary should render correct template and layout" do
-    get :summary, year: 2015, mnth: 11
+    get :summary, params: { year: 2015, mnth: 11 }
     assert_template :summary
     assert_template layout: 'layouts/application', partial: '_header'
   end
@@ -288,7 +288,7 @@ class ShipControllerTest < ActionController::TestCase
   # summary page
   # ------------------------------------------------------------
   test "title of summary page should 2015-11" do
-    get :summary, year: 2015, mnth: 11
+    get :summary, params: { year: 2015, mnth: 11 }
     assert_select 'h1.header', '2015年11月'
   end
 
@@ -296,7 +296,7 @@ class ShipControllerTest < ActionController::TestCase
   # render graphic
   # ------------------------------------------------------------
   test "graphic should render correct template and layout" do
-    get :graphic, year: 2015, mnth: 11
+    get :graphic, params: { year: 2015, mnth: 11 }
     assert_template :graphic
     assert_template layout: 'layouts/application', partial: '_header'
   end
@@ -305,7 +305,7 @@ class ShipControllerTest < ActionController::TestCase
   # graphic page
   # ------------------------------------------------------------
   test "title of graphic page should '2015-11'" do
-    get :graphic, year: 2015, mnth: 11
+    get :graphic, params: { year: 2015, mnth: 11 }
     assert_select 'h1.header', '2015年11月'
   end
 
@@ -395,7 +395,6 @@ class ShipControllerTest < ActionController::TestCase
     assert_template :nothing
     assert_template layout: 'layouts/application'
   end
-
 
   # ------------------------------------------------------------
   # require_login expense
