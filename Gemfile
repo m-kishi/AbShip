@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # --------------------------------------------------
 # Rails関連
 # --------------------------------------------------
-gem 'rails', '5.1.5'
+gem 'rails', '6.0.2.1'
 gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
@@ -46,3 +46,4 @@ end
 # --------------------------------------------------
 gem 'sorcery'     #認証
 gem 'thinreports' #帳票出力
+gem 'bundle_outdated_formatter' #bundle outdated の出力形式変換
