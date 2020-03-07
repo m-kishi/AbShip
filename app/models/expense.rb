@@ -15,7 +15,7 @@ class Expense < ApplicationRecord
   scope :get, ->(y, m) {
     dtStr = Date.new(y, m, 1)
     dtEnd = dtStr + 1.month - 1.day
-    Expense.where("date BETWEEN ? AND ?", dtStr, dtEnd)
+    Expense.default_scoped.where("date BETWEEN ? AND ?", dtStr, dtEnd)
   }
 
   StExpense = Struct.new(:year, :mnth) do

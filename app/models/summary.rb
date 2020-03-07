@@ -8,7 +8,7 @@ class Summary < ApplicationRecord
 
   #1件取出
   scope :get, ->(y, m) {
-    Summary.where("year=? AND mnth=?", y, m).first || Summary.empty(y, m)
+    Summary.default_scoped.where("year=? AND mnth=?", y, m).first || Summary.default_scoped.empty(y, m)
   }
 
   # 集計タイトル
@@ -18,7 +18,7 @@ class Summary < ApplicationRecord
 
   private
   def self.empty(y, m)
-    sum = Summary.new
+    sum = Summary.default_scoped.new
     sum.year = y
     sum.mnth = m
     sum.food = 0
