@@ -212,7 +212,7 @@ class ShipControllerTest < ActionController::TestCase
   test "should get summary_pdf with success" do
     get :summary_pdf
     assert_equal 'application/pdf', response.header["Content-Type"]
-    assert_equal 'inline; filename="summary.pdf"', response.header["Content-Disposition"]
+    assert_equal 'inline; filename="summary.pdf"; filename*=UTF-8\'\'summary.pdf', response.header["Content-Disposition"]
   end
 
   # ------------------------------------------------------------
@@ -233,7 +233,7 @@ class ShipControllerTest < ActionController::TestCase
   test "should get balance_pdf with success" do
     get :balance_pdf
     assert_equal 'application/pdf', response.header["Content-Type"]
-    assert_equal 'inline; filename="balance.pdf"', response.header["Content-Disposition"]
+    assert_equal 'inline; filename="balance.pdf"; filename*=UTF-8\'\'balance.pdf', response.header["Content-Disposition"]
   end
 
   # ------------------------------------------------------------
@@ -254,7 +254,7 @@ class ShipControllerTest < ActionController::TestCase
   test "should get energie_pdf with success" do
     get :energie_pdf
     assert_equal 'application/pdf', response.header["Content-Type"]
-    assert_equal 'inline; filename="energie.pdf"', response.header["Content-Disposition"]
+    assert_equal 'inline; filename="energie.pdf"; filename*=UTF-8\'\'energie.pdf', response.header["Content-Disposition"]
   end
 
 

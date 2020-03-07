@@ -8,7 +8,8 @@ class Graphic < ApplicationRecord
 
   # 1件取得
   scope :get, ->(y, m) {
-    Graphic.where("year=? AND mnth=?", y, m).first || Graphic.empty(y, m)
+    Graphic.default_scoped.where("year=? AND mnth=?", y, m).first ||
+    Graphic.default_scoped.empty(y, m)
   }
 
   # グラフデータ取得
@@ -22,7 +23,7 @@ class Graphic < ApplicationRecord
       dtCrr += 1.month
     end
     data = []
-    graphics = Graphic.where(query.join(" OR "), *value).to_a
+    graphics = Graphic.default_scoped.where(query.join(" OR "), *value).to_a
     dtCrr = dtEnd - 1.year
     while dtCrr <= dtEnd
       grph = graphics.find {|g| g.year == dtCrr.year && g.mnth == dtCrr.month }
@@ -39,7 +40,7 @@ class Graphic < ApplicationRecord
 
   private
   def self.empty(y, m)
-    grp = Graphic.new
+    grp = Graphic.default_scoped.new
     grp.year = y
     grp.mnth = m
     grp.food = 0

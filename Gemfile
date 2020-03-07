@@ -3,20 +3,20 @@ source 'https://rubygems.org'
 # --------------------------------------------------
 # Rails関連
 # --------------------------------------------------
-gem 'rails', '5.1.5'
+gem 'rails', '6.0.2.1'
 gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8'
+gem 'sdoc', group: :doc
+gem 'json', git: 'https://github.com/flori/json'
 
 # --------------------------------------------------
 # アセット関連
 # --------------------------------------------------
 group :assets do
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.2'
+  gem 'sass-rails'
+  gem 'uglifier'
+  gem 'coffee-rails'
 end
 
 # --------------------------------------------------
@@ -34,6 +34,7 @@ group :test do
   gem 'rails-controller-testing'
 end
 group :development, :test do
+  gem 'puma'
   gem 'sqlite3'
   gem 'byebug'
   gem 'spring'
@@ -46,3 +47,4 @@ end
 # --------------------------------------------------
 gem 'sorcery'     #認証
 gem 'thinreports' #帳票出力
+gem 'bundle_outdated_formatter' #bundle outdated の出力形式変換
