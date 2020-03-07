@@ -7,16 +7,16 @@ gem 'rails', '6.0.2.1'
 gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'json', git: 'https://github.com/flori/json', branch: 'v1.8'
+gem 'sdoc', group: :doc
+gem 'json', git: 'https://github.com/flori/json'
 
 # --------------------------------------------------
 # アセット関連
 # --------------------------------------------------
 group :assets do
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.2'
+  gem 'sass-rails'
+  gem 'uglifier'
+  gem 'coffee-rails'
 end
 
 # --------------------------------------------------
